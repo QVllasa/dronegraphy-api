@@ -1,0 +1,57 @@
+{
+  "id": 1,
+  "options": {
+    "seo": {
+      "ogImage": [],
+      "ogTitle": null,
+      "metaTags": null,
+      "metaTitle": null,
+      "canonicalUrl": null,
+      "ogDescription": null,
+      "twitterHandle": null,
+      "metaDescription": null,
+      "twitterCardType": null
+    },
+    "logo": {
+      "id": 935,
+      "original": "https://pixarlaravel.s3.ap-southeast-1.amazonaws.com/931/pixer_dark.png",
+      "thumbnail": "https://pixarlaravel.s3.ap-southeast-1.amazonaws.com/931/conversions/pixer_dark-thumbnail.jpg"
+    },
+    "currency": "EUR",
+    "taxClass": 1,
+    "dark_logo": {
+      "id": 936,
+      "original": "https://pixarlaravel.s3.ap-southeast-1.amazonaws.com/932/pixer_light.png",
+      "thumbnail": "https://pixarlaravel.s3.ap-southeast-1.amazonaws.com/932/conversions/pixer_light-thumbnail.jpg"
+    },
+    "siteTitle": "Pixer",
+    "deliveryTime": [
+      {
+        "title": "On Time",
+        "description": "You'll get it instant"
+      }
+    ],
+    "signupPoints": 0,
+    "siteSubtitle": null,
+    "contactDetails": {
+      "contact": "+161649646591, +5454645431",
+      "socials": [],
+      "website": "https://redq.io/",
+      "location": {
+        "lat": 48.2016556,
+        "lng": 16.3378535,
+        "zip": "1070",
+        "city": "Wien",
+        "state": "Wien",
+        "country": "Austria",
+        "formattedAddress": "Urban-Loritz-Platz, 1070 Wien, Austria"
+      }
+    },
+    "minimumOrderAmount": null,
+    "maximumQuestionLimit": 5,
+    "currencyToWalletRatio": 0
+  },
+  "language": "en",
+  "created_at": "2022-01-26T17:38:04.000000Z",
+  "updated_at": "2022-08-11T04:58:16.000000Z"
+}
