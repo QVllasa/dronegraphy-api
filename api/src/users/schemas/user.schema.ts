@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import {ProfileSchema} from "../entities/profile.entity";
-import {ShopSchema} from "../../shops/entities/shop.entity";
-import {AddressSchema} from "../../addresses/entities/address.entity";
 import {OrderSchema} from "../../orders/schemas/order.schema";
+import {ShopSchema} from "../../shops/schemas/shop.schema";
+import {AddressSchema} from "../../addresses/schemas/address.schema";
 
 
 export const UserSchema = new mongoose.Schema({
