@@ -43,6 +43,7 @@ export class AuthService {
 
   async login(loginInput: LoginDto): Promise<AuthResponse> {
     console.log(loginInput);
+      console.log("login")
     return {
       token: 'jwt token',
       permissions: ['super_admin', 'customer'],

@@ -7,3 +7,5 @@ export class AttributeValue extends CoreEntity {
   meta?: string;
   attribute: Attribute;
 }
+
+

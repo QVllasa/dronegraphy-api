@@ -28,3 +28,5 @@ export class Review extends CoreEntity {
   variation_option_id: string;
   abusive_reports_count?: number;
 }
+
+

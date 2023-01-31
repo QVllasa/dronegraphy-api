@@ -13,6 +13,7 @@ export class Type extends CoreEntity {
   translated_languages: string[];
 }
 
+
 export class Banner {
   id: number;
   title?: string;

@@ -56,6 +56,7 @@ export class Product extends CoreEntity {
   translated_languages?: string[];
 }
 
+
 export class OrderProductPivot {
   variation_option_id?: number;
   order_quantity: number;
@@ -74,6 +75,7 @@ export class Variation {
   options: VariationOption[];
 }
 
+
 export class VariationOption {
   name: string;
   value: string;
@@ -84,3 +86,5 @@ export class File extends CoreEntity {
   url: string;
   fileable_id: number;
 }
+
+

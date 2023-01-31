@@ -77,6 +77,7 @@ export class AuthController {
 
   @Get('me')
   me(@Req() req) {
+    console.log("me: ", req?.headers?.authorization);
     return this.authService.me(req?.headers?.authorization);
   }
 

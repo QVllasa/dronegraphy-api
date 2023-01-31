@@ -16,3 +16,5 @@ export class Category extends CoreEntity {
   language: string;
   translated_languages: string[];
 }
+
+

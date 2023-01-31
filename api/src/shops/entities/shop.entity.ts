@@ -21,6 +21,7 @@ export class Shop extends CoreEntity {
   settings?: ShopSettings;
 }
 
+
 export class Balance {
   id: number;
   admin_commission_rate: number;

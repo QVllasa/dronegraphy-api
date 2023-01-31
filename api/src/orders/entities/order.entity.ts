@@ -37,6 +37,7 @@ export class Order extends CoreEntity {
   translated_languages: string[];
 }
 
+
 export class OrderFiles extends CoreEntity {
   purchase_key: string;
   digital_file_id: number;
@@ -45,3 +46,5 @@ export class OrderFiles extends CoreEntity {
   file: File;
   fileable: Product;
 }
+
+

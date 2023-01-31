@@ -27,6 +27,8 @@ import {QuestionModule} from './questions/questions.module';
 import {WishlistsModule} from './wishlists/wishlists.module';
 import {ReportsModule} from './reports/reports.module';
 import {FeedbackModule} from './feedbacks/feedbacks.module';
+import {MongooseModule} from "@nestjs/mongoose";
+import {MONGO_CONNECTION} from "./constants";
 
 @Module({
     imports: [
@@ -58,6 +60,7 @@ import {FeedbackModule} from './feedbacks/feedbacks.module';
         WishlistsModule,
         ReportsModule,
         FeedbackModule,
+        MongooseModule.forRoot(MONGO_CONNECTION)
     ],
     controllers: [],
     providers: [],

@@ -11,3 +11,5 @@ export class Attribute extends CoreEntity {
   language: string;
   translated_languages: string[];
 }
+
+

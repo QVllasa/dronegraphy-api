@@ -15,3 +15,5 @@ export class Tag extends CoreEntity {
   language: string;
   translated_languages: string[];
 }
+
+

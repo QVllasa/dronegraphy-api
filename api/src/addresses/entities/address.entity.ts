@@ -14,6 +14,7 @@ export class Address extends CoreEntity {
   customer: User;
 }
 
+
 export class UserAddress {
   street_address: string;
   country: string;
@@ -21,3 +22,5 @@ export class UserAddress {
   state: string;
   zip: string;
 }
+
+

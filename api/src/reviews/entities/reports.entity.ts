@@ -8,3 +8,4 @@ export class Report extends CoreEntity {
   model_type: string;
   message: string;
 }
+
