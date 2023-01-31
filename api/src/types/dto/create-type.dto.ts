@@ -1,1 +1,2 @@
-export class CreateTypeDto {}
+export class CreateTypeDto {
+}

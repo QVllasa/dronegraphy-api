@@ -1,7 +1,7 @@
-import { SortOrder } from 'src/common/dto/generic-conditions.dto';
-import { PaginationArgs } from 'src/common/dto/pagination-args.dto';
-import { Paginator } from 'src/common/dto/paginator.dto';
-import { Question } from '../entities/question.entity';
+import {SortOrder} from 'src/common/dto/generic-conditions.dto';
+import {PaginationArgs} from 'src/common/dto/pagination-args.dto';
+import {Paginator} from 'src/common/dto/paginator.dto';
+import {Question} from '../entities/question.entity';
 
 export class QuestionPaginator extends Paginator<Question> {
   data: Question[];

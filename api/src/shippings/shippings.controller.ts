@@ -1,21 +1,13 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
-import { ShippingsService } from './shippings.service';
-import { CreateShippingDto } from './dto/create-shipping.dto';
-import { UpdateShippingDto } from './dto/update-shipping.dto';
-import { GetShippingsDto } from './dto/get-shippings.dto';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {ShippingsService} from './shippings.service';
+import {CreateShippingDto} from './dto/create-shipping.dto';
+import {UpdateShippingDto} from './dto/update-shipping.dto';
+import {GetShippingsDto} from './dto/get-shippings.dto';
 
 @Controller('shippings')
 export class ShippingsController {
-  constructor(private readonly shippingsService: ShippingsService) {}
+  constructor(private readonly shippingsService: ShippingsService) {
+  }
 
   @Post()
   create(@Body() createShippingDto: CreateShippingDto) {
@@ -34,8 +26,8 @@ export class ShippingsController {
 
   @Put(':id')
   update(
-    @Param('id') id: string,
-    @Body() updateShippingDto: UpdateShippingDto,
+      @Param('id') id: string,
+      @Body() updateShippingDto: UpdateShippingDto,
   ) {
     return this.shippingsService.update(+id, updateShippingDto);
   }

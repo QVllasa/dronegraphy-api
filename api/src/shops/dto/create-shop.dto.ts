@@ -1,5 +1,5 @@
-import { PickType } from '@nestjs/swagger';
-import { Shop } from '../entities/shop.entity';
+import {PickType} from '@nestjs/swagger';
+import {Shop} from '../entities/shop.entity';
 
 export class CreateShopDto extends PickType(Shop, [
   'name',

@@ -1,22 +1,14 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Query,
-  UsePipes,
-} from '@nestjs/common';
-import { WithdrawsService } from './withdraws.service';
-import { CreateWithdrawDto } from './dto/create-withdraw.dto';
-import { ApproveWithdrawDto } from './dto/approve-withdraw.dto';
-import { GetWithdrawsDto, WithdrawPaginator } from './dto/get-withdraw.dto';
-import { WithdrawValidationPipe } from './pipe/withdraw-validation.pipe';
+import {Body, Controller, Delete, Get, Param, Post, Query, UsePipes,} from '@nestjs/common';
+import {WithdrawsService} from './withdraws.service';
+import {CreateWithdrawDto} from './dto/create-withdraw.dto';
+import {ApproveWithdrawDto} from './dto/approve-withdraw.dto';
+import {GetWithdrawsDto, WithdrawPaginator} from './dto/get-withdraw.dto';
+import {WithdrawValidationPipe} from './pipe/withdraw-validation.pipe';
 
 @Controller('withdraws')
 export class WithdrawsController {
-  constructor(private readonly withdrawsService: WithdrawsService) {}
+  constructor(private readonly withdrawsService: WithdrawsService) {
+  }
 
   @Post()
   createWithdraw(@Body() createWithdrawDto: CreateWithdrawDto) {
@@ -36,8 +28,8 @@ export class WithdrawsController {
 
   @Post(':id/approve')
   approveWithdraw(
-    @Param('id') id: string,
-    @Body() updateWithdrawDto: ApproveWithdrawDto,
+      @Param('id') id: string,
+      @Body() updateWithdrawDto: ApproveWithdrawDto,
   ) {
     return this.withdrawsService.update(+id, updateWithdrawDto);
   }

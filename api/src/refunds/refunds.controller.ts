@@ -1,19 +1,12 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
-import { RefundsService } from './refunds.service';
-import { CreateRefundDto } from './dto/create-refund.dto';
-import { UpdateRefundDto } from './dto/update-refund.dto';
+import {Body, Controller, Delete, Get, Param, Patch, Post,} from '@nestjs/common';
+import {RefundsService} from './refunds.service';
+import {CreateRefundDto} from './dto/create-refund.dto';
+import {UpdateRefundDto} from './dto/update-refund.dto';
 
 @Controller('refunds')
 export class RefundsController {
-  constructor(private readonly refundsService: RefundsService) {}
+  constructor(private readonly refundsService: RefundsService) {
+  }
 
   @Post()
   create(@Body() createRefundDto: CreateRefundDto) {

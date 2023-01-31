@@ -1,21 +1,13 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
-import { TagsService } from './tags.service';
-import { CreateTagDto } from './dto/create-tag.dto';
-import { UpdateTagDto } from './dto/update-tag.dto';
-import { GetTagsDto, TagPaginator } from './dto/get-tags.dto';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {TagsService} from './tags.service';
+import {CreateTagDto} from './dto/create-tag.dto';
+import {UpdateTagDto} from './dto/update-tag.dto';
+import {GetTagsDto, TagPaginator} from './dto/get-tags.dto';
 
 @Controller('tags')
 export class TagsController {
-  constructor(private readonly tagsService: TagsService) {}
+  constructor(private readonly tagsService: TagsService) {
+  }
 
   @Post()
   create(@Body() createTagDto: CreateTagDto) {

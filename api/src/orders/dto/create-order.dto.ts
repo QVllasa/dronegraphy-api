@@ -1,4 +1,4 @@
-import { PaymentGatewayType } from '../entities/order.entity';
+import {PaymentGatewayType} from '../entities/order.entity';
 
 export class CreateOrderDto {
   shop_id?: number;

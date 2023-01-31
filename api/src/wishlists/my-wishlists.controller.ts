@@ -1,27 +1,20 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-  Query,
-} from '@nestjs/common';
-import { CreateWishlistDto } from './dto/create-wishlists.dto';
-import { GetWishlistDto } from './dto/get-wishlists.dto';
-import { UpdateWishlistDto } from './dto/update-wishlists.dto';
-import { MyWishlistService } from './my-wishlists.service';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {CreateWishlistDto} from './dto/create-wishlists.dto';
+import {GetWishlistDto} from './dto/get-wishlists.dto';
+import {UpdateWishlistDto} from './dto/update-wishlists.dto';
+import {MyWishlistService} from './my-wishlists.service';
 
 @Controller('my-wishlists')
 export class MyWishlistsController {
-  constructor(private myWishlistService: MyWishlistService) {}
+  constructor(private myWishlistService: MyWishlistService) {
+  }
 
   // Get All
   @Get()
   findAll(@Query() query: GetWishlistDto) {
     return this.myWishlistService.findAMyWishlists(query);
   }
+
   // Get single
   @Get(':id')
   find(@Param('id') id: string) {
@@ -37,8 +30,8 @@ export class MyWishlistsController {
   // update
   @Put(':id')
   update(
-    @Param('id') id: string,
-    @Body() updateWishlistDto: UpdateWishlistDto,
+      @Param('id') id: string,
+      @Body() updateWishlistDto: UpdateWishlistDto,
   ) {
     return this.myWishlistService.update(+id, updateWishlistDto);
   }

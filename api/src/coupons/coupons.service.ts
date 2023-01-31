@@ -1,12 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateCouponDto } from './dto/create-coupon.dto';
-import { UpdateCouponDto } from './dto/update-coupon.dto';
-import { Coupon } from './entities/coupon.entity';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
+import {CreateCouponDto} from './dto/create-coupon.dto';
+import {UpdateCouponDto} from './dto/update-coupon.dto';
+import {Coupon} from './entities/coupon.entity';
 import couponsJson from '@db/coupons.json';
 import Fuse from 'fuse.js';
-import { GetCouponsDto } from './dto/get-coupons.dto';
-import { paginate } from 'src/common/pagination/paginate';
+import {GetCouponsDto} from './dto/get-coupons.dto';
+import {paginate} from 'src/common/pagination/paginate';
 
 const coupons = plainToClass(Coupon, couponsJson);
 const options = {
@@ -23,7 +23,7 @@ export class CouponsService {
     return this.coupons[0];
   }
 
-  getCoupons({ search, limit, page }: GetCouponsDto) {
+  getCoupons({search, limit, page}: GetCouponsDto) {
     if (!page) page = 1;
     if (!limit) limit = 12;
     const startIndex = (page - 1) * limit;
@@ -47,10 +47,10 @@ export class CouponsService {
       }
 
       data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     const results = data.slice(startIndex, endIndex);
@@ -83,9 +83,9 @@ export class CouponsService {
         image: {
           id: 925,
           original:
-            'https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/925/5x2x.png',
+              'https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/925/5x2x.png',
           thumbnail:
-            'https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/925/conversions/5x2x-thumbnail.jpg',
+              'https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/925/conversions/5x2x-thumbnail.jpg',
         },
         type: 'fixed',
         amount: 5,

@@ -1,28 +1,18 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Query,
-  Put,
-  ParseIntPipe,
-  UsePipes,
-} from '@nestjs/common';
-import { OrdersService } from './orders.service';
-import { CreateOrderDto } from './dto/create-order.dto';
-import { UpdateOrderDto } from './dto/update-order.dto';
-import { GetOrdersDto, OrderPaginator } from './dto/get-orders.dto';
-import { CreateOrderStatusDto } from './dto/create-order-status.dto';
-import { GetOrderStatusesDto } from './dto/get-order-statuses.dto';
-import { CheckoutVerificationDto } from './dto/verify-checkout.dto';
-import { GetOrderFilesDto, OrderFilesPaginator } from './dto/get-downloads.dto';
-import { OrderValidationPipe } from './pipe/order-validation.pipe';
+import {Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, UsePipes,} from '@nestjs/common';
+import {OrdersService} from './orders.service';
+import {CreateOrderDto} from './dto/create-order.dto';
+import {UpdateOrderDto} from './dto/update-order.dto';
+import {GetOrdersDto, OrderPaginator} from './dto/get-orders.dto';
+import {CreateOrderStatusDto} from './dto/create-order-status.dto';
+import {GetOrderStatusesDto} from './dto/get-order-statuses.dto';
+import {CheckoutVerificationDto} from './dto/verify-checkout.dto';
+import {GetOrderFilesDto, OrderFilesPaginator} from './dto/get-downloads.dto';
+import {OrderValidationPipe} from './pipe/order-validation.pipe';
 
 @Controller('orders')
 export class OrdersController {
-  constructor(private readonly ordersService: OrdersService) {}
+  constructor(private readonly ordersService: OrdersService) {
+  }
 
   @Post()
   create(@Body() createOrderDto: CreateOrderDto) {
@@ -63,7 +53,8 @@ export class OrdersController {
 
 @Controller('order-status')
 export class OrderStatusController {
-  constructor(private readonly ordersService: OrdersService) {}
+  constructor(private readonly ordersService: OrdersService) {
+  }
 
   @Post()
   create(@Body() createOrderStatusDto: CreateOrderStatusDto) {
@@ -93,18 +84,19 @@ export class OrderStatusController {
 
 @Controller('downloads')
 export class OrderFilesController {
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService) {
+  }
 
   @Get()
   async getOrderFileItems(
-    @Query() query: GetOrderFilesDto,
+      @Query() query: GetOrderFilesDto,
   ): Promise<OrderFilesPaginator> {
     return this.ordersService.getOrderFileItems(query);
   }
 
   @Post('digital-file')
   async getDigitalFileDownloadUrl(
-    @Body('digital_file_id', ParseIntPipe) digitalFileId: number,
+      @Body('digital_file_id', ParseIntPipe) digitalFileId: number,
   ) {
     return this.ordersService.getDigitalFileDownloadUrl(digitalFileId);
   }
@@ -112,7 +104,8 @@ export class OrderFilesController {
 
 @Controller('export-order-url')
 export class OrderExportController {
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService) {
+  }
 
   @Get()
   async orderExport(@Query('shop_id') shop_id: string) {
@@ -122,7 +115,8 @@ export class OrderExportController {
 
 @Controller('download-invoice-url')
 export class DownloadInvoiceController {
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService) {
+  }
 
   @Post()
   async downloadInvoiceUrl(@Body('shop_id') shop_id: string) {

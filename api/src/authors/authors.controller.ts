@@ -1,23 +1,15 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-  Query,
-} from '@nestjs/common';
-import { AuthorsService } from './authors.service';
-import { AuthorPaginator, GetAuthorDto } from './dto/get-author.dto';
-import { GetTopAuthorsDto } from './dto/get-top-authors.dto';
-import { Author } from './entities/author.entity';
-import { UpdateAuthorDto } from './dto/update-author.dto';
-import { CreateAuthorDto } from './dto/create-author.dto';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {AuthorsService} from './authors.service';
+import {AuthorPaginator, GetAuthorDto} from './dto/get-author.dto';
+import {GetTopAuthorsDto} from './dto/get-top-authors.dto';
+import {Author} from './entities/author.entity';
+import {UpdateAuthorDto} from './dto/update-author.dto';
+import {CreateAuthorDto} from './dto/create-author.dto';
 
 @Controller('authors')
 export class AuthorsController {
-  constructor(private readonly authorsService: AuthorsService) {}
+  constructor(private readonly authorsService: AuthorsService) {
+  }
 
   @Post()
   createAuthor(@Body() createAuthorDto: CreateAuthorDto) {
@@ -47,7 +39,8 @@ export class AuthorsController {
 
 @Controller('top-authors')
 export class TopAuthors {
-  constructor(private authorsService: AuthorsService) {}
+  constructor(private authorsService: AuthorsService) {
+  }
 
   @Get()
   getTopAuthors(@Query() query: GetTopAuthorsDto): Promise<Author[]> {

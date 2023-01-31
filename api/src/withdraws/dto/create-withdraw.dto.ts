@@ -1,5 +1,5 @@
-import { PickType } from '@nestjs/swagger';
-import { Withdraw } from '../entities/withdraw.entity';
+import {PickType} from '@nestjs/swagger';
+import {Withdraw} from '../entities/withdraw.entity';
 
 export class CreateWithdrawDto extends PickType(Withdraw, [
   'amount',
@@ -7,4 +7,5 @@ export class CreateWithdrawDto extends PickType(Withdraw, [
   'details',
   'payment_method',
   'shop_id',
-]) {}
+]) {
+}

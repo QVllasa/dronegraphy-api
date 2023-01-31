@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { CreateAttributeDto } from './dto/create-attribute.dto';
-import { UpdateAttributeDto } from './dto/update-attribute.dto';
+import {Injectable} from '@nestjs/common';
+import {CreateAttributeDto} from './dto/create-attribute.dto';
+import {UpdateAttributeDto} from './dto/update-attribute.dto';
 import attributesJson from '@db/attributes.json';
-import { Attribute } from './entities/attribute.entity';
-import { plainToClass } from 'class-transformer';
+import {Attribute} from './entities/attribute.entity';
+import {plainToClass} from 'class-transformer';
 
 const attributes = plainToClass(Attribute, attributesJson);
 
@@ -21,7 +21,7 @@ export class AttributesService {
 
   findOne(param: string) {
     return this.attributes.find(
-      (p) => p.id === Number(param) || p.slug === param,
+        (p) => p.id === Number(param) || p.slug === param,
     );
   }
 

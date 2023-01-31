@@ -1,17 +1,16 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateShopDto } from './dto/create-shop.dto';
-import { UpdateShopDto } from './dto/update-shop.dto';
-import { Shop } from './entities/shop.entity';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
+import {CreateShopDto} from './dto/create-shop.dto';
+import {UpdateShopDto} from './dto/update-shop.dto';
+import {Shop} from './entities/shop.entity';
 import shopsJson from '@db/shops.json';
 import userJson from '@db/users.json';
 import Fuse from 'fuse.js';
-import { GetShopsDto } from './dto/get-shops.dto';
-import { paginate } from 'src/common/pagination/paginate';
-import { GetStaffsDto } from './dto/get-staffs.dto';
-import { GetTopShopsDto } from './dto/get-top-shops.dto';
-import { User } from 'src/users/entities/user.entity';
-import { GetFollowedShops } from './dto/get-followed-shop.dto';
+import {GetShopsDto} from './dto/get-shops.dto';
+import {paginate} from 'src/common/pagination/paginate';
+import {GetStaffsDto} from './dto/get-staffs.dto';
+import {GetTopShopsDto} from './dto/get-top-shops.dto';
+import {User} from 'src/users/entities/user.entity';
 
 const shops = plainToClass(Shop, shopsJson);
 const users = plainToClass(User, userJson);
@@ -31,7 +30,7 @@ export class ShopsService {
     return this.shops[0];
   }
 
-  getShops({ search, limit, page }: GetShopsDto) {
+  getShops({search, limit, page}: GetShopsDto) {
     if (!page) page = 1;
 
     const startIndex = (page - 1) * limit;
@@ -42,7 +41,7 @@ export class ShopsService {
       for (const searchParam of parseSearchParams) {
         const [key, value] = searchParam.split(':');
         // data = data.filter((item) => item[key] === value);
-        data = fuse.search(value)?.map(({ item }) => item);
+        data = fuse.search(value)?.map(({item}) => item);
       }
     }
     // if (text?.replace(/%/g, '')) {
@@ -57,7 +56,7 @@ export class ShopsService {
     };
   }
 
-  getStaffs({ shop_id, limit, page }: GetStaffsDto) {
+  getStaffs({shop_id, limit, page}: GetStaffsDto) {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     let staffs: Shop['staffs'] = [];
@@ -89,7 +88,7 @@ export class ShopsService {
     return this.shops[0];
   }
 
-  topShops({ search, limit, page }: GetTopShopsDto) {
+  topShops({search, limit, page}: GetTopShopsDto) {
     if (!page) page = 1;
     if (!limit) limit = 15;
 
@@ -108,10 +107,10 @@ export class ShopsService {
       }
 
       data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     const results = data.slice(startIndex, endIndex);

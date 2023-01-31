@@ -1,3 +1,3 @@
 export class GetFollowedShops {
-  limit: number;
+    limit: number;
 }

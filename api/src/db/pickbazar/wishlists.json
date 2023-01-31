@@ -44,7 +44,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 7,
       "owner_id": 1,
@@ -124,7 +126,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 7,
       "owner_id": 1,
@@ -204,7 +208,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 6,
       "owner_id": 1,
@@ -304,7 +310,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 6,
       "owner_id": 1,
@@ -404,7 +412,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 6,
       "owner_id": 1,
@@ -504,7 +514,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 6,
       "owner_id": 1,
@@ -604,7 +616,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 2,
       "owner_id": 1,
@@ -705,7 +719,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 2,
       "owner_id": 1,
@@ -822,7 +838,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 2,
       "owner_id": 1,
@@ -923,7 +941,9 @@
     "my_review": null,
     "in_wishlist": true,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 3,
       "owner_id": 1,

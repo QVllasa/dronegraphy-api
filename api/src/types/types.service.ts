@@ -1,12 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateTypeDto } from './dto/create-type.dto';
-import { UpdateTypeDto } from './dto/update-type.dto';
-import { Type } from './entities/type.entity';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
+import {CreateTypeDto} from './dto/create-type.dto';
+import {UpdateTypeDto} from './dto/update-type.dto';
+import {Type} from './entities/type.entity';
 
 import typesJson from '@db/types.json';
 import Fuse from 'fuse.js';
-import { GetTypesDto } from './dto/get-types.dto';
+import {GetTypesDto} from './dto/get-types.dto';
 
 const types = plainToClass(Type, typesJson);
 const options = {
@@ -19,7 +19,7 @@ const fuse = new Fuse(types, options);
 export class TypesService {
   private types: Type[] = types;
 
-  getTypes({ text, search }: GetTypesDto) {
+  getTypes({text, search}: GetTypesDto) {
     let data: Type[] = this.types;
 
     if (search) {
@@ -34,14 +34,14 @@ export class TypesService {
       }
 
       data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     if (text?.replace(/%/g, '')) {
-      data = fuse.search(text)?.map(({ item }) => item);
+      data = fuse.search(text)?.map(({item}) => item);
     }
 
     if (search) {
@@ -58,10 +58,10 @@ export class TypesService {
       }
 
       data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     return data;

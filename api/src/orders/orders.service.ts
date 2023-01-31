@@ -1,29 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { CreateOrderDto } from './dto/create-order.dto';
-import { GetOrdersDto, OrderPaginator } from './dto/get-orders.dto';
-import { UpdateOrderDto } from './dto/update-order.dto';
+import {Injectable} from '@nestjs/common';
+import {CreateOrderDto} from './dto/create-order.dto';
+import {GetOrdersDto, OrderPaginator} from './dto/get-orders.dto';
+import {UpdateOrderDto} from './dto/update-order.dto';
 import ordersJson from '@db/orders.json';
 import orderStatusJson from '@db/order-statuses.json';
 import exportOrderJson from '@db/order-export.json';
 import orderInvoiceJson from '@db/order-invoice.json';
 import orderFilesJson from '@db/order-files.json';
-import { plainToClass } from 'class-transformer';
-import { Order, OrderFiles } from './entities/order.entity';
-import { OrderStatus } from './entities/order-status.entity';
-import { paginate } from 'src/common/pagination/paginate';
-import {
-  GetOrderStatusesDto,
-  OrderStatusPaginator,
-} from './dto/get-order-statuses.dto';
-import {
-  CheckoutVerificationDto,
-  VerifiedCheckoutData,
-} from './dto/verify-checkout.dto';
-import {
-  CreateOrderStatusDto,
-  UpdateOrderStatusDto,
-} from './dto/create-order-status.dto';
-import { GetOrderFilesDto } from './dto/get-downloads.dto';
+import {plainToClass} from 'class-transformer';
+import {Order, OrderFiles} from './entities/order.entity';
+import {OrderStatus} from './entities/order-status.entity';
+import {paginate} from 'src/common/pagination/paginate';
+import {GetOrderStatusesDto, OrderStatusPaginator,} from './dto/get-order-statuses.dto';
+import {CheckoutVerificationDto, VerifiedCheckoutData,} from './dto/verify-checkout.dto';
+import {CreateOrderStatusDto, UpdateOrderStatusDto,} from './dto/create-order-status.dto';
+import {GetOrderFilesDto} from './dto/get-downloads.dto';
 import Fuse from 'fuse.js';
 
 const orders = plainToClass(Order, ordersJson);
@@ -60,13 +51,13 @@ export class OrdersService {
   }
 
   getOrders({
-    limit,
-    page,
-    customer_id,
-    tracking_number,
-    search,
-    shop_id,
-  }: GetOrdersDto): OrderPaginator {
+              limit,
+              page,
+              customer_id,
+              tracking_number,
+              search,
+              shop_id,
+            }: GetOrdersDto): OrderPaginator {
     if (!page) page = 1;
     if (!limit) limit = 15;
     const startIndex = (page - 1) * limit;
@@ -90,10 +81,10 @@ export class OrdersService {
       }
 
       data = ordersFuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     const results = data.slice(startIndex, endIndex);
@@ -106,14 +97,14 @@ export class OrdersService {
 
   getOrderById(id: string): Order {
     return this.orders.find(
-      (p) => p.id === Number(id) || p.tracking_number === id,
+        (p) => p.id === Number(id) || p.tracking_number === id,
     );
   }
 
   getOrderByTrackingNumber(tracking_number: string): Order {
     console.log('t', tracking_number);
     const parentOrder = this.orders.find(
-      (p) => p.tracking_number === tracking_number,
+        (p) => p.tracking_number === tracking_number,
     );
     if (!parentOrder) {
       return this.orders[0];
@@ -122,11 +113,11 @@ export class OrdersService {
   }
 
   getOrderStatuses({
-    limit,
-    page,
-    search,
-    orderBy,
-  }: GetOrderStatusesDto): OrderStatusPaginator {
+                     limit,
+                     page,
+                     search,
+                     orderBy,
+                   }: GetOrderStatusesDto): OrderStatusPaginator {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
@@ -145,10 +136,10 @@ export class OrdersService {
       }
 
       data = orderStatusFuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     // if (shop_id) {
@@ -169,10 +160,10 @@ export class OrdersService {
       }
 
       data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     const results = data.slice(startIndex, endIndex);
@@ -214,7 +205,7 @@ export class OrdersService {
     return this.orderStatus[0];
   }
 
-  async getOrderFileItems({ page, limit }: GetOrderFilesDto) {
+  async getOrderFileItems({page, limit}: GetOrderFilesDto) {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
@@ -231,7 +222,7 @@ export class OrdersService {
 
   async getDigitalFileDownloadUrl(digitalFileId: number) {
     const item: OrderFiles = this.orderFiles.find(
-      (singleItem) => singleItem.digital_file_id === digitalFileId,
+        (singleItem) => singleItem.digital_file_id === digitalFileId,
     );
 
     return item.file.url;

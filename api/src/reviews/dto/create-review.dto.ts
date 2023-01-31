@@ -1,4 +1,4 @@
-import { Attachment } from '../../common/entities/attachment.entity';
+import {Attachment} from '../../common/entities/attachment.entity';
 
 export class CreateReviewDto {
   rating: number;

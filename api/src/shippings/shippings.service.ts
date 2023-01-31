@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateShippingDto } from './dto/create-shipping.dto';
-import { GetShippingsDto } from './dto/get-shippings.dto';
-import { UpdateShippingDto } from './dto/update-shipping.dto';
-import { Shipping } from './entities/shipping.entity';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
+import {CreateShippingDto} from './dto/create-shipping.dto';
+import {GetShippingsDto} from './dto/get-shippings.dto';
+import {UpdateShippingDto} from './dto/update-shipping.dto';
+import {Shipping} from './entities/shipping.entity';
 import shippingsJson from '@db/shippings.json';
 
 const shippings = plainToClass(Shipping, shippingsJson);

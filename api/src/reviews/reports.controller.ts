@@ -1,19 +1,12 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
-import { CreateReportDto } from './dto/create-report.dto';
-import { UpdateReportDto } from './dto/update-report.dto';
-import { AbusiveReportService } from './reports.service';
+import {Body, Controller, Delete, Get, Param, Post, Put,} from '@nestjs/common';
+import {CreateReportDto} from './dto/create-report.dto';
+import {UpdateReportDto} from './dto/update-report.dto';
+import {AbusiveReportService} from './reports.service';
 
 @Controller('abusive_reports')
 export class AbusiveReportsController {
-  constructor(private reportService: AbusiveReportService) {}
+  constructor(private reportService: AbusiveReportService) {
+  }
 
   @Get()
   async findAll() {

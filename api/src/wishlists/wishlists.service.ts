@@ -1,14 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
 import Fuse from 'fuse.js';
-import { paginate } from 'src/common/pagination/paginate';
-import { Wishlist } from './entities/wishlist.entity';
-import { GetWishlistDto } from './dto/get-wishlists.dto';
-import { CreateWishlistDto } from './dto/create-wishlists.dto';
-import { UpdateWishlistDto } from './dto/update-wishlists.dto';
+import {paginate} from 'src/common/pagination/paginate';
+import {Wishlist} from './entities/wishlist.entity';
+import {GetWishlistDto} from './dto/get-wishlists.dto';
+import {CreateWishlistDto} from './dto/create-wishlists.dto';
+import {UpdateWishlistDto} from './dto/update-wishlists.dto';
 import wishlistsJSON from '@db/wishlists.json';
 import productsJson from '@db/products.json';
-import { Product } from '../products/entities/product.entity';
+import {Product} from '../products/entities/product.entity';
 
 const wishlists = plainToClass(Wishlist, wishlistsJSON);
 const products = plainToClass(Product, productsJson);
@@ -23,7 +23,7 @@ export class WishlistsService {
   private wishlist: Wishlist[] = wishlists;
   private products: any = products;
 
-  findAllWishlists({ limit, page, search }: GetWishlistDto) {
+  findAllWishlists({limit, page, search}: GetWishlistDto) {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
@@ -34,7 +34,7 @@ export class WishlistsService {
       const parseSearchParams = search.split(';');
       for (const searchParam of parseSearchParams) {
         const [key, value] = searchParam.split(':');
-        data = fuse.search(value)?.map(({ item }) => item);
+        data = fuse.search(value)?.map(({item}) => item);
       }
     }
 
@@ -68,7 +68,7 @@ export class WishlistsService {
     return product?.in_wishlist;
   }
 
-  toggle({ product_id }: CreateWishlistDto) {
+  toggle({product_id}: CreateWishlistDto) {
     const product = this.products.find((p) => p.id === Number(product_id));
 
     product.in_wishlist = !product?.in_wishlist;

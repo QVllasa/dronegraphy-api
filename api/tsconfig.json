@@ -13,7 +13,9 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "@db/*": ["./src/db/pixer/*"]
+      "@db/*": [
+        "./src/db/pixer/*"
+      ]
     },
     "incremental": true,
     "skipLibCheck": true

@@ -1,14 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateProductDto } from './dto/create-product.dto';
-import { GetProductsDto, ProductPaginator } from './dto/get-products.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
-import { Product } from './entities/product.entity';
-import { paginate } from 'src/common/pagination/paginate';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
+import {CreateProductDto} from './dto/create-product.dto';
+import {GetProductsDto, ProductPaginator} from './dto/get-products.dto';
+import {UpdateProductDto} from './dto/update-product.dto';
+import {Product} from './entities/product.entity';
+import {paginate} from 'src/common/pagination/paginate';
 import productsJson from '@db/products.json';
 import Fuse from 'fuse.js';
-import { GetPopularProductsDto } from './dto/get-popular-products.dto';
-import { GetFollowedShopsProducts } from './dto/get-followed-shops-products.dto';
+import {GetPopularProductsDto} from './dto/get-popular-products.dto';
+import {GetFollowedShopsProducts} from './dto/get-followed-shops-products.dto';
 
 const products = plainToClass(Product, productsJson);
 
@@ -36,7 +36,7 @@ export class ProductsService {
     return this.products[0];
   }
 
-  getProducts({ limit, page, search }: GetProductsDto): ProductPaginator {
+  getProducts({limit, page, search}: GetProductsDto): ProductPaginator {
     if (!page) page = 1;
     if (!limit) limit = 15;
     const startIndex = (page - 1) * limit;
@@ -58,10 +58,10 @@ export class ProductsService {
       }
 
       data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
 
       // Filter data throw price
       if (priceFilter) {
@@ -75,10 +75,10 @@ export class ProductsService {
         }
 
         data = data.filter(
-          (singleProduct) =>
-            singleProduct.sale_price !== null &&
-            singleProduct.sale_price >= min &&
-            singleProduct.sale_price <= max,
+            (singleProduct) =>
+                singleProduct.sale_price !== null &&
+                singleProduct.sale_price >= min &&
+                singleProduct.sale_price <= max,
         );
       }
     }
@@ -102,15 +102,15 @@ export class ProductsService {
     };
   }
 
-  getPopularProducts({ limit, type_slug }: GetPopularProductsDto): Product[] {
+  getPopularProducts({limit, type_slug}: GetPopularProductsDto): Product[] {
     let data: any = this.products;
     if (type_slug) {
-      data = fuse.search(type_slug)?.map(({ item }) => item);
+      data = fuse.search(type_slug)?.map(({item}) => item);
     }
     return data?.slice(0, limit);
   }
 
-  followedShopsPopularProducts({ limit, language }: GetFollowedShopsProducts): Product[] {
+  followedShopsPopularProducts({limit, language}: GetFollowedShopsProducts): Product[] {
     let data: any = this.products;
     return data?.slice(0, limit);
   }

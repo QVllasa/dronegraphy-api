@@ -1,13 +1,12 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { paginate } from 'src/common/pagination/paginate';
-import { CreateTagDto } from './dto/create-tag.dto';
-import { GetTagsDto } from './dto/get-tags.dto';
-import { UpdateTagDto } from './dto/update-tag.dto';
-import { Tag } from './entities/tag.entity';
+import {Injectable, NotFoundException} from '@nestjs/common';
+import {paginate} from 'src/common/pagination/paginate';
+import {CreateTagDto} from './dto/create-tag.dto';
+import {GetTagsDto} from './dto/get-tags.dto';
+import {UpdateTagDto} from './dto/update-tag.dto';
+import {Tag} from './entities/tag.entity';
 import tagsJson from '@db/tags.json';
-import { plainToClass } from 'class-transformer';
+import {plainToClass} from 'class-transformer';
 import Fuse from 'fuse.js';
-import { Type } from '../types/entities/type.entity';
 
 const tags = plainToClass(Tag, tagsJson);
 
@@ -28,7 +27,7 @@ export class TagsService {
     };
   }
 
-  findAll({ page, limit, search }: GetTagsDto) {
+  findAll({page, limit, search}: GetTagsDto) {
     if (!page) page = 1;
     let data: Tag[] = this.tags;
 
@@ -46,10 +45,10 @@ export class TagsService {
       }
 
       data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
+          .search({
+            $and: searchText,
+          })
+          ?.map(({item}) => item);
     }
 
     const url = `/tags?limit=${limit}`;
@@ -61,7 +60,7 @@ export class TagsService {
 
   findOne(param: number | string, language: string) {
     const tag = this.tags.find(
-      (singleTag) => singleTag.id === Number(param) || singleTag.slug === param,
+        (singleTag) => singleTag.id === Number(param) || singleTag.slug === param,
     );
 
     if (!tag) {

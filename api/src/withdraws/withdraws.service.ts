@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { CreateWithdrawDto } from './dto/create-withdraw.dto';
-import { ApproveWithdrawDto } from './dto/approve-withdraw.dto';
-import { Withdraw } from './entities/withdraw.entity';
-import { GetWithdrawsDto, WithdrawPaginator } from './dto/get-withdraw.dto';
-import { paginate } from 'src/common/pagination/paginate';
+import {Injectable} from '@nestjs/common';
+import {CreateWithdrawDto} from './dto/create-withdraw.dto';
+import {ApproveWithdrawDto} from './dto/approve-withdraw.dto';
+import {Withdraw} from './entities/withdraw.entity';
+import {GetWithdrawsDto, WithdrawPaginator} from './dto/get-withdraw.dto';
+import {paginate} from 'src/common/pagination/paginate';
 import withdrawsJson from '@db/withdraws.json';
-import { plainToClass } from 'class-transformer';
+import {plainToClass} from 'class-transformer';
 
 const withdraws = plainToClass(Withdraw, withdrawsJson);
 
@@ -21,11 +21,11 @@ export class WithdrawsService {
   }
 
   getWithdraws({
-    limit,
-    page,
-    status,
-    shop_id,
-  }: GetWithdrawsDto): WithdrawPaginator {
+                 limit,
+                 page,
+                 status,
+                 shop_id,
+               }: GetWithdrawsDto): WithdrawPaginator {
     if (!page) page = 1;
     if (!limit) limit = 1;
 

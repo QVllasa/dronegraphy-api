@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Body, Req } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import {Body, Controller, Get, Post, Req} from '@nestjs/common';
+import {AuthService} from './auth.service';
 import {
   ChangePasswordDto,
   ForgetPasswordDto,
@@ -15,7 +15,8 @@ import {
 
 @Controller()
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {
+  }
 
   @Post('register')
   createAccount(@Body() registerDto: RegisterDto) {
@@ -69,7 +70,7 @@ export class AuthController {
 
   @Post('verify-forget-password-token')
   verifyForgetPassword(
-    @Body() verifyForgetPasswordDto: VerifyForgetPasswordDto,
+      @Body() verifyForgetPasswordDto: VerifyForgetPasswordDto,
   ) {
     return this.authService.verifyForgetPasswordToken(verifyForgetPasswordDto);
   }

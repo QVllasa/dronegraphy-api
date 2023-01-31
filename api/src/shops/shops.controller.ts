@@ -1,26 +1,16 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
-import { ShopsService } from './shops.service';
-import { CreateShopDto } from './dto/create-shop.dto';
-import { UpdateShopDto } from './dto/update-shop.dto';
-import { GetShopsDto, ShopPaginator } from './dto/get-shops.dto';
-import { GetStaffsDto } from './dto/get-staffs.dto';
-import { UserPaginator } from 'src/users/dto/get-users.dto';
-import { GetTopShopsDto } from './dto/get-top-shops.dto';
-import { GetFollowedShops } from './dto/get-followed-shop.dto';
-import { Shop } from './entities/shop.entity';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {ShopsService} from './shops.service';
+import {CreateShopDto} from './dto/create-shop.dto';
+import {UpdateShopDto} from './dto/update-shop.dto';
+import {GetShopsDto, ShopPaginator} from './dto/get-shops.dto';
+import {GetStaffsDto} from './dto/get-staffs.dto';
+import {UserPaginator} from 'src/users/dto/get-users.dto';
+import {GetTopShopsDto} from './dto/get-top-shops.dto';
 
 @Controller('shops')
 export class ShopsController {
-  constructor(private readonly shopsService: ShopsService) {}
+  constructor(private readonly shopsService: ShopsService) {
+  }
 
   @Post()
   create(@Body() createShopDto: CreateShopDto) {
@@ -55,7 +45,8 @@ export class ShopsController {
 
 @Controller('disapprove-shop')
 export class DisapproveShop {
-  constructor(private shopsService: ShopsService) {}
+  constructor(private shopsService: ShopsService) {
+  }
 
   @Post()
   disapproveShop(@Param('id') id: string) {
@@ -65,7 +56,8 @@ export class DisapproveShop {
 
 @Controller('top-shops')
 export class TopShopsController {
-  constructor(private shopsService: ShopsService) {}
+  constructor(private shopsService: ShopsService) {
+  }
 
   @Get()
   async topShops(@Query() query: GetTopShopsDto): Promise<ShopPaginator> {
@@ -75,7 +67,8 @@ export class TopShopsController {
 
 @Controller('staffs')
 export class StaffsController {
-  constructor(private readonly shopsService: ShopsService) {}
+  constructor(private readonly shopsService: ShopsService) {
+  }
 
   @Post()
   create(@Body() createShopDto: CreateShopDto) {
@@ -105,7 +98,8 @@ export class StaffsController {
 
 @Controller('disapprove-shop')
 export class DisapproveShopController {
-  constructor(private shopsService: ShopsService) {}
+  constructor(private shopsService: ShopsService) {
+  }
 
   @Post()
   async disapproveShop(@Body('id') id) {
@@ -115,7 +109,8 @@ export class DisapproveShopController {
 
 @Controller('approve-shop')
 export class ApproveShopController {
-  constructor(private shopsService: ShopsService) {}
+  constructor(private shopsService: ShopsService) {
+  }
 
   @Post()
   async approveShop(@Body('id') id) {
@@ -125,7 +120,8 @@ export class ApproveShopController {
 
 @Controller('follow-shop')
 export class FollowShopController {
-  constructor(private shopsService: ShopsService) {}
+  constructor(private shopsService: ShopsService) {
+  }
 
   @Post()
   async followShop(@Body('shop_id') shop_id) {
@@ -140,11 +136,12 @@ export class FollowShopController {
 
 @Controller('followed-shops')
 export class FollowedShops {
-  constructor(private readonly shopsService: ShopsService) {}
+  constructor(private readonly shopsService: ShopsService) {
+  }
 
   @Get()
   async followedShopsPopularProducts(
-    @Query() query: GetShopsDto,
+      @Query() query: GetShopsDto,
   ): Promise<ShopPaginator> {
     return this.shopsService.getShops(query);
   }

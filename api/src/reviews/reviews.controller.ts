@@ -1,21 +1,13 @@
-import {
-  Controller,
-  Get,
-  Param,
-  Query,
-  Put,
-  Post,
-  Body,
-  Delete,
-} from '@nestjs/common';
-import { CreateReviewDto } from './dto/create-review.dto';
-import { GetReviewsDto, ReviewPaginator } from './dto/get-reviews.dto';
-import { UpdateReviewDto } from './dto/update-review.dto';
-import { ReviewService } from './reviews.service';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {CreateReviewDto} from './dto/create-review.dto';
+import {GetReviewsDto} from './dto/get-reviews.dto';
+import {UpdateReviewDto} from './dto/update-review.dto';
+import {ReviewService} from './reviews.service';
 
 @Controller('reviews')
 export class ReviewController {
-  constructor(private readonly reviewService: ReviewService) {}
+  constructor(private readonly reviewService: ReviewService) {
+  }
 
   //   find all reviews
   // TODO: there is a bug in displaying all reviews

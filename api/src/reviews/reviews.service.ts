@@ -1,12 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
 import Fuse from 'fuse.js';
-import { paginate } from 'src/common/pagination/paginate';
-import { CreateReviewDto } from './dto/create-review.dto';
-import { UpdateReviewDto } from './dto/update-review.dto';
-import { GetReviewsDto, ReviewPaginator } from './dto/get-reviews.dto';
+import {paginate} from 'src/common/pagination/paginate';
+import {CreateReviewDto} from './dto/create-review.dto';
+import {UpdateReviewDto} from './dto/update-review.dto';
+import {GetReviewsDto} from './dto/get-reviews.dto';
 import reviewJSON from '@db/reviews.json';
-import { Review } from './entities/review.entity';
+import {Review} from './entities/review.entity';
 
 const reviews = plainToClass(Review, reviewJSON);
 const options = {
@@ -19,7 +19,7 @@ const fuse = new Fuse(reviews, options);
 export class ReviewService {
   private reviews: Review[] = reviews;
 
-  findAllReviews({ limit, page, search, product_id }: GetReviewsDto) {
+  findAllReviews({limit, page, search, product_id}: GetReviewsDto) {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
@@ -30,7 +30,7 @@ export class ReviewService {
       const parseSearchParams = search.split(';');
       for (const searchParam of parseSearchParams) {
         const [key, value] = searchParam.split(':');
-        data = fuse.search(value)?.map(({ item }) => item);
+        data = fuse.search(value)?.map(({item}) => item);
       }
     }
 

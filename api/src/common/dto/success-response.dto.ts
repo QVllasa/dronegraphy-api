@@ -1,3 +1,4 @@
-import { CoreMutationOutput } from './core-mutation-output.dto';
+import {CoreMutationOutput} from './core-mutation-output.dto';
 
-export class SuccessResponse extends CoreMutationOutput {}
+export class SuccessResponse extends CoreMutationOutput {
+}

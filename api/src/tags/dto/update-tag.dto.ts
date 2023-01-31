@@ -1,4 +1,5 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateTagDto } from './create-tag.dto';
+import {PartialType} from '@nestjs/swagger';
+import {CreateTagDto} from './create-tag.dto';
 
-export class UpdateTagDto extends PartialType(CreateTagDto) {}
+export class UpdateTagDto extends PartialType(CreateTagDto) {
+}

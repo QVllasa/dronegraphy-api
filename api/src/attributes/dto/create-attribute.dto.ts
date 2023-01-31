@@ -1,5 +1,5 @@
-import { PickType } from '@nestjs/swagger';
-import { Attribute } from '../entities/attribute.entity';
+import {PickType} from '@nestjs/swagger';
+import {Attribute} from '../entities/attribute.entity';
 
 export class CreateAttributeDto extends PickType(Attribute, [
   'name',

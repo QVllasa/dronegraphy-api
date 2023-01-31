@@ -103,7 +103,9 @@
     "in_wishlist": true,
     "total_downloads": 0,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 7,
       "owner_id": 1,
@@ -272,7 +274,9 @@
     "in_wishlist": true,
     "total_downloads": 0,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 6,
       "owner_id": 1,
@@ -433,7 +437,9 @@
     "in_wishlist": true,
     "total_downloads": 0,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 5,
       "owner_id": 1,
@@ -558,7 +564,9 @@
     "in_wishlist": true,
     "total_downloads": 0,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 4,
       "owner_id": 1,
@@ -683,7 +691,9 @@
     "in_wishlist": true,
     "total_downloads": 0,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 5,
       "owner_id": 1,
@@ -808,7 +818,9 @@
     "in_wishlist": true,
     "total_downloads": 0,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 8,
       "owner_id": 1,
@@ -933,7 +945,9 @@
     "in_wishlist": true,
     "total_downloads": 0,
     "blocked_dates": [],
-    "translated_languages": ["en"],
+    "translated_languages": [
+      "en"
+    ],
     "shop": {
       "id": 8,
       "owner_id": 1,

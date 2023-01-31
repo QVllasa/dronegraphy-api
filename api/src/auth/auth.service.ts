@@ -1,26 +1,22 @@
-import {
-  ForbiddenException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import {Injectable, UnauthorizedException,} from '@nestjs/common';
 import {
   AuthResponse,
   ChangePasswordDto,
+  CoreResponse,
   ForgetPasswordDto,
   LoginDto,
-  CoreResponse,
-  RegisterDto,
-  ResetPasswordDto,
-  VerifyForgetPasswordDto,
-  SocialLoginDto,
+  OtpDto,
   OtpLoginDto,
   OtpResponse,
+  RegisterDto,
+  ResetPasswordDto,
+  SocialLoginDto,
+  VerifyForgetPasswordDto,
   VerifyOtpDto,
-  OtpDto,
 } from './dto/create-auth.dto';
-import { v4 as uuidv4 } from 'uuid';
-import { plainToClass } from 'class-transformer';
-import { User } from 'src/users/entities/user.entity';
+import {v4 as uuidv4} from 'uuid';
+import {plainToClass} from 'class-transformer';
+import {User} from 'src/users/entities/user.entity';
 import usersJson from '@db/users.json';
 
 const users = plainToClass(User, usersJson);
@@ -54,7 +50,7 @@ export class AuthService {
   }
 
   async changePassword(
-    changePasswordInput: ChangePasswordDto,
+      changePasswordInput: ChangePasswordDto,
   ): Promise<CoreResponse> {
     console.log(changePasswordInput);
 
@@ -65,7 +61,7 @@ export class AuthService {
   }
 
   async forgetPassword(
-    forgetPasswordInput: ForgetPasswordDto,
+      forgetPasswordInput: ForgetPasswordDto,
   ): Promise<CoreResponse> {
     console.log(forgetPasswordInput);
 
@@ -76,7 +72,7 @@ export class AuthService {
   }
 
   async verifyForgetPasswordToken(
-    verifyForgetPasswordTokenInput: VerifyForgetPasswordDto,
+      verifyForgetPasswordTokenInput: VerifyForgetPasswordDto,
   ): Promise<CoreResponse> {
     console.log(verifyForgetPasswordTokenInput);
 
@@ -87,7 +83,7 @@ export class AuthService {
   }
 
   async resetPassword(
-    resetPasswordInput: ResetPasswordDto,
+      resetPasswordInput: ResetPasswordDto,
   ): Promise<CoreResponse> {
     console.log(resetPasswordInput);
 

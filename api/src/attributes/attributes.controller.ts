@@ -1,19 +1,12 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-} from '@nestjs/common';
-import { AttributesService } from './attributes.service';
-import { CreateAttributeDto } from './dto/create-attribute.dto';
-import { UpdateAttributeDto } from './dto/update-attribute.dto';
+import {Body, Controller, Delete, Get, Param, Post, Put,} from '@nestjs/common';
+import {AttributesService} from './attributes.service';
+import {CreateAttributeDto} from './dto/create-attribute.dto';
+import {UpdateAttributeDto} from './dto/update-attribute.dto';
 
 @Controller('attributes')
 export class AttributesController {
-  constructor(private readonly attributesService: AttributesService) {}
+  constructor(private readonly attributesService: AttributesService) {
+  }
 
   @Post()
   create(@Body() createAttributeDto: CreateAttributeDto) {
@@ -32,8 +25,8 @@ export class AttributesController {
 
   @Put(':id')
   update(
-    @Param('id') id: string,
-    @Body() updateAttributeDto: UpdateAttributeDto,
+      @Param('id') id: string,
+      @Body() updateAttributeDto: UpdateAttributeDto,
   ) {
     return this.attributesService.update(+id, updateAttributeDto);
   }

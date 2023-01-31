@@ -1,8 +1,8 @@
-import { UserAddress } from 'src/addresses/entities/address.entity';
-import { Attachment } from 'src/common/entities/attachment.entity';
-import { CoreEntity } from 'src/common/entities/core.entity';
-import { Location, ShopSocials } from 'src/settings/entities/setting.entity';
-import { User } from 'src/users/entities/user.entity';
+import {UserAddress} from 'src/addresses/entities/address.entity';
+import {Attachment} from 'src/common/entities/attachment.entity';
+import {CoreEntity} from 'src/common/entities/core.entity';
+import {Location, ShopSocials} from 'src/settings/entities/setting.entity';
+import {User} from 'src/users/entities/user.entity';
 
 export class Shop extends CoreEntity {
   owner_id: number;

@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { UpdateAuthorDto } from './dto/update-author.dto';
-import { plainToClass } from 'class-transformer';
+import {Injectable} from '@nestjs/common';
+import {UpdateAuthorDto} from './dto/update-author.dto';
+import {plainToClass} from 'class-transformer';
 import authorsJson from '@db/authors.json';
-import { Author } from './entities/author.entity';
+import {Author} from './entities/author.entity';
 import Fuse from 'fuse.js';
-import { GetAuthorDto } from './dto/get-author.dto';
-import { paginate } from '../common/pagination/paginate';
-import { GetTopAuthorsDto } from './dto/get-top-authors.dto';
-import { CreateAuthorDto } from './dto/create-author.dto';
+import {GetAuthorDto} from './dto/get-author.dto';
+import {paginate} from '../common/pagination/paginate';
+import {GetTopAuthorsDto} from './dto/get-top-authors.dto';
+import {CreateAuthorDto} from './dto/create-author.dto';
 
 const authors = plainToClass(Author, authorsJson);
 
@@ -26,7 +26,7 @@ export class AuthorsService {
     return this.authors[0];
   }
 
-  getAuthors({ page, limit, search }: GetAuthorDto) {
+  getAuthors({page, limit, search}: GetAuthorDto) {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
@@ -36,7 +36,7 @@ export class AuthorsService {
       const parseSearchParams = search.split(';');
       for (const searchParam of parseSearchParams) {
         const [key, value] = searchParam.split(':');
-        data = fuse.search(value)?.map(({ item }) => item);
+        data = fuse.search(value)?.map(({item}) => item);
       }
     }
 
@@ -53,7 +53,7 @@ export class AuthorsService {
     return this.authors.find((p) => p.slug === slug);
   }
 
-  async getTopAuthors({ limit = 10 }: GetTopAuthorsDto): Promise<Author[]> {
+  async getTopAuthors({limit = 10}: GetTopAuthorsDto): Promise<Author[]> {
     return this.authors.slice(0, limit);
   }
 

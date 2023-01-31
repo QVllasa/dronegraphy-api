@@ -1,16 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { Manufacturer } from './entities/manufacturer.entity';
+import {Injectable} from '@nestjs/common';
+import {Manufacturer} from './entities/manufacturer.entity';
 import manufacturersJson from '@db/manufacturers.json';
-import { plainToClass } from 'class-transformer';
+import {plainToClass} from 'class-transformer';
 import Fuse from 'fuse.js';
-import { GetTopManufacturersDto } from './dto/get-top-manufacturers.dto';
-import {
-  GetManufacturersDto,
-  ManufacturerPaginator,
-} from './dto/get-manufactures.dto';
-import { paginate } from '../common/pagination/paginate';
-import { CreateManufacturerDto } from './dto/create-manufacturer.dto';
-import { UpdateManufacturerDto } from './dto/update-manufacturer.dto';
+import {GetTopManufacturersDto} from './dto/get-top-manufacturers.dto';
+import {GetManufacturersDto, ManufacturerPaginator,} from './dto/get-manufactures.dto';
+import {paginate} from '../common/pagination/paginate';
+import {CreateManufacturerDto} from './dto/create-manufacturer.dto';
+import {UpdateManufacturerDto} from './dto/update-manufacturer.dto';
 
 const manufacturers = plainToClass(Manufacturer, manufacturersJson);
 
@@ -30,10 +27,10 @@ export class ManufacturersService {
   }
 
   async getManufactures({
-    limit,
-    page,
-    search,
-  }: GetManufacturersDto): Promise<ManufacturerPaginator> {
+                          limit,
+                          page,
+                          search,
+                        }: GetManufacturersDto): Promise<ManufacturerPaginator> {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
@@ -44,7 +41,7 @@ export class ManufacturersService {
       const parseSearchParams = search.split(';');
       for (const searchParam of parseSearchParams) {
         const [key, value] = searchParam.split(':');
-        data = fuse.search(value)?.map(({ item }) => item);
+        data = fuse.search(value)?.map(({item}) => item);
       }
     }
 
@@ -57,14 +54,14 @@ export class ManufacturersService {
   }
 
   async getTopManufactures({
-    limit = 10,
-  }: GetTopManufacturersDto): Promise<Manufacturer[]> {
+                             limit = 10,
+                           }: GetTopManufacturersDto): Promise<Manufacturer[]> {
     return manufacturers.slice(0, limit);
   }
 
   async getManufacturesBySlug(slug: string): Promise<Manufacturer> {
     return this.manufacturers.find(
-      (singleManufacture) => singleManufacture.slug === slug,
+        (singleManufacture) => singleManufacture.slug === slug,
     );
   }
 

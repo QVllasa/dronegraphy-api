@@ -1,4 +1,4 @@
 export class GetFollowedShopsProducts {
-  limit: number;
-  language?: string;
+    limit: number;
+    language?: string;
 }

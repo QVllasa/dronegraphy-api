@@ -1,19 +1,12 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
-import { CreateFeedBackDto } from './dto/create-feedback.dto';
-import { UpdateFeedBackDto } from './dto/update-feedback.dto';
-import { FeedbackService } from './feedbacks.service';
+import {Body, Controller, Delete, Get, Param, Post, Put,} from '@nestjs/common';
+import {CreateFeedBackDto} from './dto/create-feedback.dto';
+import {UpdateFeedBackDto} from './dto/update-feedback.dto';
+import {FeedbackService} from './feedbacks.service';
 
 @Controller('feedbacks')
 export class FeedbackController {
-  constructor(private feedbackService: FeedbackService) {}
+  constructor(private feedbackService: FeedbackService) {
+  }
 
   @Get()
   async findAll() {
@@ -35,8 +28,8 @@ export class FeedbackController {
   // update a feedback
   @Put(':id')
   update(
-    @Param('id') id: string,
-    @Body() updateFeedBackDto: UpdateFeedBackDto,
+      @Param('id') id: string,
+      @Body() updateFeedBackDto: UpdateFeedBackDto,
   ) {
     return this.feedbackService.update(+id, updateFeedBackDto);
   }

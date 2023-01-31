@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateSettingDto } from './dto/create-setting.dto';
-import { UpdateSettingDto } from './dto/update-setting.dto';
-import { Setting } from './entities/setting.entity';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
+import {CreateSettingDto} from './dto/create-setting.dto';
+import {UpdateSettingDto} from './dto/update-setting.dto';
+import {Setting} from './entities/setting.entity';
 import settingsJson from '@db/settings.json';
 
 const settings = plainToClass(Setting, settingsJson);

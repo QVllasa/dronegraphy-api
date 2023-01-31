@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateTaxDto } from './dto/create-tax.dto';
-import { UpdateTaxDto } from './dto/update-tax.dto';
-import { Tax } from './entities/tax.entity';
+import {Injectable} from '@nestjs/common';
+import {plainToClass} from 'class-transformer';
+import {CreateTaxDto} from './dto/create-tax.dto';
+import {UpdateTaxDto} from './dto/update-tax.dto';
+import {Tax} from './entities/tax.entity';
 import taxesJson from '@db/taxes.json';
 
 const taxes = plainToClass(Tax, taxesJson);

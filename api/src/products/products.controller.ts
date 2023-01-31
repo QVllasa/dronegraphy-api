@@ -1,24 +1,16 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Query,
-  Put,
-} from '@nestjs/common';
-import { ProductsService } from './products.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
-import { GetProductsDto, ProductPaginator } from './dto/get-products.dto';
-import { Product } from './entities/product.entity';
-import { GetPopularProductsDto } from './dto/get-popular-products.dto';
-import { GetFollowedShopsProducts } from './dto/get-followed-shops-products.dto';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {ProductsService} from './products.service';
+import {CreateProductDto} from './dto/create-product.dto';
+import {UpdateProductDto} from './dto/update-product.dto';
+import {GetProductsDto, ProductPaginator} from './dto/get-products.dto';
+import {Product} from './entities/product.entity';
+import {GetPopularProductsDto} from './dto/get-popular-products.dto';
+import {GetFollowedShopsProducts} from './dto/get-followed-shops-products.dto';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService) {
+  }
 
   @Post()
   createProduct(@Body() createProductDto: CreateProductDto) {
@@ -48,7 +40,8 @@ export class ProductsController {
 
 @Controller('popular-products')
 export class PopularProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService) {
+  }
 
   @Get()
   async getProducts(@Query() query: GetPopularProductsDto): Promise<Product[]> {
@@ -58,7 +51,8 @@ export class PopularProductsController {
 
 @Controller('followed-shops-popular-products')
 export class FollowedShopsProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService) {
+  }
 
   @Get()
   async followedShopsPopularProducts(@Query() query: GetFollowedShopsProducts): Promise<Product[]> {

@@ -13,7 +13,9 @@
       "color": "#0d9965",
       "created_at": "2022-02-02T21:08:20.000000Z",
       "updated_at": "2022-02-22T03:46:30.000000Z",
-      "translated_languages": ["en"]
+      "translated_languages": [
+        "en"
+      ]
     },
     "amount": 7.99,
     "sales_tax": 0.3995,
@@ -122,7 +124,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 27,
           "product_id": 59,
@@ -160,7 +164,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 7.99,
         "sales_tax": 0,
@@ -269,7 +275,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 28,
               "product_id": 59,
@@ -309,7 +317,9 @@
       "color": "#0d9965",
       "created_at": "2022-02-02T21:08:20.000000Z",
       "updated_at": "2022-02-22T03:46:30.000000Z",
-      "translated_languages": ["en"]
+      "translated_languages": [
+        "en"
+      ]
     },
     "amount": 7.99,
     "sales_tax": 0.3995,
@@ -418,7 +428,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 25,
           "product_id": 59,
@@ -456,7 +468,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 7.99,
         "sales_tax": 0,
@@ -565,7 +579,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 26,
               "product_id": 59,
@@ -605,7 +621,9 @@
       "color": "#0d9965",
       "created_at": "2022-02-02T21:08:20.000000Z",
       "updated_at": "2022-02-22T03:46:30.000000Z",
-      "translated_languages": ["en"]
+      "translated_languages": [
+        "en"
+      ]
     },
     "amount": 468,
     "sales_tax": 23.4,
@@ -722,7 +740,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 18,
           "product_id": 49,
@@ -829,7 +849,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 18,
           "product_id": 51,
@@ -936,7 +958,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 18,
           "product_id": 50,
@@ -1051,7 +1075,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 18,
           "product_id": 48,
@@ -1158,7 +1184,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 18,
           "product_id": 47,
@@ -1273,7 +1301,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 18,
           "product_id": 46,
@@ -1380,7 +1410,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 18,
           "product_id": 45,
@@ -1418,7 +1450,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 110,
         "sales_tax": 0,
@@ -1535,7 +1569,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 24,
               "product_id": 45,
@@ -1573,7 +1609,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 29,
         "sales_tax": 0,
@@ -1698,7 +1736,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 23,
               "product_id": 46,
@@ -1736,7 +1776,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 55,
         "sales_tax": 0,
@@ -1853,7 +1895,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 22,
               "product_id": 47,
@@ -1891,7 +1935,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 140,
         "sales_tax": 0,
@@ -2008,7 +2054,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 21,
               "product_id": 50,
@@ -2046,7 +2094,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 95,
         "sales_tax": 0,
@@ -2163,7 +2213,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 20,
               "product_id": 51,
@@ -2278,7 +2330,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 20,
               "product_id": 48,
@@ -2316,7 +2370,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 39,
         "sales_tax": 0,
@@ -2433,7 +2489,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 19,
               "product_id": 49,
@@ -2473,7 +2531,9 @@
       "color": "#0d9965",
       "created_at": "2022-02-02T21:08:20.000000Z",
       "updated_at": "2022-02-22T03:46:30.000000Z",
-      "translated_languages": ["en"]
+      "translated_languages": [
+        "en"
+      ]
     },
     "amount": 30,
     "sales_tax": 1.5,
@@ -2598,7 +2658,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 16,
           "product_id": 48,
@@ -2636,7 +2698,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 30,
         "sales_tax": 0,
@@ -2761,7 +2825,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 17,
               "product_id": 48,
@@ -2801,7 +2867,9 @@
       "color": "#0d9965",
       "created_at": "2022-02-02T21:08:20.000000Z",
       "updated_at": "2022-02-22T03:46:30.000000Z",
-      "translated_languages": ["en"]
+      "translated_languages": [
+        "en"
+      ]
     },
     "amount": 369,
     "sales_tax": 18.45,
@@ -2918,7 +2986,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 10,
           "product_id": 51,
@@ -3025,7 +3095,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 10,
           "product_id": 50,
@@ -3140,7 +3212,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 10,
           "product_id": 48,
@@ -3247,7 +3321,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 10,
           "product_id": 47,
@@ -3362,7 +3438,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 10,
           "product_id": 46,
@@ -3469,7 +3547,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 10,
           "product_id": 45,
@@ -3507,7 +3587,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 29,
         "sales_tax": 0,
@@ -3632,7 +3714,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 14,
               "product_id": 46,
@@ -3670,7 +3754,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 55,
         "sales_tax": 0,
@@ -3787,7 +3873,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 15,
               "product_id": 45,
@@ -3825,7 +3913,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 55,
         "sales_tax": 0,
@@ -3942,7 +4032,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 13,
               "product_id": 47,
@@ -3980,7 +4072,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 70,
         "sales_tax": 0,
@@ -4097,7 +4191,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 12,
               "product_id": 50,
@@ -4135,7 +4231,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 160,
         "sales_tax": 0,
@@ -4252,7 +4350,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 11,
               "product_id": 51,
@@ -4367,7 +4467,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 11,
               "product_id": 48,
@@ -4407,7 +4509,9 @@
       "color": "#0d9965",
       "created_at": "2022-02-02T21:08:20.000000Z",
       "updated_at": "2022-02-22T03:46:30.000000Z",
-      "translated_languages": ["en"]
+      "translated_languages": [
+        "en"
+      ]
     },
     "amount": 39,
     "sales_tax": 1.95,
@@ -4524,7 +4628,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 8,
           "product_id": 49,
@@ -4562,7 +4668,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 39,
         "sales_tax": 0,
@@ -4679,7 +4787,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 9,
               "product_id": 49,
@@ -4719,7 +4829,9 @@
       "color": "#0d9965",
       "created_at": "2022-02-02T21:08:20.000000Z",
       "updated_at": "2022-02-22T03:46:30.000000Z",
-      "translated_languages": ["en"]
+      "translated_languages": [
+        "en"
+      ]
     },
     "amount": 368,
     "sales_tax": 18.4,
@@ -4836,7 +4948,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 1,
           "product_id": 49,
@@ -4943,7 +5057,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 1,
           "product_id": 51,
@@ -5050,7 +5166,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 1,
           "product_id": 50,
@@ -5157,7 +5275,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 1,
           "product_id": 47,
@@ -5272,7 +5392,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 1,
           "product_id": 46,
@@ -5379,7 +5501,9 @@
         "in_wishlist": false,
         "total_downloads": 0,
         "blocked_dates": [],
-        "translated_languages": ["en"],
+        "translated_languages": [
+          "en"
+        ],
         "pivot": {
           "order_id": 1,
           "product_id": 45,
@@ -5417,7 +5541,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 39,
         "sales_tax": 0,
@@ -5534,7 +5660,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 2,
               "product_id": 49,
@@ -5572,7 +5700,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 55,
         "sales_tax": 0,
@@ -5689,7 +5819,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 7,
               "product_id": 45,
@@ -5727,7 +5859,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 29,
         "sales_tax": 0,
@@ -5852,7 +5986,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 6,
               "product_id": 46,
@@ -5890,7 +6026,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 110,
         "sales_tax": 0,
@@ -6007,7 +6145,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 5,
               "product_id": 47,
@@ -6045,7 +6185,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 70,
         "sales_tax": 0,
@@ -6162,7 +6304,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 4,
               "product_id": 50,
@@ -6200,7 +6344,9 @@
           "color": "#0d9965",
           "created_at": "2022-02-02T21:08:20.000000Z",
           "updated_at": "2022-02-22T03:46:30.000000Z",
-          "translated_languages": ["en"]
+          "translated_languages": [
+            "en"
+          ]
         },
         "amount": 65,
         "sales_tax": 0,
@@ -6317,7 +6463,9 @@
             "in_wishlist": false,
             "total_downloads": 0,
             "blocked_dates": [],
-            "translated_languages": ["en"],
+            "translated_languages": [
+              "en"
+            ],
             "pivot": {
               "order_id": 3,
               "product_id": 51,

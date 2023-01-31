@@ -1,5 +1,5 @@
-import { PickType } from '@nestjs/swagger';
-import { Category } from '../entities/category.entity';
+import {PickType} from '@nestjs/swagger';
+import {Category} from '../entities/category.entity';
 
 export class CreateCategoryDto extends PickType(Category, [
   'name',
@@ -9,4 +9,5 @@ export class CreateCategoryDto extends PickType(Category, [
   'icon',
   'image',
   'language',
-]) {}
+]) {
+}

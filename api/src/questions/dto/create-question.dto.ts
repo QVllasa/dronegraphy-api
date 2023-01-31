@@ -1,5 +1,5 @@
-import { Question } from '../entities/question.entity';
-import { OmitType } from '@nestjs/swagger';
+import {Question} from '../entities/question.entity';
+import {OmitType} from '@nestjs/swagger';
 
 export class CreateQuestionDto extends OmitType(Question, [
   'id',
@@ -7,4 +7,5 @@ export class CreateQuestionDto extends OmitType(Question, [
   'user',
   'created_at',
   'updated_at',
-]) {}
+]) {
+}

@@ -1,23 +1,24 @@
-import { Module } from '@nestjs/common';
-import { ShopsService } from './shops.service';
+import {Module} from '@nestjs/common';
+import {ShopsService} from './shops.service';
 import {
-  DisapproveShop,
-  FollowShopController,
-  ShopsController,
-  StaffsController,
-  TopShopsController,
-  FollowedShops,
-} from './shops.controller';
-
-@Module({
-  controllers: [
+    DisapproveShop,
+    FollowedShops,
+    FollowShopController,
     ShopsController,
     StaffsController,
     TopShopsController,
-    DisapproveShop,
-    FollowShopController,
-    FollowedShops,
-  ],
-  providers: [ShopsService],
+} from './shops.controller';
+
+@Module({
+    controllers: [
+        ShopsController,
+        StaffsController,
+        TopShopsController,
+        DisapproveShop,
+        FollowShopController,
+        FollowedShops,
+    ],
+    providers: [ShopsService],
 })
-export class ShopsModule {}
+export class ShopsModule {
+}

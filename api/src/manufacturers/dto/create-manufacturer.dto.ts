@@ -1,5 +1,5 @@
-import { OmitType } from '@nestjs/swagger';
-import { Manufacturer } from '../entities/manufacturer.entity';
+import {OmitType} from '@nestjs/swagger';
+import {Manufacturer} from '../entities/manufacturer.entity';
 
 export class CreateManufacturerDto extends OmitType(Manufacturer, [
   'id',

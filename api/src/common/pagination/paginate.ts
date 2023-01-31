@@ -1,13 +1,13 @@
-import { APP_URL } from '../constants';
-import { PaginatorInfo } from '../dto/paginator-info.dto';
+import {APP_URL} from '../constants';
+import {PaginatorInfo} from '../dto/paginator-info.dto';
 
 export function paginate(
-  totalItems: number,
-  current_page = 1,
-  pageSize = 10,
-  count = 0,
-  // maxPages = 10,
-  url = '',
+    totalItems: number,
+    current_page = 1,
+    pageSize = 10,
+    count = 0,
+    // maxPages = 10,
+    url = '',
 ): PaginatorInfo {
   // calculate total pages
   const totalPages = Math.ceil(totalItems / pageSize);
@@ -64,12 +64,12 @@ export function paginate(
     first_page_url: `${APP_URL}${url}&page=1`,
     last_page_url: `${APP_URL}${url}&page=${totalPages}`,
     next_page_url:
-      totalPages > current_page
-        ? `${APP_URL}${url}&page=${Number(current_page) + 1}`
-        : null,
+        totalPages > current_page
+            ? `${APP_URL}${url}&page=${Number(current_page) + 1}`
+            : null,
     prev_page_url:
-      totalPages > current_page
-        ? `${APP_URL}${url}&page=${current_page}`
-        : null,
+        totalPages > current_page
+            ? `${APP_URL}${url}&page=${current_page}`
+            : null,
   };
 }
