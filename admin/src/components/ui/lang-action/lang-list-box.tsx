@@ -1,10 +1,10 @@
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-import { Disclosure } from '@headlessui/react';
-import { ChevronDown } from '@/components/icons/chevronDownIcon';
+import {useTranslation} from 'next-i18next';
+import {useRouter} from 'next/router';
+import {Disclosure} from '@headlessui/react';
+import {ChevronDown} from '@/components/icons/chevronDownIcon';
 import Link from '@/components/ui/link';
-import { PlusIcon } from '@/components/icons/plus-icon';
-import { EditIcon } from '@/components/icons/edit';
+import {PlusIcon} from '@/components/icons/plus-icon';
+import {EditIcon} from '@/components/icons/edit';
 
 export type LanguageListBoxProps = {
   title: string;
@@ -52,31 +52,31 @@ const LanguageListbox = ({
               <span
                 key={`language-${index}`}
                 className={`flex items-center cursor-pointer relative px-4 py-2 transition-all hover:bg-white ${
-                  currentSelectedItem?.id === option?.id ? 'bg-white' : ''
+                  currentSelectedItem?._id === option?._id ? 'bg-white' : ''
                 }`}
               >
                 {option?.icon}
                 <span className="ltr:ml-3 rtl:mr-3">{t(option?.name)}</span>
                 {translate === 'true' ? (
                   <span className="ltr:ml-auto rtl:mr-auto cursor-pointer text-base transition duration-200 hover:text-heading">
-                    <Link
-                      href={routes.edit(slug, option?.id, shop)}
-                      key={option?.id}
-                      locale={false}
-                      className="absolute top-0 left-0 w-full h-full"
-                    ></Link>
-                    <EditIcon width={16} />
+                      <Link
+                          href={routes.edit(slug, option?._id, shop)}
+                          key={option?._id}
+                          locale={false}
+                          className="absolute top-0 left-0 w-full h-full"
+                      ></Link>
+                      <EditIcon width={16}/>
                   </span>
                 ) : (
                   <>
                     <span className="ltr:ml-auto rtl:mr-auto cursor-pointer text-base transition duration-200 hover:text-heading">
-                      <Link
-                        href={routes.translate(slug, option?.id, shop)}
-                        key={option?.id}
-                        locale={false}
-                        className="absolute top-0 left-0 w-full h-full"
-                      ></Link>
-                      <PlusIcon width={24} />
+                        <Link
+                            href={routes.translate(slug, option?._id, shop)}
+                            key={option?._id}
+                            locale={false}
+                            className="absolute top-0 left-0 w-full h-full"
+                        ></Link>
+                        <PlusIcon width={24}/>
                     </span>
                   </>
                 )}

@@ -18,7 +18,7 @@ export class WishlistsController {
   // Get single
   @Get(':id')
   find(@Param('id') id: string) {
-    return this.wishlistService.findWishlist(+id);
+    return this.wishlistService.findWishlist(id);
   }
 
   // create
@@ -33,13 +33,13 @@ export class WishlistsController {
       @Param('id') id: string,
       @Body() updateWishlistDto: UpdateWishlistDto,
   ) {
-    return this.wishlistService.update(+id, updateWishlistDto);
+      return this.wishlistService.update(id, updateWishlistDto);
   }
 
   // delete
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.wishlistService.delete(+id);
+      return this.wishlistService.delete(id);
   }
 
   // wishlists/toggle
@@ -51,6 +51,6 @@ export class WishlistsController {
   // /in_wishlist/{product_id}
   @Get('/in_wishlist/:product_id')
   inWishlist(@Param('product_id') id: string) {
-    return this.wishlistService.isInWishlist(+id);
+      return this.wishlistService.isInWishlist(id);
   }
 }

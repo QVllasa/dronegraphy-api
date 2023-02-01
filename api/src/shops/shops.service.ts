@@ -61,7 +61,7 @@ export class ShopsService {
     const endIndex = page * limit;
     let staffs: Shop['staffs'] = [];
     if (shop_id) {
-      staffs = this.shops.find((p) => p.id === Number(shop_id))?.staffs ?? [];
+      staffs = this.shops.find((p) => p._id === String(shop_id))?.staffs ?? [];
     }
     const results = staffs?.slice(startIndex, endIndex);
     const url = `/staffs?limit=${limit}`;
@@ -76,17 +76,17 @@ export class ShopsService {
     return this.shops.find((p) => p.slug === slug);
   }
 
-  update(id: number, updateShopDto: UpdateShopDto) {
-    return this.shops[0];
-  }
+    update(id: string, updateShopDto: UpdateShopDto) {
+        return this.shops[0];
+    }
 
-  approve(id: number) {
-    return this.shops[0];
-  }
+    approve(id: string) {
+        return this.shops[0];
+    }
 
-  remove(id: number) {
-    return this.shops[0];
-  }
+    remove(id: string) {
+        return this.shops[0];
+    }
 
   topShops({search, limit, page}: GetTopShopsDto) {
     if (!page) page = 1;
@@ -113,34 +113,34 @@ export class ShopsService {
           ?.map(({item}) => item);
     }
 
-    const results = data.slice(startIndex, endIndex);
-    const url = `/top-shops?search=${search}&limit=${limit}`;
+      const results = data.slice(startIndex, endIndex);
+      const url = `/top-shops?search=${search}&limit=${limit}`;
 
-    return {
-      data: results,
-      ...paginate(data.length, page, limit, results.length, url),
-    };
+      return {
+          data: results,
+          ...paginate(data.length, page, limit, results.length, url),
+      };
   }
 
-  disapproveShop(id: number) {
-    const shop = this.shops.find((s) => s.id === Number(id));
-    shop.is_active = false;
+    disapproveShop(id: string) {
+        const shop = this.shops.find((s) => s._id === String(id));
+        shop.is_active = false;
 
-    return shop;
-  }
+        return shop;
+    }
 
-  approveShop(id: number) {
-    const shop = this.shops.find((s) => s.id === Number(id));
-    shop.is_active = true;
+    approveShop(id: string) {
+        const shop = this.shops.find((s) => s._id === String(id));
+        shop.is_active = true;
 
-    return shop;
-  }
+        return shop;
+    }
 
-  followShop(shop_id: any) {
-    const user = this.users[0];
-    const isFollowed = user.shops.includes(shop_id);
+    followShop(shop_id: any) {
+        const user = this.users[0];
+        const isFollowed = user.shops.includes(shop_id);
 
-    if (isFollowed) {
+        if (isFollowed) {
       user.shops = user.shops.filter((s) => s !== shop_id);
       return false;
     }

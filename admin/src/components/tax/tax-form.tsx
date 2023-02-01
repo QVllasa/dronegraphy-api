@@ -1,17 +1,14 @@
 import Input from '@/components/ui/input';
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
-import { useRouter } from 'next/router';
-import { Tax } from '@/types';
-import {
-  useCreateTaxClassMutation,
-  useUpdateTaxClassMutation,
-} from '@/data/tax';
-import { useTranslation } from 'next-i18next';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { taxValidationSchema } from './tax-validation-schema';
+import {useRouter} from 'next/router';
+import {Tax} from '@/types';
+import {useCreateTaxClassMutation, useUpdateTaxClassMutation,} from '@/data/tax';
+import {useTranslation} from 'next-i18next';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {taxValidationSchema} from './tax-validation-schema';
 
 const defaultValues = {
   name: '',
@@ -44,8 +41,8 @@ export default function CreateOrUpdateTaxForm({ initialValues }: IProps) {
   const onSubmit = async (values: Tax) => {
     if (initialValues) {
       updateTaxClass({
-        id: initialValues.id!,
-        ...values,
+          id: initialValues._id!,
+          ...values,
       });
     } else {
       createTaxClass({

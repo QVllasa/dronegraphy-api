@@ -38,41 +38,41 @@ export class WishlistsService {
       }
     }
 
-    const results = data.slice(startIndex, endIndex);
-    const url = `/wishlists?with=shop&orderBy=created_at&sortedBy=desc`;
-    return {
-      data: results,
-      ...paginate(data.length, page, limit, results.length, url),
-    };
+      const results = data.slice(startIndex, endIndex);
+      const url = `/wishlists?with=shop&orderBy=created_at&sortedBy=desc`;
+      return {
+          data: results,
+          ...paginate(data.length, page, limit, results.length, url),
+      };
   }
 
-  findWishlist(id: number) {
-    return this.wishlist.find((p) => p.id === id);
-  }
+    findWishlist(id: string) {
+        return this.wishlist.find((p) => p._id === id);
+    }
 
-  create(createWishlistDto: CreateWishlistDto) {
-    return this.wishlist[0];
-  }
+    create(createWishlistDto: CreateWishlistDto) {
+        return this.wishlist[0];
+    }
 
-  update(id: number, updateWishlistDto: UpdateWishlistDto) {
-    return this.wishlist[0];
-  }
+    update(id: string, updateWishlistDto: UpdateWishlistDto) {
+        return this.wishlist[0];
+    }
 
-  delete(id: number) {
-    return this.wishlist[0];
-  }
+    delete(id: string) {
+        return this.wishlist[0];
+    }
 
-  isInWishlist(product_id: number) {
-    const product = this.products.find((p) => p.id === Number(product_id));
+    isInWishlist(product_id: string) {
+        const product = this.products.find((p) => p._id === Number(product_id));
 
-    return product?.in_wishlist;
-  }
+        return product?.in_wishlist;
+    }
 
-  toggle({product_id}: CreateWishlistDto) {
-    const product = this.products.find((p) => p.id === Number(product_id));
+    toggle({product_id}: CreateWishlistDto) {
+        const product = this.products.find((p) => p._id === Number(product_id));
 
-    product.in_wishlist = !product?.in_wishlist;
+        product.in_wishlist = !product?.in_wishlist;
 
-    return product.in_wishlist;
+        return product.in_wishlist;
   }
 }

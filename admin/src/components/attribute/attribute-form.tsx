@@ -1,19 +1,16 @@
 import Input from '@/components/ui/input';
-import { useFieldArray, useForm } from 'react-hook-form';
+import {useFieldArray, useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import { Attribute } from '@/types';
-import { useShopQuery } from '@/data/shop';
-import { useState } from 'react';
+import {useRouter} from 'next/router';
+import {useTranslation} from 'next-i18next';
+import {Attribute} from '@/types';
+import {useShopQuery} from '@/data/shop';
+import {useState} from 'react';
 import Alert from '@/components/ui/alert';
-import { animateScroll } from 'react-scroll';
-import {
-  useCreateAttributeMutation,
-  useUpdateAttributeMutation,
-} from '@/data/attributes';
+import {animateScroll} from 'react-scroll';
+import {useCreateAttributeMutation, useUpdateAttributeMutation,} from '@/data/attributes';
 
 type FormValues = {
 	name?: string | null;
@@ -86,7 +83,7 @@ export default function CreateOrUpdateAttributeForm({ initialValues }: IProps) {
         shop_id: Number(initialValues?.shop_id),
         values: values.values.map(({ id, value, meta }: any) => ({
           language: router.locale,
-          id: Number(id),
+          _id: String(id),
           value,
           meta,
         })),

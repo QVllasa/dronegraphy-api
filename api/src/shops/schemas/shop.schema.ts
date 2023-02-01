@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import {UserSchema} from "../../users/schemas/user.schema";
 import {AttachmentSchema} from "../../common/entities/attachment.entity";
 import {UserAddressSchema} from "../../addresses/schemas/address.schema";
 import {LocationSchema, ShopSocialsSchema} from "../../settings/schemas/setting.schemas";
@@ -13,7 +12,7 @@ export const PaymentInfoSchema = new mongoose.Schema({
 })
 
 export const BalanceSchema = new mongoose.Schema({
-    id: Number,
+    id: String,
     admin_commission_rate: Number,
     total_earnings: Number,
     withdrawn_amount: Number,
@@ -31,8 +30,8 @@ export const ShopSettingsSchema = new mongoose.Schema({
 
 export const ShopSchema = new mongoose.Schema({
     owner_id: Number,
-    owner: UserSchema,
-    staffs: [UserSchema],
+    owner: Number,
+    staffs: [String],
     is_active: Boolean,
     orders_count: Number,
     products_count: Number,

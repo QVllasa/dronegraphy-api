@@ -1,20 +1,16 @@
-import { useTranslation } from 'next-i18next';
-import {
-  billingAddressAtom,
-  customerAtom,
-  shippingAddressAtom,
-} from '@/contexts/checkout';
+import {useTranslation} from 'next-i18next';
+import {billingAddressAtom, customerAtom, shippingAddressAtom,} from '@/contexts/checkout';
 import dynamic from 'next/dynamic';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { GetStaticProps } from 'next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {GetStaticProps} from 'next';
 import Layout from '@/components/layouts/admin';
-import { adminOnly } from '@/utils/auth-utils';
+import {adminOnly} from '@/utils/auth-utils';
 import CustomerGrid from '@/components/checkout/customer/customer-grid';
-import { useEffect } from 'react';
-import { useAtom } from 'jotai';
+import {useEffect} from 'react';
+import {useAtom} from 'jotai';
 import Loader from '@/components/ui/loader/loader';
-import { useUserQuery } from '@/data/user';
-import { AddressType } from '@/types';
+import {useUserQuery} from '@/data/user';
+import {AddressType} from '@/types';
 
 const ScheduleGrid = dynamic(
   () => import('@/components/checkout/schedule/schedule-grid')
@@ -64,28 +60,28 @@ export default function CheckoutPage() {
           />
 
           <AddressGrid
-            userId={user?.id!}
-            className="shadow-700 bg-light p-5 md:p-8"
-            label={t('text-billing-address')}
-            count={2}
+              userId={user?._id!}
+              className="shadow-700 bg-light p-5 md:p-8"
+              label={t('text-billing-address')}
+              count={2}
             //@ts-ignore
-            addresses={user?.address?.filter(
+              addresses={user?.address?.filter(
               (address) => address?.type === AddressType.Billing
             )}
-            atom={billingAddressAtom}
-            type={AddressType.Billing}
+              atom={billingAddressAtom}
+              type={AddressType.Billing}
           />
           <AddressGrid
-            userId={user?.id!}
-            className="shadow-700 bg-light p-5 md:p-8"
-            label={t('text-shipping-address')}
-            count={3}
+              userId={user?._id!}
+              className="shadow-700 bg-light p-5 md:p-8"
+              label={t('text-shipping-address')}
+              count={3}
             //@ts-ignore
-            addresses={user?.address?.filter(
+              addresses={user?.address?.filter(
               (address) => address?.type === AddressType.Shipping
             )}
-            atom={shippingAddressAtom}
-            type={AddressType.Shipping}
+              atom={shippingAddressAtom}
+              type={AddressType.Shipping}
           />
           <ScheduleGrid
             className="shadow-700 bg-light p-5 md:p-8"

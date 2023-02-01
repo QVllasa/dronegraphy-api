@@ -65,8 +65,8 @@ export class ManufacturersService {
     );
   }
 
-  update(id: number, updateManufacturesDto: UpdateManufacturerDto) {
-    const manufacturer = this.manufacturers.find((p) => p.id === Number(id));
+  update(id: string, updateManufacturesDto: UpdateManufacturerDto) {
+    const manufacturer = this.manufacturers.find((p) => p._id === String(id));
 
     // Update author
     manufacturer.is_approved = updateManufacturesDto.is_approved ?? true;
@@ -74,7 +74,7 @@ export class ManufacturersService {
     return manufacturer;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} product`;
   }
 }

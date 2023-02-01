@@ -58,7 +58,7 @@ export class VerifyOtpDto {
 }
 
 export class OtpResponse {
-  id: string;
+_id: string;
   message: string;
   success: boolean;
   phone_number: string;

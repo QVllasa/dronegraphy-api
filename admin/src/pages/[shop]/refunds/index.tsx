@@ -2,16 +2,16 @@ import Card from '@/components/common/card';
 import ShopLayout from '@/components/layouts/shop';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
-import { LIMIT } from '@/utils/constants';
-import { useShopQuery } from '@/data/shop';
-import { useRefundsQuery } from '@/data/refund';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
+import {LIMIT} from '@/utils/constants';
+import {useShopQuery} from '@/data/shop';
+import {useRefundsQuery} from '@/data/refund';
 import RefundList from '@/components/refund/refund-list';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { SortOrder } from '@/types';
+import {useRouter} from 'next/router';
+import {useState} from 'react';
+import {SortOrder} from '@/types';
 
 export default function RefundsPage() {
   const {
@@ -22,20 +22,20 @@ export default function RefundsPage() {
   const [page, setPage] = useState(1);
   const [orderBy, setOrder] = useState('created_at');
   const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
-  const { data: shopData, isLoading: fetchingShop } = useShopQuery({
-    slug: shop as string,
+  const {data: shopData, isLoading: fetchingShop} = useShopQuery({
+      slug: shop as string,
   });
-  const shopId = shopData?.id!;
-  const { data, loading, error } = useRefundsQuery(
-    {
-      shop_id: shopId,
-      limit: LIMIT,
-      page,
-      sortedBy,
-      orderBy,
-    },
-    {
-      enabled: Boolean(shopId),
+    const shopId = shopData?._id!;
+    const {data, loading, error} = useRefundsQuery(
+        {
+            shop_id: shopId,
+            limit: LIMIT,
+            page,
+            sortedBy,
+            orderBy,
+        },
+        {
+            enabled: Boolean(shopId),
     }
   );
 

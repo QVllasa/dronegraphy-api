@@ -28,29 +28,29 @@ export class MyWishlistService {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    const data: Product[] = this.products.slice(1, 7);
-    const results = data.slice(startIndex, endIndex);
-    const url = `/my-wishlists?with=shop&orderBy=created_at&sortedBy=desc`;
-    return {
-      data: results,
-      ...paginate(data.length, page, limit, results.length, url),
-    };
+      const endIndex = page * limit;
+      const data: Product[] = this.products.slice(1, 7);
+      const results = data.slice(startIndex, endIndex);
+      const url = `/my-wishlists?with=shop&orderBy=created_at&sortedBy=desc`;
+      return {
+          data: results,
+          ...paginate(data.length, page, limit, results.length, url),
+      };
   }
 
-  findAMyWishlist(id: number) {
-    return this.wishlist.find((p) => p.id === id);
-  }
+    findAMyWishlist(id: string) {
+        return this.wishlist.find((p) => p._id === id);
+    }
 
-  create(createWishlistDto: CreateWishlistDto) {
-    return this.wishlist[0];
-  }
+    create(createWishlistDto: CreateWishlistDto) {
+        return this.wishlist[0];
+    }
 
-  update(id: number, updateWishlistDto: UpdateWishlistDto) {
-    return this.wishlist[0];
-  }
+    update(id: string, updateWishlistDto: UpdateWishlistDto) {
+        return this.wishlist[0];
+    }
 
-  delete(id: number) {
-    return this.wishlist[0];
-  }
+    delete(id: string) {
+        return this.wishlist[0];
+    }
 }

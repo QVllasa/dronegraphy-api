@@ -1,15 +1,15 @@
 import {
-  Item,
-  UpdateItemInput,
-  addItemWithQuantity,
-  removeItemOrQuantity,
   addItem,
-  updateItem,
-  removeItem,
-  calculateUniqueItems,
+  addItemWithQuantity,
   calculateItemTotals,
-  calculateTotalItems,
   calculateTotal,
+  calculateTotalItems,
+  calculateUniqueItems,
+  Item,
+  removeItem,
+  removeItemOrQuantity,
+  updateItem,
+  UpdateItemInput,
 } from './cart.utils';
 
 interface Metadata {
@@ -52,9 +52,9 @@ export function cartReducer(state: State, action: Action): State {
     }
     case 'REMOVE_ITEM_OR_QUANTITY': {
       const items = removeItemOrQuantity(
-        state.items,
-        action.id,
-        (action.quantity = 1)
+          state.items,
+          action._id,
+          (action.quantity = 1)
       );
       return generateFinalState(state, items);
     }
@@ -63,11 +63,11 @@ export function cartReducer(state: State, action: Action): State {
       return generateFinalState(state, items);
     }
     case 'REMOVE_ITEM': {
-      const items = removeItem(state.items, action.id);
+        const items = removeItem(state.items, action._id);
       return generateFinalState(state, items);
     }
     case 'UPDATE_ITEM': {
-      const items = updateItem(state.items, action.id, action.item);
+        const items = updateItem(state.items, action._id, action.item);
       return generateFinalState(state, items);
     }
     case 'RESET_CART':

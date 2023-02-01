@@ -79,15 +79,15 @@ export class TypesService {
     return `This action returns all types`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} type`;
+  findOne(id: string) {
+      return `This action returns a #${id} type`;
   }
 
-  update(id: number, updateTypeDto: UpdateTypeDto) {
-    return this.types[0];
-  }
+    update(id: string, updateTypeDto: UpdateTypeDto) {
+        return this.types[0];
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} type`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} type`;
+    }
 }

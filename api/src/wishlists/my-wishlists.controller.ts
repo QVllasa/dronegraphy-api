@@ -18,7 +18,7 @@ export class MyWishlistsController {
   // Get single
   @Get(':id')
   find(@Param('id') id: string) {
-    return this.myWishlistService.findAMyWishlist(+id);
+    return this.myWishlistService.findAMyWishlist(id);
   }
 
   // create
@@ -33,12 +33,12 @@ export class MyWishlistsController {
       @Param('id') id: string,
       @Body() updateWishlistDto: UpdateWishlistDto,
   ) {
-    return this.myWishlistService.update(+id, updateWishlistDto);
+    return this.myWishlistService.update(id, updateWishlistDto);
   }
 
   // delete
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.myWishlistService.delete(+id);
+    return this.myWishlistService.delete(id);
   }
 }

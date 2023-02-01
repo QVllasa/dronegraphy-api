@@ -1,12 +1,8 @@
 import mongoose from "mongoose";
-import {TypeSchema} from "../../types/entities/type.entity";
-import {CategorySchema} from "../../categories/entities/category.entity";
-import {TagSchema} from "../../tags/entities/tag.entity";
-import {AttributeValueSchema} from "../../attributes/entities/attribute-value.entity";
-import {ShopSchema} from "../../shops/entities/shop.entity";
 import {AttachmentSchema} from "../../common/entities/attachment.entity";
-import {ReviewSchema} from "../../reviews/entities/review.entity";
-import {OrderSchema} from "../../orders/schemas/order.schema";
+import {TypeSchema} from "../../types/schemas/type.schema";
+import {AttributeValueSchema} from "../../attributes/schemas/attribute-value.schema";
+import {ShopSchema} from "../../shops/schemas/shop.schema";
 
 export const VariationOptionSchema = new mongoose.Schema({
     name: String,
@@ -14,7 +10,7 @@ export const VariationOptionSchema = new mongoose.Schema({
 })
 
 export const VariationSchema = new mongoose.Schema({
-    id: Number,
+    _id: String,
     title: String,
     price: Number,
     sku: String,
@@ -37,12 +33,12 @@ export const ProductSchema = new mongoose.Schema({
     type: TypeSchema,
     type_id: Number,
     product_type: String,
-    categories: [CategorySchema],
-    tags: [TagSchema],
+    categories: [String],
+    tags: [String],
     variations: [AttributeValueSchema],
     variation_options: [VariationSchema],
     pivot: OrderProductPivotSchema,
-    orders: [OrderSchema],
+    orders: [String],
     shop: ShopSchema,
     shop_id: Number,
     description: String,
@@ -52,7 +48,7 @@ export const ProductSchema = new mongoose.Schema({
     max_price: Number,
     min_price: Number,
     sku: String,
-    gallery: [AttachmentSchema],
+    gallery: [String],
     image: AttachmentSchema,
     status: String,
     height: String,
@@ -63,7 +59,7 @@ export const ProductSchema = new mongoose.Schema({
     unit: String,
     ratings: Number,
     in_wishlist: Boolean,
-    my_review: [ReviewSchema],
+    my_review: [String],
     language: String,
     translated_languages: [String]
 })

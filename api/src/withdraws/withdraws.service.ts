@@ -39,24 +39,24 @@ export class WithdrawsService {
     if (shop_id) {
       data = this.withdraws.filter((p) => p.shop_id === shop_id);
     }
-    const results = data.slice(startIndex, endIndex);
-    const url = `/withdraws?limit=${limit}`;
+      const results = data.slice(startIndex, endIndex);
+      const url = `/withdraws?limit=${limit}`;
 
-    return {
-      data: results,
-      ...paginate(data.length, page, limit, results.length, url),
-    };
+      return {
+          data: results,
+          ...paginate(data.length, page, limit, results.length, url),
+      };
   }
 
-  findOne(id: number) {
-    return this?.withdraws?.find((item) => item?.id === Number(id));
-  }
+    findOne(id: string) {
+        return this?.withdraws?.find((item) => item?._id === String(id));
+    }
 
-  update(id: number, updateWithdrawDto: ApproveWithdrawDto) {
-    return this.withdraws[0];
-  }
+    update(id: string, updateWithdrawDto: ApproveWithdrawDto) {
+        return this.withdraws[0];
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} withdraw`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} withdraw`;
+    }
 }

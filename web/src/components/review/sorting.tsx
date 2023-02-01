@@ -1,18 +1,19 @@
 // import Select from '@/components/ui/select/select';
-import { Listbox } from '@/components/ui/list-box';
-import { Transition } from '@/components/ui/transition';
-import { useRouter } from 'next/router';
-import { useState, useEffect, Fragment } from 'react';
-import { ChevronLeft } from '../icons/chevron-left';
-import { useTranslation } from 'react-i18next';
+import {Listbox} from '@/components/ui/list-box';
+import {Transition} from '@/components/ui/transition';
+import {useRouter} from 'next/router';
+import {Fragment, useEffect, useState} from 'react';
+import {ChevronLeft} from '../icons/chevron-left';
+import {useTranslation} from 'react-i18next';
+
 // import { useIsRTL } from '@/lib/locals';
 interface Plan {
-  id: number | string;
-  key: string;
-  label: string;
-  value: string;
-  orderBy: string;
-  sortedBy: 'ASC' | 'DESC';
+    id: string | string;
+    key: string;
+    label: string;
+    value: string;
+    orderBy: string;
+    sortedBy: 'ASC' | 'DESC';
 }
 const plans: Plan[] = [
   {

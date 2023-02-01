@@ -21,15 +21,15 @@ export class AttributesService {
 
   findOne(param: string) {
     return this.attributes.find(
-        (p) => p.id === Number(param) || p.slug === param,
+        (p) => p._id === String(param) || p.slug === param,
     );
   }
 
-  update(id: number, updateAttributeDto: UpdateAttributeDto) {
-    return this.attributes[0];
-  }
+    update(id: string, updateAttributeDto: UpdateAttributeDto) {
+        return this.attributes[0];
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} attribute`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} attribute`;
+    }
 }

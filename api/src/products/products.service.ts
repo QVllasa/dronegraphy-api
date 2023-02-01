@@ -115,11 +115,11 @@ export class ProductsService {
     return data?.slice(0, limit);
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return this.products[0];
+  update(id: string, updateProductDto: UpdateProductDto) {
+      return this.products[0];
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} product`;
+    }
 }

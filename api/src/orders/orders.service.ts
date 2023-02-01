@@ -66,7 +66,7 @@ export class OrdersService {
     let data: Order[] = this.orders;
 
     if (shop_id) {
-      data = this.orders?.filter((p) => p?.shop?.id === Number(shop_id));
+      data = this.orders?.filter((p) => p?.shop?._id === String(shop_id));
     }
 
     if (search) {
@@ -97,7 +97,7 @@ export class OrdersService {
 
   getOrderById(id: string): Order {
     return this.orders.find(
-        (p) => p.id === Number(id) || p.tracking_number === id,
+        (p) => p._id === String(id) || p.tracking_number === id,
     );
   }
 
@@ -142,9 +142,9 @@ export class OrdersService {
           ?.map(({item}) => item);
     }
 
-    // if (shop_id) {
-    //   data = this.orders?.filter((p) => p?.shop?.id === shop_id);
-    // }
+      // if (shop_id) {
+      //   data = this.orders?.filter((p) => p?.shop?._id === shop_id);
+      // }
 
     if (search) {
       const parseSearchParams = search.split(';');
@@ -179,13 +179,13 @@ export class OrdersService {
     return this.orderStatus.find((p) => p.slug === param);
   }
 
-  update(id: number, updateOrderInput: UpdateOrderDto) {
-    return this.orders[0];
-  }
+    update(id: string, updateOrderInput: UpdateOrderDto) {
+        return this.orders[0];
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} order`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} order`;
+    }
 
   verifyCheckout(input: CheckoutVerificationDto): VerifiedCheckoutData {
     return {

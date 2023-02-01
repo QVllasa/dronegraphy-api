@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
-import {OrderStatusSchema} from "../entities/order-status.entity";
-import {CouponSchema} from "../../coupons/entities/coupon.entity";
-import {ShopSchema} from "../../shops/entities/shop.entity";
-import {FileSchema, ProductSchema} from "../../products/entities/product.entity";
-import {UserAddressSchema} from "../../addresses/entities/address.entity";
+
 import {UserSchema} from "../../users/schemas/user.schema";
+import {CouponSchema} from "../../coupons/schemas/coupon.schema";
+import {ShopSchema} from "../../shops/schemas/shop.schema";
+import {FileSchema, ProductSchema} from "../../products/schema/product.schema";
+import {UserAddressSchema} from "../../addresses/schemas/address.schema";
+import {OrderStatusSchema} from "./order-status.schema";
 
 export const OrderSchema = new mongoose.Schema({
     tracking_number: String,

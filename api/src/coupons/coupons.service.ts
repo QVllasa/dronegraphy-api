@@ -65,13 +65,13 @@ export class CouponsService {
     return this.coupons.find((p) => p.code === param);
   }
 
-  update(id: number, updateCouponDto: UpdateCouponDto) {
-    return this.coupons[0];
+  update(id: string, updateCouponDto: UpdateCouponDto) {
+      return this.coupons[0];
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} coupon`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} coupon`;
+    }
 
   verifyCoupon(code: string) {
     return {

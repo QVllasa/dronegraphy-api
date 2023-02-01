@@ -1,30 +1,29 @@
 import Card from '@/components/common/card';
 import Layout from '@/components/layouts/admin';
 import Image from 'next/image';
-import { Table } from '@/components/ui/table';
+import {Table} from '@/components/ui/table';
 import ProgressBox from '@/components/ui/progress-box/progress-box';
-import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
+import {useRouter} from 'next/router';
+import {useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import ErrorMessage from '@/components/ui/error-message';
-import { siteSettings } from '@/settings/site.settings';
+import {siteSettings} from '@/settings/site.settings';
 import usePrice from '@/utils/use-price';
-import { formatAddress } from '@/utils/format-address';
+import {formatAddress} from '@/utils/format-address';
 import Loader from '@/components/ui/loader/loader';
 import ValidationError from '@/components/ui/form-validation-error';
-import { Attachment } from '@/types';
-import { useDownloadInvoiceMutation, useOrderQuery } from '@/data/order';
-import { useUpdateOrderMutation } from '@/data/order';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {Attachment} from '@/types';
+import {useDownloadInvoiceMutation, useOrderQuery, useUpdateOrderMutation} from '@/data/order';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import SelectInput from '@/components/ui/select-input';
-import { useIsRTL } from '@/utils/locals';
-import { DownloadIcon } from '@/components/icons/download-icon';
-import { useCart } from '@/contexts/quick-cart/cart.context';
-import { useEffect } from 'react';
-import { useAtom } from 'jotai';
-import { clearCheckoutAtom } from '@/contexts/checkout';
-import { useOrderStatusesQuery } from '@/data/order-status';
+import {useIsRTL} from '@/utils/locals';
+import {DownloadIcon} from '@/components/icons/download-icon';
+import {useCart} from '@/contexts/quick-cart/cart.context';
+import {useEffect} from 'react';
+import {useAtom} from 'jotai';
+import {clearCheckoutAtom} from '@/contexts/checkout';
+import {useOrderStatusesQuery} from '@/data/order-status';
 
 type FormValues = {
 	order_status: any;
@@ -63,13 +62,13 @@ export default function OrderDetailsPage() {
 
     formState: { errors },
   } = useForm<FormValues>({
-    defaultValues: { order_status: order?.status?.id ?? '' },
-  });
+        defaultValues: {order_status: order?.status?._id ?? ''},
+    });
 
   const ChangeStatus = ({ order_status }: FormValues) => {
     updateOrder({
-      id: order?.id as string,
-      status: order_status?.id as string,
+        id: order?._id as string,
+        status: order_status?._id as string,
     });
   };
   const { price: subtotal } = usePrice(
@@ -180,12 +179,12 @@ export default function OrderDetailsPage() {
         >
           <div className="z-20 w-full me-5">
             <SelectInput
-              name="order_status"
-              control={control}
-              getOptionLabel={(option: any) => option.name}
-              getOptionValue={(option: any) => option.id}
-              options={orderStatuses}
-              placeholder={t('form:input-placeholder-order-status')}
+                name="order_status"
+                control={control}
+                getOptionLabel={(option: any) => option.name}
+                getOptionValue={(option: any) => option._id}
+                options={orderStatuses}
+                placeholder={t('form:input-placeholder-order-status')}
             />
 
             <ValidationError message={t(errors?.order_status?.message)} />

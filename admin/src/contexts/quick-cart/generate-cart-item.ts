@@ -1,4 +1,5 @@
 import isEmpty from 'lodash/isEmpty';
+
 interface Item {
   id: string | number;
   name: string;
@@ -34,16 +35,16 @@ export function generateCartItem(item: Item, variation: Variation) {
   } = item;
   if (!isEmpty(variation)) {
     return {
-      id: `${id}.${variation.id}`,
-      productId: id,
-      name: `${name} - ${variation.title}`,
-      slug,
-      unit,
-      is_digital,
-      stock: variation.quantity,
-      price: variation.sale_price ? variation.sale_price : variation.price,
-      image: image?.thumbnail,
-      variationId: variation.id,
+        id: `${id}.${variation._id}`,
+        productId: id,
+        name: `${name} - ${variation.title}`,
+        slug,
+        unit,
+        is_digital,
+        stock: variation.quantity,
+        price: variation.sale_price ? variation.sale_price : variation.price,
+        image: image?.thumbnail,
+        variationId: variation._id,
     };
   }
   return {

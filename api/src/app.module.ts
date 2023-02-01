@@ -28,10 +28,12 @@ import {WishlistsModule} from './wishlists/wishlists.module';
 import {ReportsModule} from './reports/reports.module';
 import {FeedbackModule} from './feedbacks/feedbacks.module';
 import {MongooseModule} from "@nestjs/mongoose";
-import {MONGO_CONNECTION} from "./constants";
+import {ConfigModule} from '@nestjs/config';
+import * as process from "process";
 
 @Module({
     imports: [
+        ConfigModule.forRoot(),
         UsersModule,
         CommonModule,
         ProductsModule,
@@ -60,7 +62,7 @@ import {MONGO_CONNECTION} from "./constants";
         WishlistsModule,
         ReportsModule,
         FeedbackModule,
-        MongooseModule.forRoot(MONGO_CONNECTION)
+        MongooseModule.forRoot(process.env.MONGO_CONNECTION)
     ],
     controllers: [],
     providers: [],

@@ -8,6 +8,9 @@ import Fuse from 'fuse.js';
 import {User} from './entities/user.entity';
 import usersJson from '@db/users.json';
 import {paginate} from 'src/common/pagination/paginate';
+import {InjectModel} from "@nestjs/mongoose";
+import {Model} from "mongoose";
+import {RegisterDto} from "../auth/dto/create-auth.dto";
 
 const users = plainToClass(User, usersJson);
 
@@ -21,16 +24,19 @@ const fuse = new Fuse(users, options);
 export class UsersService {
     private users: User[] = users;
 
-    create(createUserDto: CreateUserDto) {
-        return this.users[0];
+    constructor(@InjectModel('User')
+                private userModel: Model<User>) {
     }
 
-    async getUsers({
-                       text,
-                       limit,
-                       page,
-                       search,
-                   }: GetUsersDto): Promise<UserPaginator> {
+    create(createUserDto: CreateUserDto | RegisterDto | User): Promise<User> {
+        return this.userModel.create({
+            name: createUserDto.name,
+            email: createUserDto.email,
+            password: createUserDto.password,
+        });
+    }
+
+    async getUsers({text, limit, page, search,}: GetUsersDto): Promise<UserPaginator> {
         if (!page) page = 1;
         if (!limit) limit = 30;
         const startIndex = (page - 1) * limit;
@@ -70,32 +76,36 @@ export class UsersService {
         };
     }
 
-    findOne(id: number) {
-        return this.users.find((user) => user.id === id);
+    findOne(id: string) {
+        return this.userModel.findOne({_id: String(id)});
     }
 
-    update(id: number, updateUserDto: UpdateUserDto) {
+    async findOneByEmail(email: string): Promise<User> {
+        return this.userModel.findOne({email});
+    }
+
+    update(id: string, updateUserDto: UpdateUserDto) {
         return this.users[0];
     }
 
-    remove(id: number) {
+    remove(id: string) {
         return `This action removes a #${id} user`;
     }
 
     makeAdmin(user_id: string) {
-        return this.users.find((u) => u.id === Number(user_id));
+        return this.users.find((u) => u._id === (user_id));
     }
 
-    banUser(id: number) {
-        const user = this.users.find((u) => u.id === Number(id));
+    banUser(id: string) {
+        const user = this.users.find((u) => u._id === (id));
 
         user.is_active = !user.is_active;
 
         return user;
     }
 
-    activeUser(id: number) {
-        const user = this.users.find((u) => u.id === Number(id));
+    activeUser(id: string) {
+        const user = this.users.find((u) => u._id === (id));
 
         user.is_active = !user.is_active;
 

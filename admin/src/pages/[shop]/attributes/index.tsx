@@ -3,19 +3,19 @@ import AttributeList from '@/components/attribute/attribute-list';
 import ErrorMessage from '@/components/ui/error-message';
 import LinkButton from '@/components/ui/link-button';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import ShopLayout from '@/components/layouts/shop';
-import { useRouter } from 'next/router';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
-import { useShopQuery } from '@/data/shop';
-import { useState } from 'react';
-import { SortOrder } from '@/types';
-import { useModalAction } from '@/components/ui/modal/modal.context';
-import { MoreIcon } from '@/components/icons/more-icon';
+import {useRouter} from 'next/router';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
+import {useShopQuery} from '@/data/shop';
+import {useState} from 'react';
+import {SortOrder} from '@/types';
+import {useModalAction} from '@/components/ui/modal/modal.context';
+import {MoreIcon} from '@/components/icons/more-icon';
 import Button from '@/components/ui/button';
-import { useAttributesQuery } from '@/data/attributes';
-import { Config } from '@/config';
+import {useAttributesQuery} from '@/data/attributes';
+import {Config} from '@/config';
 
 export default function AttributePage() {
   const {
@@ -26,10 +26,10 @@ export default function AttributePage() {
   const { locale } = useRouter();
   const [orderBy, setOrder] = useState('updated_at');
   const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
-  const { data: shopData, isLoading: fetchingShop } = useShopQuery({
-    slug: shop as string,
+  const {data: shopData, isLoading: fetchingShop} = useShopQuery({
+      slug: shop as string,
   });
-  const shopId = shopData?.id!;
+    const shopId = shopData?._id!;
 
   function handleImportModal() {
     openModal('EXPORT_IMPORT_ATTRIBUTE', shopId);

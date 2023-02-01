@@ -15,8 +15,8 @@ export class AbusiveReportsController {
 
   // get single feedback
   @Get(':id')
-  find(@Param('id') id: number) {
-    return this.reportService.findReport(id);
+  find(@Param('id') id: string) {
+      return this.reportService.findReport(id);
   }
 
   // create a new feedback
@@ -28,12 +28,12 @@ export class AbusiveReportsController {
   // update a feedback
   @Put(':id')
   update(@Param('id') id: string, @Body() updateReportDto: UpdateReportDto) {
-    return this.reportService.update(+id, updateReportDto);
+      return this.reportService.update(id, updateReportDto);
   }
 
   // delete a feedback
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.reportService.delete(+id);
+      return this.reportService.delete(id);
   }
 }

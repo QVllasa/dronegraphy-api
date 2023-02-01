@@ -1,15 +1,15 @@
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import PasswordInput from '@/components/ui/password-input';
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import Card from '@/components/common/card';
 import Description from '@/components/ui/description';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import { yupResolver } from '@hookform/resolvers/yup';
+import {useRouter} from 'next/router';
+import {useTranslation} from 'next-i18next';
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useShopQuery } from '@/data/shop';
-import { useAddStaffMutation } from '@/data/staff';
+import {useShopQuery} from '@/data/shop';
+import {useAddStaffMutation} from '@/data/staff';
 
 type FormValues = {
   name: string;
@@ -29,19 +29,19 @@ const AddStaffForm = () => {
   const {
     query: { shop },
   } = router;
-  const { data: shopData } = useShopQuery({
-    slug: shop as string,
+  const {data: shopData} = useShopQuery({
+      slug: shop as string,
   });
-  const shopId = shopData?.id!;
-  const {
-    register,
-    handleSubmit,
-    setError,
+    const shopId = shopData?._id!;
+    const {
+        register,
+        handleSubmit,
+        setError,
 
-    formState: { errors },
-  } = useForm<FormValues>({
-    resolver: yupResolver(staffFormSchema),
-  });
+        formState: {errors},
+    } = useForm<FormValues>({
+        resolver: yupResolver(staffFormSchema),
+    });
   const { mutate: addStaff, isLoading: loading } = useAddStaffMutation();
   const { t } = useTranslation();
 

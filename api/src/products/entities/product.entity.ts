@@ -65,7 +65,7 @@ export class OrderProductPivot {
 }
 
 export class Variation {
-  id: number;
+ _id: string;
   title: string;
   price: number;
   sku: string;

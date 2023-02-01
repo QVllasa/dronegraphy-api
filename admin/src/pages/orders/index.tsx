@@ -2,21 +2,21 @@ import Card from '@/components/common/card';
 import Layout from '@/components/layouts/admin';
 import Search from '@/components/common/search';
 import OrderList from '@/components/order/order-list';
-import { Fragment, useState } from 'react';
+import {Fragment, useState} from 'react';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useOrdersQuery } from '@/data/order';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { SortOrder } from '@/types';
-import { adminOnly } from '@/utils/auth-utils';
-import { MoreIcon } from '@/components/icons/more-icon';
-import { useExportOrderQuery } from '@/data/export';
-import { useRouter } from 'next/router';
-import { useShopQuery } from '@/data/shop';
-import { Menu, Transition } from '@headlessui/react';
+import {useOrdersQuery} from '@/data/order';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {SortOrder} from '@/types';
+import {adminOnly} from '@/utils/auth-utils';
+import {MoreIcon} from '@/components/icons/more-icon';
+import {useExportOrderQuery} from '@/data/export';
+import {useRouter} from 'next/router';
+import {useShopQuery} from '@/data/shop';
+import {Menu, Transition} from '@headlessui/react';
 import classNames from 'classnames';
-import { DownloadIcon } from '@/components/icons/download-icon';
+import {DownloadIcon} from '@/components/icons/download-icon';
 
 export default function Orders() {
   const router = useRouter();
@@ -39,21 +39,21 @@ export default function Orders() {
     setPage(current);
   }
 
-  const { data: shopData, isLoading: fetchingShop } = useShopQuery(
-    {
-      slug: shop as string,
-    },
-    {
-      enabled: !!shop,
-    }
+  const {data: shopData, isLoading: fetchingShop} = useShopQuery(
+      {
+          slug: shop as string,
+      },
+      {
+          enabled: !!shop,
+      }
   );
-  const shopId = shopData?.id!;
-  const { orders, loading, paginatorInfo, error } = useOrdersQuery({
-    language: locale,
-    limit: 20,
-    page,
-    tracking_number: searchTerm,
-  });
+    const shopId = shopData?._id!;
+    const {orders, loading, paginatorInfo, error} = useOrdersQuery({
+        language: locale,
+        limit: 20,
+        page,
+        tracking_number: searchTerm,
+    });
   const { refetch } = useExportOrderQuery(
     {
       ...(shopId && { shop_id: shopId }),

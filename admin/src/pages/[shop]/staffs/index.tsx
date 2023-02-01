@@ -1,17 +1,17 @@
 import Card from '@/components/common/card';
 import LinkButton from '@/components/ui/link-button';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import ShopLayout from '@/components/layouts/shop';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import StaffList from '@/components/shop/staff-list';
-import { adminAndOwnerOnly } from '@/utils/auth-utils';
+import {adminAndOwnerOnly} from '@/utils/auth-utils';
 import ErrorMessage from '@/components/ui/error-message';
-import { useShopQuery } from '@/data/shop';
-import { useStaffsQuery } from '@/data/staff';
-import { useState } from 'react';
-import { SortOrder } from '@/types';
+import {useShopQuery} from '@/data/shop';
+import {useStaffsQuery} from '@/data/staff';
+import {useState} from 'react';
+import {SortOrder} from '@/types';
 
 export default function StaffsPage() {
   const {
@@ -26,17 +26,17 @@ export default function StaffsPage() {
     slug: shop as string,
   });
 
-  const shopId = shopData?.id!;
-  const {
-    staffs,
-    paginatorInfo,
-    loading: loading,
-    error,
-  } = useStaffsQuery(
-    {
-      shop_id: shopId,
-      page,
-      orderBy,
+  const shopId = shopData?._id!;
+    const {
+        staffs,
+        paginatorInfo,
+        loading: loading,
+        error,
+    } = useStaffsQuery(
+        {
+            shop_id: shopId,
+            page,
+            orderBy,
       sortedBy,
     },
     {

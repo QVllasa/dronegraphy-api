@@ -1,14 +1,14 @@
 import cn from 'classnames';
 import toast from 'react-hot-toast';
-import { useCart } from '@/components/cart/lib/cart.context';
-import { CloseIcon } from '@/components/icons/close-icon';
+import {useCart} from '@/components/cart/lib/cart.context';
+import {CloseIcon} from '@/components/icons/close-icon';
 import CartItem from '@/components/cart/cart-item';
 
 export default function CartItemList({ className }: { className?: string }) {
   const { items, clearItemFromCart, verifiedResponse } = useCart();
-  function handleClearItemFromCart(id: number | string) {
-    clearItemFromCart(id);
-    toast.success(<b>Successfully remove from the cart!</b>);
+  function handleClearItemFromCart(id: string | string) {
+      clearItemFromCart(id);
+      toast.success(<b>Successfully remove from the cart!</b>);
   }
   return (
     <ul role="list" className={cn('-my-6 w-full', className)}>

@@ -52,19 +52,19 @@ export class QuestionService {
     };
   }
 
-  findQuestion(id: number) {
-    return this.question.find((p) => p.id === id);
+  findQuestion(id: string) {
+    return this.question.find((p) => p._id === id);
   }
 
   create(createQuestionDto: CreateQuestionDto) {
     return this.question[0];
   }
 
-  update(id: number, updateQuestionDto: UpdateQuestionDto) {
+  update(id: string, updateQuestionDto: UpdateQuestionDto) {
     return this.question[0];
   }
 
-  delete(id: number) {
+  delete(id: string) {
     return this.question[0];
   }
 }

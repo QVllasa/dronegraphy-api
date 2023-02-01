@@ -1,19 +1,17 @@
 import mongoose from "mongoose";
-import {ShopSchema} from "../../shops/entities/shop.entity";
 import {AttachmentSchema} from "../../common/entities/attachment.entity";
-import {FeedbackSchema} from "../../feedbacks/entities/feedback.entity";
-import {ReportSchema} from "../entities/reports.entity";
-import {OrderSchema} from "../../orders/schemas/order.schema";
 import {UserSchema} from "../../users/schemas/user.schema";
 import {ProductSchema} from "../../products/schema/product.schema";
+import {FeedbackSchema} from "../../feedbacks/schemas/feedback.schema";
+import {ReportSchema} from "./reports.schema";
 
 export const ReviewSchema = new mongoose.Schema({
     rating: Number,
     name: String,
     comment: String,
-    shop: ShopSchema,
-    order: OrderSchema,
-    customer: UserSchema,
+    shop: Number,
+    order: Number,
+    customer: Number,
     photos: [AttachmentSchema],
     user: UserSchema,
     product: ProductSchema,

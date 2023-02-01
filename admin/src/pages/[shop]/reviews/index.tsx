@@ -1,16 +1,16 @@
 import ReviewList from '@/components/reviews/review-list';
 import Card from '@/components/common/card';
 import Layout from '@/components/layouts/shop';
-import { useState } from 'react';
+import {useState} from 'react';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { SortOrder } from '@/types';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useReviewsQuery } from '@/data/review';
-import { adminAndOwnerOnly } from '@/utils/auth-utils';
-import { useShopQuery } from '@/data/shop';
-import { useRouter } from 'next/router';
+import {SortOrder} from '@/types';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {useReviewsQuery} from '@/data/review';
+import {adminAndOwnerOnly} from '@/utils/auth-utils';
+import {useShopQuery} from '@/data/shop';
+import {useRouter} from 'next/router';
 
 export default function Reviews() {
   const [page, setPage] = useState(1);
@@ -20,18 +20,18 @@ export default function Reviews() {
   const {
     query: { shop },
   } = useRouter();
-  const { data: shopData } = useShopQuery({ slug: shop as string });
-  const shopId = shopData?.id!;
-  const { reviews, paginatorInfo, loading, error } = useReviewsQuery(
-    {
-      shop_id: shopId,
-      limit: 10,
-      page,
-      orderBy,
-      sortedBy,
-    },
-    {
-      enabled: Boolean(shopId),
+  const {data: shopData} = useShopQuery({slug: shop as string});
+    const shopId = shopData?._id!;
+    const {reviews, paginatorInfo, loading, error} = useReviewsQuery(
+        {
+            shop_id: shopId,
+            limit: 10,
+            page,
+            orderBy,
+            sortedBy,
+        },
+        {
+            enabled: Boolean(shopId),
     }
   );
 

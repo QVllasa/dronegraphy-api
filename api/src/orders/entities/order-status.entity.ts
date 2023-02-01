@@ -1,5 +1,4 @@
 import {CoreEntity} from 'src/common/entities/core.entity';
-import mongoose from "mongoose";
 
 export class OrderStatus extends CoreEntity {
     name: string;
@@ -10,4 +9,4 @@ export class OrderStatus extends CoreEntity {
     translated_languages: string[];
 }
 
-export const OrderStatusSchema = new mongoose.Schema({})
+

@@ -1,23 +1,23 @@
 import Card from '@/components/common/card';
 import Search from '@/components/common/search';
 import OrderList from '@/components/order/order-list';
-import { LIMIT } from '@/utils/constants';
-import { Fragment, useState } from 'react';
+import {LIMIT} from '@/utils/constants';
+import {Fragment, useState} from 'react';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import ShopLayout from '@/components/layouts/shop';
-import { useRouter } from 'next/router';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
-import { useOrdersQuery } from '@/data/order';
-import { SortOrder } from '@/types';
-import { useShopQuery } from '@/data/shop';
-import { DownloadIcon } from '@/components/icons/download-icon';
-import { Menu, Transition } from '@headlessui/react';
+import {useRouter} from 'next/router';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
+import {useOrdersQuery} from '@/data/order';
+import {SortOrder} from '@/types';
+import {useShopQuery} from '@/data/shop';
+import {DownloadIcon} from '@/components/icons/download-icon';
+import {Menu, Transition} from '@headlessui/react';
 import classNames from 'classnames';
-import { MoreIcon } from '@/components/icons/more-icon';
-import { useExportOrderQuery } from '@/data/export';
+import {MoreIcon} from '@/components/icons/more-icon';
+import {useExportOrderQuery} from '@/data/export';
 
 export default function Orders() {
   const router = useRouter();
@@ -28,11 +28,11 @@ export default function Orders() {
   const { t } = useTranslation();
   const [orderBy, setOrder] = useState('created_at');
   const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
-  const { data: shopData, isLoading: fetchingShop } = useShopQuery({
-    slug: shop as string,
+  const {data: shopData, isLoading: fetchingShop} = useShopQuery({
+      slug: shop as string,
   });
-  const shopId = shopData?.id!;
-  const [searchTerm, setSearchTerm] = useState('');
+    const shopId = shopData?._id!;
+    const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
   const { orders, loading, paginatorInfo, error } = useOrdersQuery(
     {

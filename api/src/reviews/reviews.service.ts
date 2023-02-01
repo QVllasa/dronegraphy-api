@@ -46,19 +46,19 @@ export class ReviewService {
     };
   }
 
-  findReview(id: number) {
-    return this.reviews.find((p) => p.id === id);
+  findReview(id: string) {
+    return this.reviews.find((p) => p._id === id);
   }
 
   create(createReviewDto: CreateReviewDto) {
     return this.reviews[0];
   }
 
-  update(id: number, updateReviewDto: UpdateReviewDto) {
+  update(id: string, updateReviewDto: UpdateReviewDto) {
     return this.reviews[0];
   }
 
-  delete(id: number) {
+  delete(id: string) {
     return this.reviews[0];
   }
 }

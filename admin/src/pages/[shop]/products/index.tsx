@@ -3,34 +3,34 @@ import Search from '@/components/common/search';
 import ProductList from '@/components/product/product-list';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useState} from 'react';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import ShopLayout from '@/components/layouts/shop';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import LinkButton from '@/components/ui/link-button';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
-import { useShopQuery } from '@/data/shop';
-import { useProductsQuery } from '@/data/product';
-import { SortOrder } from '@/types';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
+import {useShopQuery} from '@/data/shop';
+import {useProductsQuery} from '@/data/product';
+import {SortOrder} from '@/types';
 import CategoryTypeFilter from '@/components/product/category-type-filter';
 import cn from 'classnames';
-import { ArrowDown } from '@/components/icons/arrow-down';
-import { ArrowUp } from '@/components/icons/arrow-up';
-import { useModalAction } from '@/components/ui/modal/modal.context';
-import { MoreIcon } from '@/components/icons/more-icon';
+import {ArrowDown} from '@/components/icons/arrow-down';
+import {ArrowUp} from '@/components/icons/arrow-up';
+import {useModalAction} from '@/components/ui/modal/modal.context';
+import {MoreIcon} from '@/components/icons/more-icon';
 import Button from '@/components/ui/button';
-import { Config } from '@/config';
+import {Config} from '@/config';
 
 export default function ProductsPage() {
   const {
     query: { shop },
   } = useRouter();
-  const { data: shopData, isLoading: fetchingShop } = useShopQuery({
-    slug: shop as string,
+  const {data: shopData, isLoading: fetchingShop} = useShopQuery({
+      slug: shop as string,
   });
-  const shopId = shopData?.id!;
-  const { t } = useTranslation();
+    const shopId = shopData?._id!;
+    const {t} = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [type, setType] = useState('');
   const [category, setCategory] = useState('');

@@ -1,24 +1,19 @@
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
-import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import { useTranslation } from 'next-i18next';
-import { yupResolver } from '@hookform/resolvers/yup';
+import {Controller, useFieldArray, useForm} from 'react-hook-form';
+import {useTranslation} from 'next-i18next';
+import {yupResolver} from '@hookform/resolvers/yup';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
 import FileInput from '@/components/ui/file-input';
 import TextArea from '@/components/ui/text-area';
-import { shopValidationSchema } from './shop-validation-schema';
-import { getFormattedImage } from '@/utils/get-formatted-image';
-import { useCreateShopMutation, useUpdateShopMutation } from '@/data/shop';
-import {
-  BalanceInput,
-  ShopSettings,
-  ShopSocialInput,
-  UserAddressInput,
-} from '@/types';
+import {shopValidationSchema} from './shop-validation-schema';
+import {getFormattedImage} from '@/utils/get-formatted-image';
+import {useCreateShopMutation, useUpdateShopMutation} from '@/data/shop';
+import {BalanceInput, ShopSettings, ShopSocialInput, UserAddressInput,} from '@/types';
 import GooglePlacesAutocomplete from '@/components/form/google-places-autocomplete';
 import Label from '@/components/ui/label';
-import { getIcon } from '@/utils/get-icon';
+import {getIcon} from '@/utils/get-icon';
 import SelectInput from '@/components/ui/select-input';
 import * as socialIcons from '@/components/icons/social';
 import omit from 'lodash/omit';
@@ -121,14 +116,14 @@ const ShopForm = ({ initialValues }: { initialValues?: any }) => {
     if (initialValues) {
       const { ...restAddress } = values.address;
       updateShop({
-        id: initialValues.id,
-        ...values,
-        address: restAddress,
-        settings,
-        balance: {
-          id: initialValues.balance?.id,
-          ...values.balance,
-        },
+          id: initialValues._id,
+          ...values,
+          address: restAddress,
+          settings,
+          balance: {
+              id: initialValues.balance?._id,
+              ...values.balance,
+          },
       });
     } else {
       createShop({
@@ -317,8 +312,8 @@ const ShopForm = ({ initialValues }: { initialValues?: any }) => {
               {fields.map(
                 (item: ShopSocialInput & { id: string }, index: number) => (
                   <div
-                    className="border-b border-dashed border-border-200 py-5 first:mt-5 first:border-t last:border-b-0 md:py-8 md:first:mt-10"
-                    key={item.id}
+                      className="border-b border-dashed border-border-200 py-5 first:mt-5 first:border-t last:border-b-0 md:py-8 md:first:mt-10"
+                      key={item._id}
                   >
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-5">
                       <div className="sm:col-span-2">

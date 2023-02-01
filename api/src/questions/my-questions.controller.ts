@@ -20,7 +20,7 @@ export class MyQuestionsController {
   // show one
   @Get(':id')
   find(@Param('id') id: string) {
-    return this.myQuestionService.findMyQuestion(+id);
+    return this.myQuestionService.findMyQuestion(id);
   }
 
   // create
@@ -35,12 +35,12 @@ export class MyQuestionsController {
       @Param('id') id: string,
       @Body() updateQuestionDto: UpdateQuestionDto,
   ) {
-    return this.myQuestionService.update(+id, updateQuestionDto);
+      return this.myQuestionService.update(id, updateQuestionDto);
   }
 
   // delete
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.myQuestionService.delete(+id);
+      return this.myQuestionService.delete(id);
   }
 }

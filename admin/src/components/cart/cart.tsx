@@ -1,16 +1,16 @@
-import { useRouter } from 'next/router';
-import { motion, AnimateSharedLayout } from 'framer-motion';
+import {useRouter} from 'next/router';
+import {AnimateSharedLayout, motion} from 'framer-motion';
 import CartCheckBagIcon from '@/components/icons/cart-check-bag';
-import { EmptyCartIcon } from '@/components/icons/empty-cart';
-import { CloseIcon } from '@/components/icons/close-icon';
+import {EmptyCartIcon} from '@/components/icons/empty-cart';
+import {CloseIcon} from '@/components/icons/close-icon';
 import CartItem from '@/components/cart/item';
-import { fadeInOut } from '@/utils/motion/fade-in-out';
-import { formatString } from '@/utils/format-string';
-import { useTranslation } from 'next-i18next';
-import { useUI } from '@/contexts/ui.context';
-import { Routes } from '@/config/routes';
+import {fadeInOut} from '@/utils/motion/fade-in-out';
+import {formatString} from '@/utils/format-string';
+import {useTranslation} from 'next-i18next';
+import {useUI} from '@/contexts/ui.context';
+import {Routes} from '@/config/routes';
 import usePrice from '@/utils/use-price';
-import { useCart } from '@/contexts/quick-cart/cart.context';
+import {useCart} from '@/contexts/quick-cart/cart.context';
 // import { drawerAtom } from '@store/drawer-atom';
 
 const Cart = () => {
@@ -56,7 +56,7 @@ const Cart = () => {
       <AnimateSharedLayout>
         <motion.div layout className="flex-grow pb-20">
           {items.length > 0 ? (
-            items?.map((item) => <CartItem item={item} key={item.id} />)
+            items?.map((item) => <CartItem item={item} key={item._id}/>)
           ) : (
             <motion.div
               layout

@@ -29,17 +29,17 @@ export class ShopsController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateShopDto: UpdateShopDto) {
-    return this.shopsService.update(+id, updateShopDto);
+    return this.shopsService.update(id, updateShopDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.shopsService.remove(+id);
+      return this.shopsService.remove(id);
   }
 
   @Post('approve')
   approveShop(@Param('id') id: string) {
-    return this.shopsService.approve(+id);
+      return this.shopsService.approve(id);
   }
 }
 
@@ -50,7 +50,7 @@ export class DisapproveShop {
 
   @Post()
   disapproveShop(@Param('id') id: string) {
-    return this.shopsService.approve(+id);
+      return this.shopsService.approve(id);
   }
 }
 
@@ -87,12 +87,12 @@ export class StaffsController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateShopDto: UpdateShopDto) {
-    return this.shopsService.update(+id, updateShopDto);
+      return this.shopsService.update(id, updateShopDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.shopsService.remove(+id);
+      return this.shopsService.remove(id);
   }
 }
 

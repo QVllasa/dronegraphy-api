@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import Counter from '@/components/ui/counter';
-import { CloseIcon } from '@/components/icons/close-icon';
-import { fadeInOut } from '@/utils/motion/fade-in-out';
-import { useTranslation } from 'next-i18next';
-import { useCart } from '@/contexts/quick-cart/cart.context';
+import {CloseIcon} from '@/components/icons/close-icon';
+import {fadeInOut} from '@/utils/motion/fade-in-out';
+import {useTranslation} from 'next-i18next';
+import {useCart} from '@/contexts/quick-cart/cart.context';
 import usePrice from '@/utils/use-price';
 
 interface CartItemProps {
@@ -29,10 +29,10 @@ const CartItem = ({ item }: CartItemProps) => {
   }
 
   const handleRemoveClick = (e: any) => {
-    e.stopPropagation();
-    removeItemFromCart(item.id);
+      e.stopPropagation();
+      removeItemFromCart(item._id);
   };
-  const outOfStock = !isInStock(item.id);
+    const outOfStock = !isInStock(item._id);
   return (
     <motion.div
       layout
@@ -69,8 +69,8 @@ const CartItem = ({ item }: CartItemProps) => {
       </div>
       <span className="ms-auto font-bold text-heading">{itemPrice}</span>
       <button
-        className="ms-3 -me-2 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-muted transition-all duration-200 hover:bg-gray-100 hover:text-red-600 focus:bg-gray-100 focus:text-red-600 focus:outline-none"
-        onClick={() => clearItemFromCart(item.id)}
+          className="ms-3 -me-2 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-muted transition-all duration-200 hover:bg-gray-100 hover:text-red-600 focus:bg-gray-100 focus:text-red-600 focus:outline-none"
+          onClick={() => clearItemFromCart(item._id)}
       >
         <span className="sr-only">{t('text-close')}</span>
         <CloseIcon className="h-3 w-3" />

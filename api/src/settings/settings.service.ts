@@ -19,15 +19,15 @@ export class SettingsService {
     return this.settings;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} setting`;
+  findOne(id: string) {
+      return `This action returns a #${id} setting`;
   }
 
-  update(id: number, updateSettingDto: UpdateSettingDto) {
-    return this.settings;
-  }
+    update(id: string, updateSettingDto: UpdateSettingDto) {
+        return this.settings;
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} setting`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} setting`;
+    }
 }

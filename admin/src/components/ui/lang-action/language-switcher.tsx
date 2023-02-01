@@ -1,19 +1,13 @@
-import { useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-import { languageMenu } from '@/utils/locals';
-import { Popover } from '@headlessui/react';
-import { ToggleIcon } from '@/components/icons/toggle-icon';
-import {
-  offset,
-  flip,
-  autoUpdate,
-  useFloating,
-  shift,
-} from '@floating-ui/react-dom-interactions';
+import {useEffect} from 'react';
+import {useTranslation} from 'next-i18next';
+import {useRouter} from 'next/router';
+import {languageMenu} from '@/utils/locals';
+import {Popover} from '@headlessui/react';
+import {ToggleIcon} from '@/components/icons/toggle-icon';
+import {autoUpdate, flip, offset, shift, useFloating,} from '@floating-ui/react-dom-interactions';
 import ActionButtons from '@/components/common/action-buttons';
 import LanguageListbox from './lang-list-box';
-import { Config } from '@/config';
+import {Config} from '@/config';
 
 export type LanguageSwitcherProps = {
   record: any;
@@ -35,7 +29,7 @@ const LanguageSwitcher = ({
   const { locales, locale } = router;
 
   let filterItem = [...languageMenu]?.filter((element) =>
-    locales?.includes(element?.id)
+    locales?.includes(element?._id)
   );
 
   let options = [...filterItem]?.filter(
@@ -45,9 +39,9 @@ const LanguageSwitcher = ({
       )
   );
 
-  let filterTranslatedItem = [...languageMenu]
-    ?.filter((element) => record?.translated_languages?.includes(element?.id))
-    .filter((item: any) => !locale?.includes(item?.id));
+    let filterTranslatedItem = [...languageMenu]
+        ?.filter((element) => record?.translated_languages?.includes(element?._id))
+        .filter((item: any) => !locale?.includes(item?._id));
 
   const { x, y, reference, floating, strategy, update, refs } = useFloating({
     strategy: 'fixed',
@@ -66,9 +60,9 @@ const LanguageSwitcher = ({
   return (
     <div className={`w-full flex items-center justify-end gap-5 ${className}`}>
       <ActionButtons
-        id={record?.id}
-        editUrl={routes.editWithoutLang(slug)}
-        deleteModalView={deleteModalView}
+          id={record?._id}
+          editUrl={routes.editWithoutLang(slug)}
+          deleteModalView={deleteModalView}
       />
       {Config.defaultLanguage === router.locale && (
         <Popover className="relative inline-block">
@@ -90,24 +84,24 @@ const LanguageSwitcher = ({
             <Popover.Panel className="px-4 sm:px-0 max-w-[20rem] w-[18rem] bg-[#F7F8F9] shadow-translatePanel rounded overflow-hidden">
               {options.length ? (
                 <LanguageListbox
-                  title={t('text-non-translated-title')}
-                  items={options}
-                  translate="false"
-                  slug={slug}
-                  id={record?.id}
-                  routes={routes}
+                    title={t('text-non-translated-title')}
+                    items={options}
+                    translate="false"
+                    slug={slug}
+                    id={record?._id}
+                    routes={routes}
                 />
               ) : (
                 ''
               )}
               {filterTranslatedItem.length ? (
                 <LanguageListbox
-                  title={t('text-translated-title')}
-                  items={filterTranslatedItem}
-                  translate="true"
-                  slug={slug}
-                  id={record?.id}
-                  routes={routes}
+                    title={t('text-translated-title')}
+                    items={filterTranslatedItem}
+                    translate="true"
+                    slug={slug}
+                    id={record?._id}
+                    routes={routes}
                 />
               ) : (
                 ''

@@ -23,37 +23,37 @@ export class UsersController {
 
     @Get(':id')
     getUser(@Param('id') id: string) {
-        return this.usersService.findOne(+id);
+        return this.usersService.findOne(id);
     }
 
     @Put(':id')
     updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-        return this.usersService.update(+id, updateUserDto);
+        return this.usersService.update(id, updateUserDto);
     }
 
     @Delete(':id')
     removeUser(@Param('id') id: string) {
-        return this.usersService.remove(+id);
+        return this.usersService.remove(id);
     }
 
     @Post('unblock-user')
-    activeUser(@Body('id') id: number) {
-        return this.usersService.activeUser(+id);
+    activeUser(@Body('id') id: string) {
+        return this.usersService.activeUser(id);
     }
 
     @Post(':id/ban')
-    banUser(@Param('id') id: number) {
+    banUser(@Param('id') id: string) {
         console.log(id);
-        // return this.usersService.getUsers(updateUserInput.id);
+        // return this.usersService.getUsers(updateUserInput._id);
     }
 
     @Post('block-user')
-    blockUser(@Body('id') id: number) {
+    blockUser(@Body('id') id: string) {
         return this.usersService.banUser(id);
     }
 
     @Post('unblock-user')
-    unBlockUser(@Body('id') id: number) {
+    unBlockUser(@Body('id') id: string) {
         return this.usersService.activeUser(id);
     }
 }
@@ -74,7 +74,7 @@ export class ProfilesController {
     }
 
     @Delete(':id')
-    deleteProfile(@Param('id') id: number) {
+    deleteProfile(@Param('id') id: string) {
         return this.usersService.remove(id);
     }
 }

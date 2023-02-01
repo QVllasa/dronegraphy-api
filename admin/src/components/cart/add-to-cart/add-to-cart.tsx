@@ -1,8 +1,8 @@
 import Counter from '@/components/ui/counter';
 import AddToCartBtn from '@/components/cart/add-to-cart/add-to-cart-btn';
-import { cartAnimation } from '@/utils/cart-animation';
-import { useCart } from '@/contexts/quick-cart/cart.context';
-import { generateCartItem } from '@/contexts/quick-cart/generate-cart-item';
+import {cartAnimation} from '@/utils/cart-animation';
+import {useCart} from '@/contexts/quick-cart/cart.context';
+import {generateCartItem} from '@/contexts/quick-cart/generate-cart-item';
 
 interface Props {
   data: any;
@@ -40,26 +40,26 @@ export const AddToCart = ({
   ) => {
     e.stopPropagation();
     addItemToCart(item, 1);
-    if (!isInCart(item.id)) {
+    if (!isInCart(item._id)) {
       cartAnimation(e);
     }
   };
   const handleRemoveClick = (e: any) => {
     e.stopPropagation();
-    removeItemFromCart(item.id);
+    removeItemFromCart(item._id);
   };
-  const outOfStock = isInCart(item?.id) && !isInStock(item.id);
-  return !isInCart(item?.id) ? (
-    <AddToCartBtn
-      disabled={disabled || outOfStock}
-      variant={variant}
-      onClick={handleAddClick}
-    />
+  const outOfStock = isInCart(item?._id) && !isInStock(item._id);
+  return !isInCart(item?._id) ? (
+      <AddToCartBtn
+          disabled={disabled || outOfStock}
+          variant={variant}
+          onClick={handleAddClick}
+      />
   ) : (
-    <>
-      <Counter
-        value={getItemFromCart(item.id).quantity}
-        onDecrement={handleRemoveClick}
+      <>
+        <Counter
+            value={getItemFromCart(item._id).quantity}
+            onDecrement={handleRemoveClick}
         onIncrement={handleAddClick}
         variant={counterVariant || variant}
         className={counterClass}

@@ -1,17 +1,17 @@
 import Card from '@/components/common/card';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import WithdrawList from '@/components/withdraw/withdraw-list';
 import LinkButton from '@/components/ui/link-button';
 import ShopLayout from '@/components/layouts/shop';
-import { useRouter } from 'next/router';
-import { adminAndOwnerOnly } from '@/utils/auth-utils';
-import { useShopQuery } from '@/data/shop';
-import { useWithdrawsQuery } from '@/data/withdraw';
-import { useState } from 'react';
-import { SortOrder } from '@/types';
+import {useRouter} from 'next/router';
+import {adminAndOwnerOnly} from '@/utils/auth-utils';
+import {useShopQuery} from '@/data/shop';
+import {useWithdrawsQuery} from '@/data/withdraw';
+import {useState} from 'react';
+import {SortOrder} from '@/types';
 
 export default function WithdrawsPage() {
   const { t } = useTranslation();
@@ -21,10 +21,10 @@ export default function WithdrawsPage() {
   const {
     query: { shop },
   } = useRouter();
-  const { data: shopData } = useShopQuery({
-    slug: shop as string,
+  const {data: shopData} = useShopQuery({
+      slug: shop as string,
   });
-  const shopId = shopData?.id!;
+    const shopId = shopData?._id!;
 
   const { withdraws, paginatorInfo, loading, error } = useWithdrawsQuery(
     {

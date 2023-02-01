@@ -20,15 +20,15 @@ export class ShippingsService {
     return this.shippings;
   }
 
-  findOne(id: number) {
-    return this.shippings.find((shipping) => shipping.id === Number(id));
+  findOne(id: string) {
+    return this.shippings.find((shipping) => shipping._id === String(id));
   }
 
-  update(id: number, updateShippingDto: UpdateShippingDto) {
+  update(id: string, updateShippingDto: UpdateShippingDto) {
     return this.shippings[0];
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} shipping`;
   }
 }

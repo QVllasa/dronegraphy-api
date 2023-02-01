@@ -1,22 +1,21 @@
 import Input from '@/components/ui/input';
-import { Control, FieldErrors, useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import TextArea from '@/components/ui/text-area';
 import Label from '@/components/ui/label';
 import Card from '@/components/common/card';
 import Description from '@/components/ui/description';
 import * as categoriesIcon from '@/components/icons/category';
-import { getIcon } from '@/utils/get-icon';
-import { useRouter } from 'next/router';
-import { getErrorMessage } from '@/utils/form-error';
-import ValidationError from '@/components/ui/form-validation-error';
-import { tagIcons } from './tag-icons';
-import { useTranslation } from 'next-i18next';
+import {getIcon} from '@/utils/get-icon';
+import {useRouter} from 'next/router';
+import {getErrorMessage} from '@/utils/form-error';
+import {tagIcons} from './tag-icons';
+import {useTranslation} from 'next-i18next';
 import FileInput from '@/components/ui/file-input';
 import SelectInput from '@/components/ui/select-input';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { tagValidationSchema } from './tag-validation-schema';
-import { useCreateTagMutation, useUpdateTagMutation } from '@/data/tag';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {tagValidationSchema} from './tag-validation-schema';
+import {useCreateTagMutation, useUpdateTagMutation} from '@/data/tag';
 
 export const updatedIcons = tagIcons.map((item: any) => {
   item.label = (
@@ -89,12 +88,12 @@ export default function CreateOrUpdateTagForm({ initialValues }: IProps) {
       name: values.name,
       details: values.details,
       image: {
-        thumbnail: values?.image?.thumbnail,
-        original: values?.image?.original,
-        id: values?.image?.id,
+          thumbnail: values?.image?.thumbnail,
+          original: values?.image?.original,
+          id: values?.image?._id,
       },
       icon: values.icon?.value ?? '',
-      // type_id: values.type?.id,
+        // type_id: values.type?._id,
     };
 
     try {
@@ -108,8 +107,8 @@ export default function CreateOrUpdateTagForm({ initialValues }: IProps) {
         });
       } else {
         updateTag({
-          ...input,
-          id: initialValues.id!,
+            ...input,
+            id: initialValues._id!,
         });
       }
     } catch (err) {

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Req} from '@nestjs/common';
+import {Body, Controller, Get, Post, Req, UseGuards} from '@nestjs/common';
 import {AuthService} from './auth.service';
 import {
   ChangePasswordDto,
@@ -12,6 +12,7 @@ import {
   VerifyForgetPasswordDto,
   VerifyOtpDto,
 } from './dto/create-auth.dto';
+import {AuthGuard} from '@nestjs/passport';
 
 @Controller()
 export class AuthController {
@@ -23,8 +24,10 @@ export class AuthController {
     return this.authService.register(registerDto);
   }
 
+  @UseGuards(AuthGuard('local'))
   @Post('token')
   login(@Body() loginDto: LoginDto) {
+    console.log("/token: ", loginDto);
     return this.authService.login(loginDto);
   }
 

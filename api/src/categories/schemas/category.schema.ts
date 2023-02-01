@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import {AttachmentSchema} from "../../common/entities/attachment.entity";
-import {TypeSchema} from "../../types/entities/type.entity";
-import {ProductSchema} from "../../products/schema/product.schema";
+import {TypeSchema} from "../../types/schemas/type.schema";
 
 
 export const CategorySchema = new mongoose.Schema({
@@ -11,7 +10,7 @@ export const CategorySchema = new mongoose.Schema({
     image: AttachmentSchema,
     icon: String,
     type: TypeSchema,
-    products: [ProductSchema],
+    products: [String],
     language: String,
     translated_languages: [String],
 })

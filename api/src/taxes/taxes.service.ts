@@ -9,25 +9,25 @@ const taxes = plainToClass(Tax, taxesJson);
 
 @Injectable()
 export class TaxesService {
-  private taxes: Tax[] = taxes;
+    private taxes: Tax[] = taxes;
 
-  create(createTaxDto: CreateTaxDto) {
-    return this.taxes[0];
-  }
+    create(createTaxDto: CreateTaxDto) {
+        return this.taxes[0];
+    }
 
-  findAll() {
-    return this.taxes;
-  }
+    findAll() {
+        return this.taxes;
+    }
 
-  findOne(id: number) {
-    return this.taxes.find((tax) => tax.id === Number(id));
-  }
+    findOne(id: string) {
+        return this.taxes.find((tax) => tax._id === String(id));
+    }
 
-  update(id: number, updateTaxDto: UpdateTaxDto) {
-    return this.taxes[0];
-  }
+    update(id: string, updateTaxDto: UpdateTaxDto) {
+        return this.taxes[0];
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} tax`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} tax`;
+    }
 }

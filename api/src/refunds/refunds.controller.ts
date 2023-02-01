@@ -20,16 +20,16 @@ export class RefundsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.refundsService.findOne(+id);
+    return this.refundsService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateRefundDto: UpdateRefundDto) {
-    return this.refundsService.update(+id, updateRefundDto);
+      return this.refundsService.update(id, updateRefundDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.refundsService.remove(+id);
+      return this.refundsService.remove(id);
   }
 }

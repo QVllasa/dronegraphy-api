@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import {UserSchema} from "../../users/schemas/user.schema";
 
 
 export const UserAddressSchema = new mongoose.Schema({
@@ -15,5 +14,4 @@ export const AddressSchema = new mongoose.Schema({
     default: Boolean,
     address: UserAddressSchema,
     type: String,
-    customer: UserSchema,
 })

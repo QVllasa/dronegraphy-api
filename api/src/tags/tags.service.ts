@@ -22,8 +22,8 @@ export class TagsService {
 
   create(createTagDto: CreateTagDto) {
     return {
-      id: this.tags.length + 1,
-      ...createTagDto,
+        _id: this.tags.length + 1,
+        ...createTagDto,
     };
   }
 
@@ -58,23 +58,23 @@ export class TagsService {
     };
   }
 
-  findOne(param: number | string, language: string) {
-    const tag = this.tags.find(
-        (singleTag) => singleTag.id === Number(param) || singleTag.slug === param,
-    );
+    findOne(param: string, language: string) {
+        const tag = this.tags.find(
+            (singleTag) => singleTag._id === String(param) || singleTag.slug === param,
+        );
 
-    if (!tag) {
-      throw new NotFoundException();
+        if (!tag) {
+            throw new NotFoundException();
+        }
+
+        return tag;
     }
 
-    return tag;
-  }
+    update(id: string, updateTagDto: UpdateTagDto) {
+        return this.tags[0];
+    }
 
-  update(id: number, updateTagDto: UpdateTagDto) {
-    return this.tags[0];
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} tag`;
-  }
+    remove(id: string) {
+        return `This action removes a #${id} tag`;
+    }
 }

@@ -1,9 +1,6 @@
 import ConfirmationCard from '@/components/common/confirmation-card';
-import {
-  useModalAction,
-  useModalState,
-} from '@/components/ui/modal/modal.context';
-import { useBlockUserMutation, useUnblockUserMutation } from '@/data/user';
+import {useModalAction, useModalState,} from '@/components/ui/modal/modal.context';
+import {useBlockUserMutation, useUnblockUserMutation} from '@/data/user';
 
 const CustomerBanView = () => {
   const { mutate: blockUser, isLoading: loading } = useBlockUserMutation();
@@ -15,9 +12,9 @@ const CustomerBanView = () => {
 
   async function handleDelete() {
     if (data?.type === 'ban') {
-      blockUser({ id: data?.id });
+      blockUser({id: data?._id});
     } else {
-      unblockUser({ id: data?.id });
+        unblockUser({id: data?._id});
     }
     closeModal();
   }

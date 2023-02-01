@@ -3,25 +3,25 @@ import Layout from '@/components/layouts/admin';
 import Search from '@/components/common/search';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { adminOnly } from '@/utils/auth-utils';
+import {useState} from 'react';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {adminOnly} from '@/utils/auth-utils';
 import CategoryTypeFilter from '@/components/product/category-type-filter';
 import cn from 'classnames';
-import { ArrowDown } from '@/components/icons/arrow-down';
-import { ArrowUp } from '@/components/icons/arrow-up';
+import {ArrowDown} from '@/components/icons/arrow-down';
+import {ArrowUp} from '@/components/icons/arrow-up';
 import ProductCard from '@/components/product/card';
 import Cart from '@/components/cart/cart';
-import { useUI } from '@/contexts/ui.context';
+import {useUI} from '@/contexts/ui.context';
 import DrawerWrapper from '@/components/ui/drawer-wrapper';
 import Drawer from '@/components/ui/drawer';
 import CartCounterButton from '@/components/cart/cart-counter-button';
 import Pagination from '@/components/ui/pagination';
-import { Product, ProductStatus } from '@/types';
-import { useProductsQuery } from '@/data/product';
+import {Product, ProductStatus} from '@/types';
+import {useProductsQuery} from '@/data/product';
 import NotFound from '@/components/ui/not-found';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 
 export default function ProductsPage() {
   const { locale } = useRouter();
@@ -110,7 +110,7 @@ export default function ProductsPage() {
       <div className="flex space-x-5">
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4 3xl:grid-cols-6">
           {products?.map((product: Product) => (
-            <ProductCard key={product.id} item={product} />
+            <ProductCard key={product._id} item={product}/>
           ))}
         </div>
       </div>

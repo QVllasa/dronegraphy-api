@@ -1,18 +1,17 @@
-import { adminOnly } from '@/utils/auth-utils';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
+import {adminOnly} from '@/utils/auth-utils';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {GetServerSideProps} from 'next';
+import {useRouter} from 'next/router';
 import Loader from '@/components/ui/loader/loader';
 import ErrorMessage from '@/components/ui/error-message';
 import Button from '@/components/ui/button';
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import SelectInput from '@/components/ui/select-input';
 import ValidationError from '@/components/ui/form-validation-error';
-import { useTranslation } from 'next-i18next';
-import { useEffect } from 'react';
+import {useTranslation} from 'next-i18next';
+import {useEffect} from 'react';
 import AdminLayout from '@/components/layouts/admin';
-import { useWithdrawQuery } from '@/data/withdraw';
-import { useApproveWithdrawMutation } from '@/data/withdraw';
+import {useApproveWithdrawMutation, useWithdrawQuery} from '@/data/withdraw';
 import Card from '@/components/common/card';
 
 type FormValues = {
@@ -59,7 +58,7 @@ const Withdraw = () => {
     if (withdraw?.status) {
       setValue(
         'status',
-        WithdrawStatus?.find((status) => status.id === withdraw?.status)
+        WithdrawStatus?.find((status) => status._id === withdraw?.status)
       );
     }
   }, [withdraw?.status]);
@@ -76,7 +75,7 @@ const Withdraw = () => {
   function handleApproveWithdraw({ status }: any) {
     approveWithdraw({
       id: withdrawId as string,
-      status: status.id,
+      status: status._id,
     });
   }
 
@@ -96,13 +95,13 @@ const Withdraw = () => {
           >
             <div className="z-20 w-full me-5">
               <SelectInput
-                name="status"
-                control={control}
-                getOptionLabel={(option: any) => option.name}
-                getOptionValue={(option: any) => option.id}
-                options={WithdrawStatus}
-                placeholder={t('form:input-placeholder-order-status')}
-                rules={{
+                  name="status"
+                  control={control}
+                  getOptionLabel={(option: any) => option.name}
+                  getOptionValue={(option: any) => option._id}
+                  options={WithdrawStatus}
+                  placeholder={t('form:input-placeholder-order-status')}
+                  rules={{
                   required: 'Status is required',
                 }}
               />
@@ -150,7 +149,7 @@ const Withdraw = () => {
               <span className="w-full text-sm font-semibold text-heading">
                 {
                   WithdrawStatus?.find(
-                    (status) => status.id === withdraw?.status
+                      (status) => status._id === withdraw?.status
                   )?.name
                 }
               </span>

@@ -1,19 +1,13 @@
 import Pagination from '@/components/ui/pagination';
 import Image from 'next/image';
-import { Table } from '@/components/ui/table';
+import {Table} from '@/components/ui/table';
 import ActionButtons from '@/components/common/action-buttons';
-import { siteSettings } from '@/settings/site.settings';
-import {
-  Category,
-  MappedPaginatorInfo,
-  SortOrder,
-  User,
-  UserPaginator,
-} from '@/types';
-import { useMeQuery } from '@/data/user';
-import { useTranslation } from 'next-i18next';
-import { useIsRTL } from '@/utils/locals';
-import { useState } from 'react';
+import {siteSettings} from '@/settings/site.settings';
+import {MappedPaginatorInfo, SortOrder, User,} from '@/types';
+import {useMeQuery} from '@/data/user';
+import {useTranslation} from 'next-i18next';
+import {useIsRTL} from '@/utils/locals';
+import {useState} from 'react';
 import TitleWithSort from '@/components/ui/title-with-sort';
 
 type IProps = {
@@ -133,14 +127,14 @@ const CustomerList = ({
         const { data } = useMeQuery();
         return (
           <>
-            {data?.id != id && (
-              <ActionButtons
-                id={id}
-                userStatus={true}
-                isUserActive={is_active}
-                showAddWalletPoints={true}
-                showMakeAdminButton={true}
-              />
+            {data?._id != id && (
+                <ActionButtons
+                    id={id}
+                    userStatus={true}
+                    isUserActive={is_active}
+                    showAddWalletPoints={true}
+                    showMakeAdminButton={true}
+                />
             )}
           </>
         );

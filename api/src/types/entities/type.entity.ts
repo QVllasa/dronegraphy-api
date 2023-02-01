@@ -15,8 +15,8 @@ export class Type extends CoreEntity {
 
 
 export class Banner {
-  id: number;
-  title?: string;
+_id: string;
+    title?: string;
   description?: string;
   image: Attachment;
 }

@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
-import {ProfileSchema} from "../entities/profile.entity";
-import {OrderSchema} from "../../orders/schemas/order.schema";
-import {ShopSchema} from "../../shops/schemas/shop.schema";
 import {AddressSchema} from "../../addresses/schemas/address.schema";
+import {ProfileSchema} from "./profile.schema";
 
 
 export const UserSchema = new mongoose.Schema({
@@ -11,9 +9,9 @@ export const UserSchema = new mongoose.Schema({
     password: String,
     shop_id: Number,
     profile: ProfileSchema,
-    shops: [ShopSchema],
-    managed_shop: ShopSchema,
+    shops: [String],
+    managed_shop: Number,
     is_active: Boolean,
     address: [AddressSchema],
-    orders: [OrderSchema],
+    orders: [String],
 });

@@ -21,7 +21,7 @@ export class ReviewController {
   //   find one review by ID
   @Get(':id')
   find(@Param('id') id: string) {
-    return this.reviewService.findReview(+id);
+    return this.reviewService.findReview(id);
   }
 
   //  create a new review
@@ -32,12 +32,12 @@ export class ReviewController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateReviewDto: UpdateReviewDto) {
-    return this.reviewService.update(+id, updateReviewDto);
+      return this.reviewService.update(id, updateReviewDto);
   }
 
   // delete a review
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.reviewService.delete(+id);
+      return this.reviewService.delete(id);
   }
 }

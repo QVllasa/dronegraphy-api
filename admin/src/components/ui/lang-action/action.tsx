@@ -1,8 +1,7 @@
 import ActionButtons from '@/components/common/action-buttons';
-import { Config } from '@/config';
+import {Config} from '@/config';
 import LanguageAction from './language-switcher';
-import shop from '@/components/layouts/shop';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 
 export type LanguageSwitcherProps = {
   record: any;
@@ -35,9 +34,9 @@ export default function LanguageSwitcher({
         />
       ) : (
         <ActionButtons
-          id={record?.id}
-          editUrl={routes.editWithoutLang(slug, shop)}
-          deleteModalView={deleteModalView}
+            id={record?._id}
+            editUrl={routes.editWithoutLang(slug, shop)}
+            deleteModalView={deleteModalView}
         />
       )}
     </>

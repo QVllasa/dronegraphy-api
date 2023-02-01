@@ -1,25 +1,20 @@
 import Input from '@/components/ui/input';
-import { Controller, useFieldArray, useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
-import { useRouter } from 'next/router';
-import { getIcon } from '@/utils/get-icon';
+import {useRouter} from 'next/router';
+import {getIcon} from '@/utils/get-icon';
 import Label from '@/components/ui/label';
 import * as typeIcons from '@/components/icons/type';
-import { AttachmentInput, Type, TypeSettingsInput } from '@/types';
-import { typeIconList } from './group-icons';
-import { useTranslation } from 'next-i18next';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { typeValidationSchema } from './group-validation-schema';
+import {AttachmentInput, Type} from '@/types';
+import {typeIconList} from './group-icons';
+import {useTranslation} from 'next-i18next';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {typeValidationSchema} from './group-validation-schema';
 import SelectInput from '@/components/ui/select-input';
 import FileInput from '@/components/ui/file-input';
-import Title from '@/components/ui/title';
-import Alert from '@/components/ui/alert';
-import TextArea from '@/components/ui/text-area';
-import RadioCard from '@/components/ui/radio-card/radio-card';
-import Checkbox from '@/components/ui/checkbox/checkbox';
-import { useCreateTypeMutation, useUpdateTypeMutation } from '@/data/type';
+import {useCreateTypeMutation, useUpdateTypeMutation} from '@/data/type';
 
 export const updatedIcons = typeIconList.map((item: any) => {
   item.label = (
@@ -76,9 +71,9 @@ export default function CreateOrUpdateTypeForm({ initialValues }: IProps) {
       name: values.name!,
       icon: values.icon?.value,
       promotional_sliders: {
-        thumbnail: values?.promotional_sliders?.thumbnail,
-        original: values?.promotional_sliders?.original,
-        id: values?.promotional_sliders?.id,
+          thumbnail: values?.promotional_sliders?.thumbnail,
+          original: values?.promotional_sliders?.original,
+          id: values?.promotional_sliders?._id,
       },
     };
 
@@ -94,8 +89,8 @@ export default function CreateOrUpdateTypeForm({ initialValues }: IProps) {
     } else {
       console.log("update");
       updateType({
-        ...input,
-        id: initialValues.id!,
+          ...input,
+          id: initialValues._id!,
       });
     }
   };

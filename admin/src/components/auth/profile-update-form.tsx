@@ -1,11 +1,11 @@
 import Input from '@/components/ui/input';
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
-import { useUpdateUserMutation } from '@/data/user';
+import {useUpdateUserMutation} from '@/data/user';
 import TextArea from '@/components/ui/text-area';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 import FileInput from '@/components/ui/file-input';
 import pick from 'lodash/pick';
 
@@ -41,19 +41,19 @@ export default function ProfileUpdate({ me }: any) {
   async function onSubmit(values: FormValues) {
     const { name, profile } = values;
     updateUser({
-      id: me?.id,
-      input: {
-        name: name,
-        profile: {
-          id: me?.profile?.id,
-          bio: profile?.bio,
-          contact: profile?.contact,
-          avatar: {
-            thumbnail: profile?.avatar?.thumbnail,
-            original: profile?.avatar?.original,
-            id: profile?.avatar?.id,
-          },
-        },
+        id: me?._id,
+        input: {
+            name: name,
+            profile: {
+                id: me?.profile?._id,
+                bio: profile?.bio,
+                contact: profile?.contact,
+                avatar: {
+                    thumbnail: profile?.avatar?.thumbnail,
+                    original: profile?.avatar?.original,
+                    id: profile?.avatar?._id,
+                },
+            },
       },
     });
   }

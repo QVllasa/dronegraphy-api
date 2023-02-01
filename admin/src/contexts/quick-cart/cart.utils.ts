@@ -16,7 +16,7 @@ export function addItemWithQuantity(
   if (quantity <= 0)
     throw new Error("cartQuantity can't be zero or less than zero");
   const existingItemIndex = items.findIndex(
-    (existingItem) => existingItem.id === item.id
+    (existingItem) => existingItem._id === item._id
   );
 
   if (existingItemIndex > -1) {
@@ -33,13 +33,13 @@ export function removeItemOrQuantity(
   quantity: number
 ) {
   return items.reduce((acc: Item[], item) => {
-    if (item.id === id) {
-      const newQuantity = item.quantity! - quantity;
+      if (item._id === id) {
+          const newQuantity = item.quantity! - quantity;
 
-      return newQuantity > 0
-        ? [...acc, { ...item, quantity: newQuantity }]
-        : [...acc];
-    }
+          return newQuantity > 0
+              ? [...acc, {...item, quantity: newQuantity}]
+              : [...acc];
+      }
     return [...acc, item];
   }, []);
 }
@@ -49,7 +49,7 @@ export function addItem(items: Item[], item: Item) {
 }
 
 export function getItem(items: Item[], id: Item['id']) {
-  return items.find((item) => item.id === id);
+    return items.find((item) => item._id === id);
 }
 
 export function updateItem(
@@ -58,12 +58,12 @@ export function updateItem(
   item: UpdateItemInput
 ) {
   return items.map((existingItem) =>
-    existingItem.id === id ? { ...existingItem, ...item } : existingItem
+      existingItem._id === id ? {...existingItem, ...item} : existingItem
   );
 }
 
 export function removeItem(items: Item[], id: Item['id']) {
-  return items.filter((existingItem) => existingItem.id !== id);
+    return items.filter((existingItem) => existingItem._id !== id);
 }
 export function inStock(items: Item[], id: Item['id']) {
   const item = getItem(items, id);

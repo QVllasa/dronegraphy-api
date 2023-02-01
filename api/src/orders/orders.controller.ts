@@ -37,12 +37,12 @@ export class OrdersController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
-    return this.ordersService.update(+id, updateOrderDto);
+    return this.ordersService.update(id, updateOrderDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ordersService.remove(+id);
+      return this.ordersService.remove(id);
   }
 
   @Post('checkout/verify')
@@ -73,12 +73,12 @@ export class OrderStatusController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
-    return this.ordersService.update(+id, updateOrderDto);
+      return this.ordersService.update(id, updateOrderDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ordersService.remove(+id);
+      return this.ordersService.remove(id);
   }
 }
 

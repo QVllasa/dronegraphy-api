@@ -44,19 +44,19 @@ export class MyQuestionsService {
     };
   }
 
-  findMyQuestion(id: number) {
-    return this.myQuestion.find((p) => p.id === id);
+  findMyQuestion(id: string) {
+    return this.myQuestion.find((p) => p._id === id);
   }
 
   create(createQuestionDto: CreateQuestionDto) {
     return this.myQuestion[0];
   }
 
-  update(id: number, updateQuestionDto: UpdateQuestionDto) {
+  update(id: string, updateQuestionDto: UpdateQuestionDto) {
     return this.myQuestion[0];
   }
 
-  delete(id: number) {
+  delete(id: string) {
     return this.myQuestion[0];
   }
 }

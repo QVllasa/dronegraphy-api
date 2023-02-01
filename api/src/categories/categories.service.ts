@@ -56,15 +56,15 @@ export class CategoriesService {
 
   getCategory(param: string, language: string): Category {
     return this.categories.find(
-        (p) => p.id === Number(param) || p.slug === param,
+        (p) => p._id === String(param) || p.slug === param,
     );
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return this.categories[0];
-  }
+    update(id: string, updateCategoryDto: UpdateCategoryDto) {
+        return this.categories[0];
+    }
 
-  remove(id: number) {
-    return this.categories[0];
-  }
+    remove(id: string) {
+        return this.categories[0];
+    }
 }
