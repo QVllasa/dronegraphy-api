@@ -1,7 +1,6 @@
 import {Module} from '@nestjs/common';
 import {AuthService} from './auth.service';
 import {AuthController} from './auth.controller';
-import {jwtConstants} from "./constants";
 import {PassportModule} from '@nestjs/passport';
 import {JwtModule} from '@nestjs/jwt';
 import {UsersModule} from "../users/users.module";
@@ -9,6 +8,8 @@ import {LocalStrategy} from "./local.strategy";
 import {MongooseModule} from "@nestjs/mongoose";
 import {UserSchema} from "../users/schemas/user.schema";
 import {ProfileSchema} from "../users/schemas/profile.schema";
+import {JwtStrategy} from "./jwt.strategy";
+import {jwtConfig} from "../config/jwt.config";
 
 @Module({
     imports: [
@@ -18,13 +19,10 @@ import {ProfileSchema} from "../users/schemas/profile.schema";
         ]),
         UsersModule,
         PassportModule,
-        JwtModule.register({
-            secret: jwtConstants.secret,
-            signOptions: {expiresIn: '60s'},
-        }),
+        JwtModule.registerAsync(jwtConfig),
     ],
     controllers: [AuthController],
-    providers: [AuthService, LocalStrategy],
+    providers: [AuthService, LocalStrategy, JwtStrategy],
 })
 export class AuthModule {
 }

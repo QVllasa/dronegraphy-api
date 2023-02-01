@@ -20,12 +20,18 @@ import {UsersService} from "../users/users.service";
 import * as bcrypt from 'bcrypt';
 
 
+interface Payload {
+    email: string,
+    sub: string,
+    permission: string[]
+}
+
+
 @Injectable()
 export class AuthService {
 
     constructor(private jwtService: JwtService, private usersService: UsersService) {
     }
-
 
     async register(createUserInput: RegisterDto): Promise<AuthResponse> {
         const user: User = {
@@ -37,29 +43,28 @@ export class AuthService {
         const saltOrRounds = 10;
         user.password = await bcrypt.hash(user.password, saltOrRounds);
         const result = await this.usersService.create(user);
-
+        if (!result) return
+        const payload: Payload = {email: user.email, sub: user._id, permission: ['customer']};
 
         return {
-            token: 'jwt token',
-            permissions: ['super_admin', 'customer'],
+            token: this.jwtService.sign(payload),
+            permissions: ['customer'],
         };
     }
 
     async login(loginInput: LoginDto): Promise<AuthResponse> {
-        console.log("loginInput: ", loginInput);
-        const payload = {username: loginInput.email, sub: loginInput._id};
-
+        const payload: Payload = {email: loginInput.email, sub: loginInput._id, permission: ['customer']};
         return {
             token: this.jwtService.sign(payload),
-            permissions: ['super_admin', 'customer'],
+            permissions: ['customer'],
         };
     }
 
-    async validateUser(loginInput: LoginDto): Promise<any> {
-        const user = await this.usersService.findOneByEmail(loginInput.email);
-        console.log("user found: ", user);
+    async validateUser(username: string, password: string): Promise<any> {
+        const user = await this.usersService.findOneByEmail(username);
         if (!user) return null;
-        const passwordValid = await bcrypt.compare(loginInput.password, user.password)
+        const passwordValid = await bcrypt.compare(password, user.password)
+        console.log("password valid: ", passwordValid)
         if (!user) {
             throw new NotAcceptableException('Could not find the user');
         }

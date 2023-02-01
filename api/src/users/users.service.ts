@@ -28,8 +28,9 @@ export class UsersService {
                 private userModel: Model<User>) {
     }
 
-    create(createUserDto: CreateUserDto | RegisterDto | User): Promise<User> {
-        return this.userModel.create({
+    async create(createUserDto: CreateUserDto | RegisterDto | User): Promise<User> {
+        console.log("creating user", createUserDto);
+        return await this.userModel.create({
             name: createUserDto.name,
             email: createUserDto.email,
             password: createUserDto.password,
@@ -81,7 +82,8 @@ export class UsersService {
     }
 
     async findOneByEmail(email: string): Promise<User> {
-        return this.userModel.findOne({email});
+        console.log("findonebyemail", email)
+        return this.userModel.findOne({email: String(email)});
     }
 
     update(id: string, updateUserDto: UpdateUserDto) {

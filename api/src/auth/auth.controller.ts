@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Req, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Post, Req, UseFilters, UseGuards} from '@nestjs/common';
 import {AuthService} from './auth.service';
 import {
   ChangePasswordDto,
@@ -13,6 +13,7 @@ import {
   VerifyOtpDto,
 } from './dto/create-auth.dto';
 import {AuthGuard} from '@nestjs/passport';
+import {MongoExceptionFilter} from "../filters/mongoose.filter";
 
 @Controller()
 export class AuthController {
@@ -20,6 +21,7 @@ export class AuthController {
   }
 
   @Post('register')
+  @UseFilters(MongoExceptionFilter)
   createAccount(@Body() registerDto: RegisterDto) {
     return this.authService.register(registerDto);
   }
