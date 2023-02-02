@@ -82,7 +82,6 @@ export class UsersService {
     }
 
     async findOneByEmail(email: string): Promise<User> {
-        console.log("findonebyemail", email)
         return this.userModel.findOne({email: String(email)});
     }
 

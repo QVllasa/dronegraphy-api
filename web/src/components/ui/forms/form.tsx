@@ -1,15 +1,8 @@
-import type {
-  SubmitHandler,
-  UseFormReturn,
-  UseFormProps,
-  Path,
-  UnpackNestedValue,
-  DeepPartial,
-} from 'react-hook-form';
-import type { SchemaOf } from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
+import type {DeepPartial, Path, SubmitHandler, UnpackNestedValue, UseFormProps, UseFormReturn,} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
+import type {SchemaOf} from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {useEffect} from 'react';
 
 type ServerErrors<T> = {
   [Property in keyof T]: string;
@@ -26,17 +19,15 @@ type FormProps<TFormValues> = {
     | null;
 } & Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit'>;
 
-export const Form = <
-  TFormValues extends Record<string, any> = Record<string, any>
->({
-  onSubmit,
-  children,
-  useFormProps,
-  validationSchema,
-  serverError,
-  resetFields,
-  ...formProps
-}: FormProps<TFormValues>) => {
+export const Form = <TFormValues extends Record<string, any> = Record<string, any>>({
+                                                                                      onSubmit,
+                                                                                      children,
+                                                                                      useFormProps,
+                                                                                      validationSchema,
+                                                                                      serverError,
+                                                                                      resetFields,
+                                                                                      ...formProps
+                                                                                    }: FormProps<TFormValues>) => {
   const methods = useForm<TFormValues>({
     ...useFormProps,
     ...(validationSchema && { resolver: yupResolver(validationSchema) }),

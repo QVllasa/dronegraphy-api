@@ -51,7 +51,6 @@ function AuthorizedMenu({user}: { user: User }) {
         <Menu>
             <Menu.Button
                 className="relative inline-flex h-8 w-8 justify-center rounded-full border border-light-400 bg-light-300 dark:border-dark-500 dark:bg-dark-500">
-                {/* @ts-ignore */}
                 <Avatar
                     size="32"
                     round={true}

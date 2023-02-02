@@ -12,8 +12,9 @@ import {
   VerifyForgetPasswordDto,
   VerifyOtpDto,
 } from './dto/create-auth.dto';
-import {AuthGuard} from '@nestjs/passport';
 import {MongoExceptionFilter} from "../filters/mongoose.filter";
+import {LocalAuthGuard} from "./guards/local-auth.guard";
+import {JwtAuthGuard} from "./guards/jwt-auth.guard";
 
 @Controller()
 export class AuthController {
@@ -26,10 +27,9 @@ export class AuthController {
     return this.authService.register(registerDto);
   }
 
-  @UseGuards(AuthGuard('local'))
-  @Post('token')
+  @UseGuards(LocalAuthGuard)
+  @Post('login')
   login(@Body() loginDto: LoginDto) {
-    console.log("/token: ", loginDto);
     return this.authService.login(loginDto);
   }
 
@@ -80,9 +80,9 @@ export class AuthController {
     return this.authService.verifyForgetPasswordToken(verifyForgetPasswordDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('me')
   me(@Req() req) {
-    console.log("me: ", req?.headers?.authorization);
     return this.authService.me(req?.headers?.authorization);
   }
 

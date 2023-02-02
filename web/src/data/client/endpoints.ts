@@ -17,7 +17,7 @@ export const API_ENDPOINTS = {
   GENERATE_DOWNLOADABLE_PRODUCT_LINK: '/downloads/digital-file',
   USERS: '/users',
   USERS_ME: '/me',
-  USERS_LOGIN: '/token',
+  USERS_LOGIN: '/login',
   USERS_REGISTER: '/register',
   USERS_FORGOT_PASSWORD: '/forget-password',
   USERS_VERIFY_FORGOT_PASSWORD_TOKEN: '/verify-forget-password-token',

@@ -8,7 +8,7 @@ export class MongoExceptionFilter implements ExceptionFilter {
         const response = ctx.getResponse();
         switch (exception.code) {
             case 11000:
-                return response.status(400).json("duplicate exception")
+                return response.status(400).json({statusCode: 400, message: "This email already exists."})
         }
     }
 }

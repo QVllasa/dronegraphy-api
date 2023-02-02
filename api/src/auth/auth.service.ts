@@ -20,10 +20,12 @@ import {UsersService} from "../users/users.service";
 import * as bcrypt from 'bcrypt';
 
 
-interface Payload {
+interface JwTPayload {
     email: string,
     sub: string,
-    permission: string[]
+    permission: string[],
+    iat?: number,
+    exp?: number,
 }
 
 
@@ -44,7 +46,7 @@ export class AuthService {
         user.password = await bcrypt.hash(user.password, saltOrRounds);
         const result = await this.usersService.create(user);
         if (!result) return
-        const payload: Payload = {email: user.email, sub: user._id, permission: ['customer']};
+        const payload: JwTPayload = {email: user.email, sub: user._id, permission: ['customer']};
 
         return {
             token: this.jwtService.sign(payload),
@@ -53,7 +55,8 @@ export class AuthService {
     }
 
     async login(loginInput: LoginDto): Promise<AuthResponse> {
-        const payload: Payload = {email: loginInput.email, sub: loginInput._id, permission: ['customer']};
+        const user = await this.usersService.findOneByEmail(loginInput.email);
+        const payload: JwTPayload = {email: user.email, sub: user._id, permission: ['customer']};
         return {
             token: this.jwtService.sign(payload),
             permissions: ['customer'],
@@ -64,7 +67,6 @@ export class AuthService {
         const user = await this.usersService.findOneByEmail(username);
         if (!user) return null;
         const passwordValid = await bcrypt.compare(password, user.password)
-        console.log("password valid: ", passwordValid)
         if (!user) {
             throw new NotAcceptableException('Could not find the user');
         }
@@ -74,9 +76,7 @@ export class AuthService {
         return null;
     }
 
-    async changePassword(
-        changePasswordInput: ChangePasswordDto,
-    ): Promise<CoreResponse> {
+    async changePassword(changePasswordInput: ChangePasswordDto,): Promise<CoreResponse> {
         console.log(changePasswordInput);
 
         return {
@@ -85,9 +85,7 @@ export class AuthService {
         };
     }
 
-    async forgetPassword(
-        forgetPasswordInput: ForgetPasswordDto,
-    ): Promise<CoreResponse> {
+    async forgetPassword(forgetPasswordInput: ForgetPasswordDto,): Promise<CoreResponse> {
         console.log(forgetPasswordInput);
 
         return {
@@ -96,9 +94,7 @@ export class AuthService {
         };
     }
 
-    async verifyForgetPasswordToken(
-        verifyForgetPasswordTokenInput: VerifyForgetPasswordDto,
-    ): Promise<CoreResponse> {
+    async verifyForgetPasswordToken(verifyForgetPasswordTokenInput: VerifyForgetPasswordDto,): Promise<CoreResponse> {
         console.log(verifyForgetPasswordTokenInput);
 
         return {
@@ -107,9 +103,7 @@ export class AuthService {
         };
     }
 
-    async resetPassword(
-        resetPasswordInput: ResetPasswordDto,
-    ): Promise<CoreResponse> {
+    async resetPassword(resetPasswordInput: ResetPasswordDto,): Promise<CoreResponse> {
         console.log(resetPasswordInput);
 
         return {
@@ -170,18 +164,14 @@ export class AuthService {
     // public getUser(getUserArgs: GetUserArgs): User {
     //   return this.users.find((user) => user._id === getUserArgs._id);
     // }
-    me(token): User {
+    async me(token): Promise<User> {
         // Extract bearer
-        const extractToken = token.replace('Bearer', '');
-
+        const extractToken = token.replace('Bearer ', '');
         if (!extractToken) {
             throw new UnauthorizedException();
         }
-
-        // FIXME
-        // make empty shops
-
-        return {} as User;
+        const decoded: JwTPayload = this.jwtService.decode(extractToken) as JwTPayload;
+        return this.usersService.findOne(decoded.sub);
     }
 
     // updateUser(id: string, updateUserInput: UpdateUserInput) {
