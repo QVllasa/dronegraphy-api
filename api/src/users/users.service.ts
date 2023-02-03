@@ -29,7 +29,7 @@ export class UsersService {
     }
 
     async create(createUserDto: CreateUserDto | RegisterDto | User): Promise<User> {
-        console.log("creating user", createUserDto);
+        console.log("creating user: ", createUserDto)
         return await this.userModel.create({
             name: createUserDto.name,
             email: createUserDto.email,

@@ -45,6 +45,7 @@ export class AuthService {
         const saltOrRounds = 10;
         user.password = await bcrypt.hash(user.password, saltOrRounds);
         const result = await this.usersService.create(user);
+        user._id = result._id;
         if (!result) return
         const payload: JwTPayload = {email: user.email, sub: user._id, permission: ['customer']};
 
@@ -165,12 +166,16 @@ export class AuthService {
     //   return this.users.find((user) => user._id === getUserArgs._id);
     // }
     async me(token): Promise<User> {
+
+
         // Extract bearer
         const extractToken = token.replace('Bearer ', '');
         if (!extractToken) {
             throw new UnauthorizedException();
         }
         const decoded: JwTPayload = this.jwtService.decode(extractToken) as JwTPayload;
+        console.log("token: ", token);
+        console.log("decoded: ", decoded);
         return this.usersService.findOne(decoded.sub);
     }
 
