@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import {AddressSchema} from "../../addresses/schemas/address.schema";
+import {ProfileSchema} from "./profile.schema";
 
 
 export const UserSchema = new mongoose.Schema({
@@ -7,7 +8,7 @@ export const UserSchema = new mongoose.Schema({
     email: {type: String, unique: true},
     password: String,
     shop_id: Number,
-    // profile: ProfileSchema,
+    profile: ProfileSchema,
     shops: [String],
     managed_shop: Number,
     is_active: Boolean,
