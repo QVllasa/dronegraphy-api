@@ -29,7 +29,6 @@ export class UsersService {
     }
 
     async create(createUserDto: CreateUserDto | RegisterDto | User): Promise<User> {
-        console.log("creating user: ", createUserDto)
         return await this.userModel.create({
             name: createUserDto.name,
             email: createUserDto.email,
@@ -85,8 +84,13 @@ export class UsersService {
         return this.userModel.findOne({email: String(email)});
     }
 
-    update(id: string, updateUserDto: UpdateUserDto) {
-        return this.users[0];
+    async update(id: string, updateUserDto: UpdateUserDto) {
+        console.log("updateDTO: ", updateUserDto, id)
+        const res = await this.userModel.findByIdAndUpdate<User>(id, {...updateUserDto}, {
+            new: true
+        })
+        console.log("res: ", res);
+        return res;
     }
 
     remove(id: string) {

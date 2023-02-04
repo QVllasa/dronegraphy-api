@@ -1,5 +1,5 @@
-import type { NextPage } from 'next';
-import type { ReactElement, ReactNode } from 'react';
+import type {NextPage} from 'next';
+import type {ReactElement, ReactNode} from 'react';
 
 export interface QueryOptions {
   page?: number;
@@ -182,10 +182,10 @@ export interface Shop {
 }
 
 export interface User {
-  id: string;
+  _id: string;
   name: string;
   profile: {
-    id: string;
+    _id: string;
     bio: string;
     contact: string;
     avatar: Attachment;
@@ -196,10 +196,10 @@ export interface User {
 }
 
 export interface UpdateProfileInput {
-  id: string;
+  _id?: string;
   name: string;
   profile: {
-    id?: string;
+    _id?: string;
     bio?: string;
     contact?: string;
     avatar?: Attachment | null;

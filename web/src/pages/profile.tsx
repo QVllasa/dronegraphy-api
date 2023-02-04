@@ -1,41 +1,41 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import type { GetStaticProps } from 'next';
-import { useTranslation } from 'next-i18next';
-import type { NextPageWithLayout, UpdateProfileInput } from '@/types';
-import type { SubmitHandler } from 'react-hook-form';
-import { Controller } from 'react-hook-form';
-import { useMutation, useQueryClient } from 'react-query';
-import { motion } from 'framer-motion';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import type {GetStaticProps} from 'next';
+import {useTranslation} from 'next-i18next';
+import type {NextPageWithLayout, UpdateProfileInput} from '@/types';
+import type {SubmitHandler} from 'react-hook-form';
+import {Controller} from 'react-hook-form';
+import {useMutation, useQueryClient} from 'react-query';
+import {motion} from 'framer-motion';
 import toast from 'react-hot-toast';
 import DashboardLayout from '@/layouts/_dashboard';
-import { Form } from '@/components/ui/forms/form';
+import {Form} from '@/components/ui/forms/form';
 import Input from '@/components/ui/forms/input';
 import Textarea from '@/components/ui/forms/textarea';
-import { ReactPhone } from '@/components/ui/forms/phone-input';
+import {ReactPhone} from '@/components/ui/forms/phone-input';
 import Button from '@/components/ui/button';
 import client from '@/data/client';
-import { fadeInBottom } from '@/lib/framer-motion/fade-in-bottom';
-import { useMe } from '@/data/user';
+import {fadeInBottom} from '@/lib/framer-motion/fade-in-bottom';
+import {useMe} from '@/data/user';
 import pick from 'lodash/pick';
-import { API_ENDPOINTS } from '@/data/client/endpoints';
+import {API_ENDPOINTS} from '@/data/client/endpoints';
 import Uploader from '@/components/ui/forms/uploader';
 import * as yup from 'yup';
 
 const profileValidationSchema = yup.object().shape({
-  id: yup.string().required(),
+  _id: yup.string().required(),
   name: yup.string().required(),
   profile: yup.object().shape({
-    id: yup.string(),
+    _id: yup.string(),
     bio: yup.string(),
     contact: yup.string(),
     avatar: yup
-      .object()
-      .shape({
-        id: yup.string(),
-        thumbnail: yup.string(),
-        original: yup.string(),
-      })
-      .optional()
+        .object()
+        .shape({
+          id: yup.string(),
+          thumbnail: yup.string(),
+          original: yup.string(),
+        })
+        .optional()
       .nullable(),
   }),
 });
@@ -59,6 +59,7 @@ const ProfilePage: NextPageWithLayout = () => {
       queryClient.invalidateQueries(API_ENDPOINTS.USERS_ME);
     },
   });
+  console.log("me: ", me)
   const onSubmit: SubmitHandler<UpdateProfileInput> = (data) => mutate(data);
 
   return (
@@ -73,9 +74,9 @@ const ProfilePage: NextPageWithLayout = () => {
         onSubmit={onSubmit}
         useFormProps={{
           defaultValues: pick(me, [
-            'id',
+            '_id',
             'name',
-            'profile.id',
+            'profile._id',
             'profile.contact',
             'profile.bio',
             'profile.avatar',
@@ -137,10 +138,10 @@ const ProfilePage: NextPageWithLayout = () => {
                 type="reset"
                 onClick={() =>
                   reset({
-                    id: me?.id,
+                    _id: me?._id,
                     name: '',
                     profile: {
-                      id: me?.profile?.id,
+                      _id: me?.profile?._id,
                       avatar: null,
                       bio: '',
                       contact: '',
@@ -154,9 +155,10 @@ const ProfilePage: NextPageWithLayout = () => {
                 {t('text-cancel')}
               </Button>
               <Button
-                className="flex-1 lg:flex-none"
-                isLoading={isLoading}
-                disabled={isLoading}
+                  type="submit"
+                  className="flex-1 lg:flex-none"
+                  isLoading={isLoading}
+                  disabled={isLoading}
               >
                 {t('text-save-changes')}
               </Button>

@@ -26,8 +26,11 @@ export class UsersController {
         return this.usersService.findOne(id);
     }
 
+    //update user
     @Put(':id')
     updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+        console.log("id: ", id);
+        console.log("user to update", updateUserDto)
         return this.usersService.update(id, updateUserDto);
     }
 
@@ -44,7 +47,7 @@ export class UsersController {
     @Post(':id/ban')
     banUser(@Param('id') id: string) {
         console.log(id);
-        // return this.usersService.getUsers(updateUserInput._id);
+        // return this.usersService.getUsers(updateUserInput.id);
     }
 
     @Post('block-user')

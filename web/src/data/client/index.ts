@@ -1,63 +1,61 @@
 import type {
+  Attachment,
   AuthResponse,
   CategoryPaginator,
   CategoryQueryOptions,
+  ChangePasswordInput,
+  CheckoutVerificationInput,
+  CreateAbuseReportInput,
+  CreateContactUsInput,
+  CreateFeedbackInput,
+  CreateOrderInput,
+  CreateQuestionInput,
+  CreateReviewInput,
+  Feedback,
   ForgetPasswordInput,
+  GetParams,
   LoginUserInput,
+  MyQuestionQueryOptions,
+  MyReportsQueryOptions,
   Order,
   OrderedFilePaginator,
   OrderPaginator,
   OrderQueryOptions,
   PasswordChangeResponse,
+  PopularProductsQueryOptions,
   Product,
   ProductPaginator,
   ProductQueryOptions,
+  QueryOptions,
+  QuestionPaginator,
+  QuestionQueryOptions,
   RegisterUserInput,
   ResetPasswordInput,
+  Review,
+  ReviewPaginator,
+  ReviewQueryOptions,
+  ReviewResponse,
   Settings,
+  SettingsQueryOptions,
   Shop,
   ShopPaginator,
   ShopQueryOptions,
   Tag,
   TagPaginator,
-  UpdateProfileInput,
-  User,
-  QueryOptions,
-  CreateContactUsInput,
-  VerifyForgetPasswordTokenInput,
-  ChangePasswordInput,
-  PopularProductsQueryOptions,
-  CreateOrderInput,
-  CheckoutVerificationInput,
-  VerifiedCheckoutResponse,
   TopShopQueryOptions,
-  Attachment,
-  WishlistQueryOption,
-  WishlistPaginator,
-  Wishlist,
-  ReviewQueryOptions,
-  Review,
-  CreateReviewInput,
-  ReviewResponse,
-  UpdateReviewInput,
-  ReviewPaginator,
-  QuestionQueryOptions,
-  QuestionPaginator,
-  CreateQuestionInput,
-  CreateFeedbackInput,
-  Feedback,
-  CreateAbuseReportInput,
-  WishlistQueryOptions,
-  MyReportsQueryOptions,
-  MyQuestionQueryOptions,
-  GetParams,
-  SettingsQueryOptions,
-  TypeQueryOptions,
   Type,
+  TypeQueryOptions,
+  UpdateProfileInput,
+  UpdateReviewInput,
+  User,
+  VerifiedCheckoutResponse,
+  VerifyForgetPasswordTokenInput,
+  Wishlist,
+  WishlistQueryOptions,
 } from '@/types';
-import { API_ENDPOINTS } from './endpoints';
-import { HttpClient } from './http-client';
-import { FollowedShopsQueryOptions } from '@/types';
+import {FollowedShopsQueryOptions} from '@/types';
+import {API_ENDPOINTS} from './endpoints';
+import {HttpClient} from './http-client';
 
 class Client {
   products = {
@@ -157,16 +155,16 @@ class Client {
   users = {
     me: () => HttpClient.get<User>(API_ENDPOINTS.USERS_ME),
     update: (user: UpdateProfileInput) =>
-      HttpClient.put<User>(`${API_ENDPOINTS.USERS}/${user.id}`, user),
+        HttpClient.put<User>(`${API_ENDPOINTS.USERS}/${user._id}`, user),
     login: (input: LoginUserInput) =>
-      HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_LOGIN, input),
+        HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_LOGIN, input),
     register: (input: RegisterUserInput) =>
-      HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_REGISTER, input),
+        HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_REGISTER, input),
     forgotPassword: (input: ForgetPasswordInput) =>
-      HttpClient.post<PasswordChangeResponse>(
-        API_ENDPOINTS.USERS_FORGOT_PASSWORD,
-        input
-      ),
+        HttpClient.post<PasswordChangeResponse>(
+            API_ENDPOINTS.USERS_FORGOT_PASSWORD,
+            input
+        ),
     verifyForgotPasswordToken: (input: VerifyForgetPasswordTokenInput) =>
       HttpClient.post<PasswordChangeResponse>(
         API_ENDPOINTS.USERS_VERIFY_FORGOT_PASSWORD_TOKEN,
