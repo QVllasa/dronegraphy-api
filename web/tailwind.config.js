@@ -28,8 +28,8 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#24b47e',
-          dark: '#00997B',
+          DEFAULT: '#2563eb',
+          dark: '#1d4ed8',
         },
         light: {
           DEFAULT: '#ffffff',
@@ -79,7 +79,7 @@ module.exports = {
         '15px': '15px',
       },
       fontFamily: {
-        body: ["'Inter', sans-serif"],
+        body: ['DM Sans', 'Inter', 'sans-serif'],
       },
     },
   },
