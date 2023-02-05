@@ -30,6 +30,8 @@ import {FeedbackModule} from './feedbacks/feedbacks.module';
 import {MongooseModule} from "@nestjs/mongoose";
 import {ConfigModule} from '@nestjs/config';
 import * as process from "process";
+import {ServeStaticModule} from "@nestjs/serve-static/dist/serve-static.module";
+import {join} from "path";
 
 @Module({
     imports: [
@@ -62,7 +64,10 @@ import * as process from "process";
         WishlistsModule,
         ReportsModule,
         FeedbackModule,
-        MongooseModule.forRoot(process.env.MONGO_CONNECTION)
+        MongooseModule.forRoot(process.env.MONGO_CONNECTION),
+        ServeStaticModule.forRoot({
+            rootPath: join(__dirname, '..', 'public'),
+        }),
     ],
     controllers: [],
     providers: [],

@@ -1,57 +1,57 @@
 import type {
-  Attachment,
-  AuthResponse,
-  CategoryPaginator,
-  CategoryQueryOptions,
-  ChangePasswordInput,
-  CheckoutVerificationInput,
-  CreateAbuseReportInput,
-  CreateContactUsInput,
-  CreateFeedbackInput,
-  CreateOrderInput,
-  CreateQuestionInput,
-  CreateReviewInput,
-  Feedback,
-  ForgetPasswordInput,
-  GetParams,
-  LoginUserInput,
-  MyQuestionQueryOptions,
-  MyReportsQueryOptions,
-  Order,
-  OrderedFilePaginator,
-  OrderPaginator,
-  OrderQueryOptions,
-  PasswordChangeResponse,
-  PopularProductsQueryOptions,
-  Product,
-  ProductPaginator,
-  ProductQueryOptions,
-  QueryOptions,
-  QuestionPaginator,
-  QuestionQueryOptions,
-  RegisterUserInput,
-  ResetPasswordInput,
-  Review,
-  ReviewPaginator,
-  ReviewQueryOptions,
-  ReviewResponse,
-  Settings,
-  SettingsQueryOptions,
-  Shop,
-  ShopPaginator,
-  ShopQueryOptions,
-  Tag,
-  TagPaginator,
-  TopShopQueryOptions,
-  Type,
-  TypeQueryOptions,
-  UpdateProfileInput,
-  UpdateReviewInput,
-  User,
-  VerifiedCheckoutResponse,
-  VerifyForgetPasswordTokenInput,
-  Wishlist,
-  WishlistQueryOptions,
+    Attachment,
+    AuthResponse,
+    CategoryPaginator,
+    CategoryQueryOptions,
+    ChangePasswordInput,
+    CheckoutVerificationInput,
+    CreateAbuseReportInput,
+    CreateContactUsInput,
+    CreateFeedbackInput,
+    CreateOrderInput,
+    CreateQuestionInput,
+    CreateReviewInput,
+    Feedback,
+    ForgetPasswordInput,
+    GetParams,
+    LoginUserInput,
+    MyQuestionQueryOptions,
+    MyReportsQueryOptions,
+    Order,
+    OrderedFilePaginator,
+    OrderPaginator,
+    OrderQueryOptions,
+    PasswordChangeResponse,
+    PopularProductsQueryOptions,
+    Product,
+    ProductPaginator,
+    ProductQueryOptions,
+    QueryOptions,
+    QuestionPaginator,
+    QuestionQueryOptions,
+    RegisterUserInput,
+    ResetPasswordInput,
+    Review,
+    ReviewPaginator,
+    ReviewQueryOptions,
+    ReviewResponse,
+    Settings,
+    SettingsQueryOptions,
+    Shop,
+    ShopPaginator,
+    ShopQueryOptions,
+    Tag,
+    TagPaginator,
+    TopShopQueryOptions,
+    Type,
+    TypeQueryOptions,
+    UpdateProfileInput,
+    UpdateReviewInput,
+    User,
+    VerifiedCheckoutResponse,
+    VerifyForgetPasswordTokenInput,
+    Wishlist,
+    WishlistQueryOptions,
 } from '@/types';
 import {FollowedShopsQueryOptions} from '@/types';
 import {API_ENDPOINTS} from './endpoints';
@@ -153,31 +153,42 @@ class Client {
       HttpClient.post<Order>(API_ENDPOINTS.ORDERS, data),
   };
   users = {
-    me: () => HttpClient.get<User>(API_ENDPOINTS.USERS_ME),
-    update: (user: UpdateProfileInput) =>
-        HttpClient.put<User>(`${API_ENDPOINTS.USERS}/${user._id}`, user),
-    login: (input: LoginUserInput) =>
-        HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_LOGIN, input),
-    register: (input: RegisterUserInput) =>
-        HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_REGISTER, input),
-    forgotPassword: (input: ForgetPasswordInput) =>
-        HttpClient.post<PasswordChangeResponse>(
-            API_ENDPOINTS.USERS_FORGOT_PASSWORD,
-            input
-        ),
-    verifyForgotPasswordToken: (input: VerifyForgetPasswordTokenInput) =>
-      HttpClient.post<PasswordChangeResponse>(
-        API_ENDPOINTS.USERS_VERIFY_FORGOT_PASSWORD_TOKEN,
-        input
-      ),
-    resetPassword: (input: ResetPasswordInput) =>
-      HttpClient.post<PasswordChangeResponse>(
-        API_ENDPOINTS.USERS_RESET_PASSWORD,
-        input
-      ),
-    changePassword: (input: ChangePasswordInput) =>
-      HttpClient.post<PasswordChangeResponse>(
-        API_ENDPOINTS.USERS_CHANGE_PASSWORD,
+      me: () => HttpClient.get<User>(API_ENDPOINTS.USERS_ME),
+      update: (user: UpdateProfileInput) =>
+          HttpClient.put<User>(`${API_ENDPOINTS.USERS}/${user._id}`, user),
+      login: (input: LoginUserInput) =>
+          HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_LOGIN, input),
+      avatar: (input: File) => {
+          let formData = new FormData();
+          console.log("input: ", input)
+          formData.append('attachment', input);
+          console.log("formdata: ", formData)
+          return HttpClient.post<Attachment>(API_ENDPOINTS.AVATAR, formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+              },
+          });
+      },
+      register: (input: RegisterUserInput) =>
+          HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_REGISTER, input),
+      forgotPassword: (input: ForgetPasswordInput) =>
+          HttpClient.post<PasswordChangeResponse>(
+              API_ENDPOINTS.USERS_FORGOT_PASSWORD,
+              input
+          ),
+      verifyForgotPasswordToken: (input: VerifyForgetPasswordTokenInput) =>
+          HttpClient.post<PasswordChangeResponse>(
+              API_ENDPOINTS.USERS_VERIFY_FORGOT_PASSWORD_TOKEN,
+              input
+          ),
+      resetPassword: (input: ResetPasswordInput) =>
+          HttpClient.post<PasswordChangeResponse>(
+              API_ENDPOINTS.USERS_RESET_PASSWORD,
+              input
+          ),
+      changePassword: (input: ChangePasswordInput) =>
+          HttpClient.post<PasswordChangeResponse>(
+              API_ENDPOINTS.USERS_CHANGE_PASSWORD,
         input
       ),
     logout: () => HttpClient.post<boolean>(API_ENDPOINTS.USERS_LOGOUT, {}),

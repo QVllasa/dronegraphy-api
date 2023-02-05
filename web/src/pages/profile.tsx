@@ -18,8 +18,8 @@ import {fadeInBottom} from '@/lib/framer-motion/fade-in-bottom';
 import {useMe} from '@/data/user';
 import pick from 'lodash/pick';
 import {API_ENDPOINTS} from '@/data/client/endpoints';
-import Uploader from '@/components/ui/forms/uploader';
 import * as yup from 'yup';
+import AvatarUploader from "@/components/ui/forms/avatar-uploader";
 
 const profileValidationSchema = yup.object().shape({
   _id: yup.string().required(),
@@ -28,15 +28,14 @@ const profileValidationSchema = yup.object().shape({
     _id: yup.string(),
     bio: yup.string(),
     contact: yup.string(),
-    avatar: yup
-        .object()
-        .shape({
-          id: yup.string(),
-          thumbnail: yup.string(),
-          original: yup.string(),
-        })
-        .optional()
-      .nullable(),
+    avatar: yup.object().shape({
+      _id: yup.string(),
+      thumbnail: yup.string(),
+      original: yup.string(),
+      filename: yup.string(),
+      path: yup.string(),
+      __typename: yup.string(),
+    }).optional().nullable(),
   }),
 });
 const ProfilePage: NextPageWithLayout = () => {
@@ -60,27 +59,30 @@ const ProfilePage: NextPageWithLayout = () => {
     },
   });
   console.log("me: ", me)
-  const onSubmit: SubmitHandler<UpdateProfileInput> = (data) => mutate(data);
+  const onSubmit: SubmitHandler<UpdateProfileInput> = (data) => {
+    console.log("on submit data: ", data)
+    mutate(data)
+  };
 
   return (
-    <motion.div
-      variants={fadeInBottom()}
-      className="flex min-h-full flex-grow flex-col"
-    >
-      <h1 className="mb-5 text-15px font-medium text-dark dark:text-light sm:mb-6">
-        {t('text-profile-page-title')}
-      </h1>
-      <Form<UpdateProfileInput>
-        onSubmit={onSubmit}
-        useFormProps={{
-          defaultValues: pick(me, [
-            '_id',
-            'name',
-            'profile._id',
-            'profile.contact',
-            'profile.bio',
-            'profile.avatar',
-          ]),
+      <motion.div
+          variants={fadeInBottom()}
+          className="flex min-h-full flex-grow flex-col"
+      >
+        <h1 className="mb-5 text-15px font-medium text-dark dark:text-light sm:mb-6">
+          {t('text-profile-page-title')}
+        </h1>
+        <Form<UpdateProfileInput>
+            onSubmit={onSubmit}
+            useFormProps={{
+              defaultValues: pick(me, [
+                '_id',
+                'name',
+                'profile._id',
+                'profile.contact',
+                'profile.bio',
+                'profile.avatar',
+              ]),
         }}
         validationSchema={profileValidationSchema}
         className="flex flex-grow flex-col"
@@ -97,7 +99,7 @@ const ProfilePage: NextPageWithLayout = () => {
                       {t('text-profile-avatar')}
                     </span>
                     <div className="text-xs">
-                      <Uploader {...rest} multiple={false} />
+                      <AvatarUploader {...rest} />
                     </div>
                   </div>
                 )}

@@ -32,6 +32,7 @@ export const API_ENDPOINTS = {
   SETTINGS: '/settings',
   SETTINGS_CONTACT_US: '/contact-us',
   UPLOADS: '/attachments',
+  AVATAR: '/attachments/avatar',
   FOLLOW_SHOP: 'follow-shop',
   FOLLOWED_SHOPS: 'followed-shops',
   FOLLOWED_SHOPS_PRODUCTS: 'followed-shops-popular-products',

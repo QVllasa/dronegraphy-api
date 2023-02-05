@@ -148,8 +148,12 @@ export interface Location {
 export interface Attachment {
   id: string;
   original: string;
+  filename: string,
+  path: string,
   thumbnail: string;
   __typename?: string;
+  created_at: string,
+  updated_at: string
 }
 
 export interface Shop {

@@ -1628,6 +1628,13 @@
     "jsonc-parser" "3.0.0"
     "pluralize" "8.0.0"
 
+"@nestjs/serve-static@^3.0.0":
+  "integrity" "sha512-TpXjgs4136dQqWUjEcONqppqXDsrJhRkmKWzuBMOUAnP4HjHpNmlycvkHnDnWSoG2YD4a7Enh4ViYGWqCfHStA=="
+  "resolved" "https://registry.npmjs.org/@nestjs/serve-static/-/serve-static-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "path-to-regexp" "0.2.5"
+
 "@nestjs/swagger@^6.0.5":
   "integrity" "sha512-Iy6/Xvd+YVC2F6flIDew5/VnpM2m7kK3IMoft0JqQc0RVXEO45+9gSasN6c8E/s0PbOy9de055mivAhFjk/+lA=="
   "resolved" "https://registry.npmjs.org/@nestjs/swagger/-/swagger-6.0.5.tgz"
@@ -5074,6 +5081,11 @@
   "integrity" "sha1-32BBeABfUi8V60SQ5yR6G/qmf4w="
   "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz"
   "version" "0.1.7"
+
+"path-to-regexp@0.2.5":
+  "integrity" "sha512-l6qtdDPIkmAmzEO6egquYDfqQGPMRNGjYtrU13HAXb3YSRrt7HSb1sJY0pKp6o2bAa86tSB6iwaW2JbthPKr7Q=="
+  "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.2.5.tgz"
+  "version" "0.2.5"
 
 "path-to-regexp@3.2.0":
   "integrity" "sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA=="

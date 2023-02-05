@@ -174,7 +174,6 @@ export class AuthService {
             throw new UnauthorizedException();
         }
         const decoded: JwTPayload = this.jwtService.decode(extractToken) as JwTPayload;
-        console.log("decoded: ", decoded);
         return this.usersService.findOne(decoded.sub);
     }
 

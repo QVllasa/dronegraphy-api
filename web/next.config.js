@@ -4,8 +4,11 @@ const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 const { i18n } = require('./next-i18next.config');
 
-module.exports = withPWA({
+const nextConfig = withPWA({
   reactStrictMode: true,
+  env: {
+    STATIC_FILES_DOMAIN: process.env.STATIC_FILES_DOMAIN,
+  },
   i18n,
   pwa: {
     dest: 'public',
@@ -30,3 +33,5 @@ module.exports = withPWA({
     },
   }),
 });
+
+module.exports = nextConfig;
