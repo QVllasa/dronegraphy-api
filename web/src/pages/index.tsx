@@ -1,29 +1,24 @@
-import type {
-  CategoryQueryOptions,
-  NextPageWithLayout,
-  ProductQueryOptions,
-  SettingsQueryOptions,
-} from '@/types';
-import type { GetStaticProps } from 'next';
+import type {CategoryQueryOptions, NextPageWithLayout, ProductQueryOptions, SettingsQueryOptions,} from '@/types';
+import type {GetStaticProps} from 'next';
 import Layout from '@/layouts/_layout';
-import { useProducts } from '@/data/product';
+import {useProducts} from '@/data/product';
 import Grid from '@/components/product/grid';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import Seo from '@/layouts/_seo';
 import routes from '@/config/routes';
 import client from '@/data/client';
-import { dehydrate, QueryClient } from 'react-query';
-import { API_ENDPOINTS } from '@/data/client/endpoints';
+import {dehydrate, QueryClient} from 'react-query';
+import {API_ENDPOINTS} from '@/data/client/endpoints';
 import CategoryFilter from '@/components/product/category-filter';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({locale}) => {
   const queryClient = new QueryClient();
   try {
     await Promise.all([
       queryClient.prefetchQuery(
-        [API_ENDPOINTS.SETTINGS, { language: locale }],
-        ({ queryKey }) =>
+          [API_ENDPOINTS.SETTINGS, {language: locale}],
+          ({queryKey}) =>
           client.settings.all(queryKey[1] as SettingsQueryOptions)
       ),
       queryClient.prefetchInfiniteQuery(
@@ -53,21 +48,24 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 function Products() {
-  const { query } = useRouter();
-  const { products, loadMore, hasNextPage, isLoadingMore, isLoading } =
-    useProducts({
-      ...(query.category && { categories: query.category }),
-      ...(query.price && { price: query.price }),
-    });
+  const {query} = useRouter();
+  const {
+    products,
+    loadMore,
+    hasNextPage,
+    isLoadingMore,
+    isLoading
+  } = useProducts({...(query.category && {categories: query.category}), ...(query.price && {price: query.price}),});
+
   return (
-    <Grid
-      products={products}
-      limit={30}
-      onLoadMore={loadMore}
-      hasNextPage={hasNextPage}
-      isLoadingMore={isLoadingMore}
-      isLoading={isLoading}
-    />
+      <Grid
+          products={products}
+          limit={30}
+          onLoadMore={loadMore}
+          hasNextPage={hasNextPage}
+          isLoadingMore={isLoadingMore}
+          isLoading={isLoading}
+      />
   );
 }
 

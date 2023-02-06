@@ -7,84 +7,104 @@ import {Shop} from 'src/shops/entities/shop.entity';
 import {Tag} from 'src/tags/entities/tag.entity';
 import {Type} from 'src/types/entities/type.entity';
 import {Review} from '../../reviews/entities/review.entity';
+import {User} from "../../users/entities/user.entity";
 
 enum ProductStatus {
-  PUBLISH = 'publish',
-  DRAFT = 'draft',
+    PUBLISH = 'publish',
+    DRAFT = 'draft',
 }
 
 enum ProductType {
-  SIMPLE = 'simple',
-  VARIABLE = 'variable',
+    SIMPLE = 'simple',
+    VARIABLE = 'variable',
+}
+
+interface FileInfo {
+    size: number;
+    contentType: string;
+    name: string;
 }
 
 export class Product extends CoreEntity {
-  name: string;
-  slug: string;
-  type: Type;
-  type_id: number;
-  product_type: ProductType;
-  categories: Category[];
-  tags?: Tag[];
-  variations?: AttributeValue[];
-  variation_options?: Variation[];
-  pivot?: OrderProductPivot;
-  orders?: Order[];
-  shop: Shop;
-  shop_id: number;
-  related_products?: Product[];
-  description: string;
-  in_stock: boolean;
-  is_taxable: boolean;
-  sale_price?: number;
-  max_price?: number;
-  min_price?: number;
-  sku?: string;
-  gallery?: Attachment[];
-  image?: Attachment;
-  status: ProductStatus;
-  height?: string;
-  length?: string;
-  width?: string;
-  price?: number;
-  quantity: number;
-  unit: string;
-  ratings: number;
-  in_wishlist: boolean;
-  my_review?: Review[];
-  language?: string;
-  translated_languages?: string[];
+    key: number;
+    title: string;
+    location: string;
+    formats: string[];
+    fps: number;
+    camera: string;
+    downloads: number;
+    converted: boolean;
+    views: number;
+    storageRef: string;
+    storageContent: FileInfo[];
+    creator?: User;
+    thumbnail?: string;
+    sell?: boolean;
+    hls?: string;
+    slug: string;
+    type: Type;
+    type_id: number;
+    product_type: ProductType;
+    categories: Category[];
+    tags?: Tag[];
+    variations?: AttributeValue[];
+    variation_options?: Variation[];
+    pivot?: OrderProductPivot;
+    orders?: Order[];
+    shop: Shop;
+    shop_id: number;
+    related_products?: Product[];
+    description: string;
+    in_stock: boolean;
+    is_taxable: boolean;
+    sale_price?: number;
+    max_price?: number;
+    min_price?: number;
+    sku?: string;
+    gallery?: Attachment[];
+    image?: Attachment;
+    status: ProductStatus;
+    height?: string;
+    length?: string;
+    width?: string;
+    price?: number;
+    unit: string;
+    ratings: number;
+    in_wishlist: boolean;
+    my_review?: Review[];
+    language?: string;
+    translated_languages?: string[];
 }
 
 
 export class OrderProductPivot {
-  variation_option_id?: number;
-  order_quantity: number;
-  unit_price: number;
-  subtotal: number;
+    variation_option_id?: number;
+    order_quantity: number;
+    unit_price: number;
+    subtotal: number;
 }
 
 export class Variation {
- _id: string;
-  title: string;
-  price: number;
-  sku: string;
-  is_disable: boolean;
-  sale_price?: number;
-  quantity: number;
-  options: VariationOption[];
+    _id: string;
+    title: string;
+    price: number;
+    sku: string;
+    is_disable: boolean;
+    sale_price?: number;
+    quantity: number;
+    options: VariationOption[];
 }
 
 
 export class VariationOption {
-  name: string;
-  value: string;
+    name: string;
+    value: string;
 }
 
 export class File extends CoreEntity {
-  attachment_id: number;
-  url: string;
-  fileable_id: number;
+    attachment_id: number;
+    url: string;
+    fileable_id: number;
 }
 
 

@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import cn from 'classnames';
 import toast from 'react-hot-toast';
 import Button from '@/components/ui/button';
-import { useCart } from '@/components/cart/lib/cart.context';
+import {useCart} from '@/components/cart/lib/cart.context';
 import usePrice from '@/lib/hooks/use-price';
-import type { Product } from '@/types';
-import { generateCartItem } from './lib/generate-cart-item';
-import { useTranslation } from 'next-i18next';
+import type {Product} from '@/types';
+import {generateCartItem} from './lib/generate-cart-item';
+import {useTranslation} from 'next-i18next';
 
 interface Props {
   item: Product;
@@ -23,26 +23,30 @@ export default function AddToCart({
   withPrice = true,
   variant = 'fill',
 }: Props) {
-  const { t } = useTranslation('common');
-  const { addItemToCart, updateCartLanguage, language, isInStock } = useCart();
+  const {t} = useTranslation('common');
+  const {addItemToCart, isInCart} = useCart();
   const [addToCartLoader, setAddToCartLoader] = useState(false);
   const [cartingSuccess, setCartingSuccess] = useState(false);
-  const { price } = usePrice({
+  const [inCart, setInCart] = useState(false);
+  const {price} = usePrice({
     amount: item?.sale_price ? item?.sale_price : item?.price,
     baseAmount: item?.price,
   });
 
+  useEffect(() => {
+    setInCart(isInCart(item?.id))
+  }, [isInCart])
+
   function handleAddToCart() {
+    if (isInCart(item?.id)) return;
     setAddToCartLoader(true);
     setTimeout(() => {
       setAddToCartLoader(false);
       addSuccessfully();
     }, 650);
   }
+
   function addSuccessfully() {
-    if (item?.language !== language) {
-      updateCartLanguage(item?.language);
-    }
     setCartingSuccess(true);
     addItemToCart(generateCartItem(item), 1);
     toast.success(<b>{t('text-add-to-cart-message')}</b>, {
@@ -53,27 +57,27 @@ export default function AddToCart({
     }, 800);
   }
   return (
-    <Button
-      onClick={() => handleAddToCart()}
-      isLoading={addToCartLoader}
-      className={cn(
-        'relative',
-        cartingSuccess
-          ? 'is-carting pointer-events-none cursor-not-allowed'
-          : 'pointer-events-auto cursor-pointer',
-        className
-      )}
-      disabled={isInStock(item?.id)}
-    >
-      {t('text-add-to-cart')} {withPrice && price}
-      <svg
-        viewBox="0 0 37 37"
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute top-auto bottom-auto right-3 h-auto w-5 xs:right-4 xs:w-6"
+      <Button
+          onClick={() => handleAddToCart()}
+          isLoading={addToCartLoader}
+          className={cn(
+              'relative',
+              cartingSuccess
+                  ? 'is-carting pointer-events-none cursor-not-allowed'
+                  : 'pointer-events-auto cursor-pointer',
+              className
+          )}
+          disabled={inCart}
       >
-        <path
-          fill="none"
-          stroke="currentColor"
+        {t('text-add-to-cart')} {withPrice && price}
+        <svg
+            viewBox="0 0 37 37"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute top-auto bottom-auto right-3 h-auto w-5 xs:right-4 xs:w-6"
+        >
+          <path
+              fill="none"
+              stroke="currentColor"
           strokeLinejoin="round"
           strokeMiterlimit="10"
           strokeWidth="2.3"

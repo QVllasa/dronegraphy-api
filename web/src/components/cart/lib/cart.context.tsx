@@ -1,25 +1,18 @@
-import React, { useCallback } from 'react';
-import { cartReducer, State, initialState } from './cart.reducer';
-import {
-  Item,
-  getItem,
-  inStock,
-  VerifiedResponse,
-  Optional,
-} from '@/components/cart/lib/cart.utils';
-import { useLocalStorage } from '@/lib/hooks/use-local-storage';
-import { CART_KEY } from '@/lib/constants';
-import { isEmpty } from 'lodash';
+import React, {useCallback} from 'react';
+import {cartReducer, initialState, State} from './cart.reducer';
+import {getItem, inStock, Item, Optional, VerifiedResponse,} from '@/components/cart/lib/cart.utils';
+import {useLocalStorage} from '@/lib/hooks/use-local-storage';
+import {CART_KEY} from '@/lib/constants';
 
 interface CartProviderState extends State {
-  addItemToCart: (item: Optional<Item, 'quantity'>, quantity: number) => void;
-  removeItemFromCart: (id: Item['id']) => void;
-  clearItemFromCart: (id: Item['id']) => void;
-  getItemFromCart: (id: Item['id']) => any | undefined;
-  isInCart: (id: Item['id']) => boolean;
-  isInStock: (id: Item['id']) => boolean;
-  resetCart: () => void;
-  setVerifiedResponse: (response: VerifiedResponse) => void;
+    addItemToCart: (item: Optional<Item, 'quantity'>, quantity: number) => void;
+    removeItemFromCart: (id: Item['id']) => void;
+    clearItemFromCart: (id: Item['id']) => void;
+    getItemFromCart: (id: Item['id']) => any | undefined;
+    isInCart: (id: Item['id']) => boolean;
+    isInStock: (id: Item['id']) => boolean;
+    resetCart: () => void;
+    setVerifiedResponse: (response: VerifiedResponse) => void;
   updateCartLanguage: (language: string) => void;
 }
 export const cartContext = React.createContext<CartProviderState | undefined>(
@@ -52,7 +45,8 @@ export const CartProvider: React.FC = (props) => {
     }
   }, [state.isEmpty]);
   React.useEffect(() => {
-    saveCart(JSON.stringify(state));
+      saveCart(JSON.stringify(state));
+      console.log("cart: ", state.items)
   }, [state, saveCart]);
 
   const addItemToCart = (item: Optional<Item, 'quantity'>, quantity: number) =>

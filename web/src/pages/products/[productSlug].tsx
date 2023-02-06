@@ -1,26 +1,18 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import type {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-} from 'next';
-import { useRouter } from 'next/router';
-import type { NextPageWithLayout, Product } from '@/types';
-import { motion } from 'framer-motion';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import type {GetStaticPaths, GetStaticProps, InferGetStaticPropsType,} from 'next';
+import {useRouter} from 'next/router';
+import type {NextPageWithLayout, Product} from '@/types';
+import {motion} from 'framer-motion';
 import Layout from '@/layouts/_layout';
 import client from '@/data/client';
 import Image from '@/components/ui/image';
 import ProductSocialShare from '@/components/product/product-social-share';
 import ProductInformation from '@/components/product/product-information';
 import ProductDetailsPaper from '@/components/product/product-details-paper';
-import { LongArrowIcon } from '@/components/icons/long-arrow-icon';
-import { staggerTransition } from '@/lib/framer-motion/stagger-transition';
-import {
-  fadeInBottom,
-  fadeInBottomWithScaleX,
-  fadeInBottomWithScaleY,
-} from '@/lib/framer-motion/fade-in-bottom';
+import {LongArrowIcon} from '@/components/icons/long-arrow-icon';
+import {staggerTransition} from '@/lib/framer-motion/stagger-transition';
+import {fadeInBottom, fadeInBottomWithScaleX, fadeInBottomWithScaleY,} from '@/lib/framer-motion/fade-in-bottom';
 import placeholder from '@/assets/images/placeholders/product.svg';
 import ProductReviews from '@/components/review/product-reviews';
 import AverageRatings from '@/components/review/average-ratings';
@@ -33,16 +25,14 @@ type ParsedQueryParams = {
   productSlug: string;
 };
 
-export const getStaticPaths: GetStaticPaths<ParsedQueryParams> = async ({
-  locales,
-}) => {
+export const getStaticPaths: GetStaticPaths<ParsedQueryParams> = async ({locales,}) => {
   invariant(locales, 'locales is not defined');
-  const { data } = await client.products.all({ limit: 100 });
+  const {data} = await client.products.all({limit: 100});
   const paths = data?.flatMap((product) =>
-    locales?.map((locale) => ({
-      params: { productSlug: product.slug },
-      locale,
-    }))
+      locales?.map((locale) => ({
+        params: {productSlug: product.slug},
+        locale,
+      }))
   );
   return {
     paths,
@@ -54,11 +44,8 @@ type PageProps = {
   product: Product;
 };
 
-export const getStaticProps: GetStaticProps<
-  PageProps,
-  ParsedQueryParams
-> = async ({ params, locale }) => {
-  const { productSlug } = params!; //* we know it's required because of getStaticPaths
+export const getStaticProps: GetStaticProps<PageProps, ParsedQueryParams> = async ({params, locale}) => {
+  const {productSlug} = params!; //* we know it's required because of getStaticPaths
   try {
     const product = await client.products.get({
       slug: productSlug,
@@ -85,10 +72,8 @@ function getPreviews(gallery: any[], image: any) {
   return [{}, {}];
 }
 
-const ProductPage: NextPageWithLayout<
-  InferGetStaticPropsType<typeof getStaticProps>
-> = ({ product }) => {
-  const { t } = useTranslation('common');
+const ProductPage: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({product}) => {
+  const {t} = useTranslation('common');
   const {
     id,
     name,
