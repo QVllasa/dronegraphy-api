@@ -1,5 +1,4 @@
 import type {Product} from '@/types';
-import Router from 'next/router';
 import {motion} from 'framer-motion';
 import Image from '@/components/ui/image';
 import AnchorLink from '@/components/ui/links/anchor-link';
@@ -7,21 +6,22 @@ import {useModalAction} from '@/components/modal-views/context';
 import routes from '@/config/routes';
 import usePrice from '@/lib/hooks/use-price';
 import placeholder from '@/assets/images/placeholders/product.svg';
-import {useGridSwitcher} from '@/components/product/grid-switcher';
+import {useGridSwitcher} from '@/components/video/grid-switcher';
 import {fadeInBottomWithScaleX} from '@/lib/framer-motion/fade-in-bottom';
 import {isFree} from '@/lib/is-free';
 import {useTranslation} from 'next-i18next';
-import ReactPlayer from "react-player";
 import {useEffect, useRef, useState} from "react";
 import cn from "classnames";
-import {FaCartPlus, FaRegHeart, FaShareAlt, FaShoppingCart} from "react-icons/fa";
+import {FaCartPlus, FaShareAlt, FaShoppingCart} from "react-icons/fa";
 import {Tooltip} from "@mui/material";
 import {useCart} from "@/components/cart/lib/cart.context";
 import {generateCartItem} from "@/components/cart/lib/generate-cart-item";
 import toast from "react-hot-toast";
+import FavoriteButton from "@/components/favorite/favorite-button";
+import VideoPlayer from "@/components/video/video-player";
 
 
-export default function Card({product}: { product: Product }) {
+export default function VideoCard({product}: { product: Product }) {
     const {name, slug, image, shop} = product ?? {};
     const {openModal} = useModalAction();
     const {isGridCompact} = useGridSwitcher();
@@ -29,6 +29,7 @@ export default function Card({product}: { product: Product }) {
         amount: product.sale_price ? product.sale_price : product.price,
         baseAmount: product.price,
     });
+    const videoRef = useRef<any>(null);
 
     const {t} = useTranslation('common');
     const isFreeItem = isFree(product?.sale_price ?? product?.price);
@@ -40,33 +41,18 @@ export default function Card({product}: { product: Product }) {
         setInCart(isInCart(product?.id))
     }, [isInCart])
 
-    const playerRef = useRef(null);
-    const defaultUrl = "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8";
-
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isLoaded, setIsLoaded] = useState(false);
-
-    const goToDetailsPage = (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
-        e.stopPropagation();
-        Router.push(routes.productUrl(slug));
-    };
 
     const handleMouseEnter = () => {
         console.log("mouse enter")
-        setIsLoaded(true);
-        setIsPlaying(true);
+        videoRef.current?.play();
     };
 
     const handleMouseLeave = () => {
         console.log("mouse leave")
-        setIsLoaded(false);
-        handleReset();
+        videoRef?.current?.stop();
+        videoRef?.current?.reset();
     };
 
-    const handleReset = () => {
-        setIsPlaying(false);
-        playerRef.current.seekTo(0);
-    };
 
     function handleAddToCart() {
         console.log("on handle add cart")
@@ -85,27 +71,14 @@ export default function Card({product}: { product: Product }) {
 
     return (
         <motion.div variants={fadeInBottomWithScaleX()} title={name}>
-            <div className="group relative flex aspect-[16/9] w-full justify-center items-center overflow-hidden">
-                {/*<Image*/}
-                {/*  alt={name}*/}
-                {/*  layout="fill"*/}
-                {/*  quality={100}*/}
-                {/*  objectFit="cover"*/}
-                {/*  src={image?.thumbnail ?? placeholder}*/}
-                {/*  className="bg-light-500 dark:bg-dark-400"*/}
-                {/*/>*/}
-                <ReactPlayer playing={isPlaying}
-                             className={'overflow-hidden'}
-                             ref={playerRef}
-                             width={'auto'}
-                             height={'auto'}
-                             url={defaultUrl}
-                             controls={false} muted/>
-                <div onMouseEnter={handleMouseEnter}
-                     onMouseLeave={handleMouseLeave}
-                     className="absolute top-0 left-0 z-10 flex flex-col h-full w-full cursor-pointer items-end justify-start gap-2  p-4  opacity-0 transition-all  group-hover:opacity-100 ">
+            <div onMouseEnter={handleMouseEnter}
+                 onMouseLeave={handleMouseLeave}
+                 className="group relative flex aspect-video w-full justify-center items-center overflow-hidden border border-white">
+                <VideoPlayer video={product} ref={videoRef}/>
+                <div
+                    className="absolute top-0 right-0 z-10 flex flex-col h-auto w-auto cursor-pointer items-end justify-start gap-2  p-4   transition-all  group-hover:opacity-100 ">
                     <Tooltip title={'Add to favorites'} disableInteractive>
-                        <button
+                        <div
                             className={cn(
                                 'text-center font-medium text-light',
                                 isGridCompact ? 'text-xs' : 'text-13px'
@@ -117,11 +90,9 @@ export default function Card({product}: { product: Product }) {
                                     isGridCompact ? 'h-6 w-6' : 'h-[50px] w-[50px]'
                                 )}
                             >
-                                <FaRegHeart
-                                    className={cn(isGridCompact ? 'h-3 w-3' : 'h-5 w-5')}
-                                />
+                                <FavoriteButton productId={product.id} className={'h-3 w-3'}/>
                             </div>
-                        </button>
+                        </div>
                     </Tooltip>
                     <Tooltip title={'Add to cart'} disableInteractive>
                         <button
@@ -146,7 +117,7 @@ export default function Card({product}: { product: Product }) {
                     </Tooltip>
                     <Tooltip title={'Share'} disableInteractive>
                         <button
-                            onClick={goToDetailsPage}
+                            onClick={() => openModal('PRODUCT_DETAILS', {slug})}
                             className={cn(
                                 'relative z-[11] text-center font-medium text-light',
                                 isGridCompact ? 'text-xs' : 'text-13px'
@@ -197,7 +168,7 @@ export default function Card({product}: { product: Product }) {
 
                 <div className="flex flex-shrink-0 flex-col items-end pl-2.5">
                     <span
-                        className="rounded-2xl bg-light-500 px-1.5 py-0.5 text-13px font-semibold uppercase text-brand dark:bg-dark-300 dark:text-brand-dark">
+                        className="rounded-2xl bg-light-500 px-1.5 py-0.5 text-13px font-semibold uppercase text-brand dark:bg-dark-300 dark:text-sky-200">
                         {isFreeItem ? t('text-free') : price}
                     </span>
                     {!isFreeItem && basePrice && (

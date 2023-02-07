@@ -1,22 +1,22 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import type { GetStaticProps } from 'next';
-import { useTranslation } from 'next-i18next';
-import type { NextPageWithLayout, Product } from '@/types';
-import { motion } from 'framer-motion';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import type {GetStaticProps} from 'next';
+import {useTranslation} from 'next-i18next';
+import type {NextPageWithLayout, Product} from '@/types';
+import {motion} from 'framer-motion';
 import DashboardLayout from '@/layouts/_dashboard';
 import Image from '@/components/ui/image';
 import CartEmpty from '@/components/cart/cart-empty';
-import { fadeInBottom } from '@/lib/framer-motion/fade-in-bottom';
+import {fadeInBottom} from '@/lib/framer-motion/fade-in-bottom';
 import rangeMap from '@/lib/range-map';
 import Button from '@/components/ui/button';
 import placeholder from '@/assets/images/placeholders/product.svg';
-import { useRemoveFromWishlist, useWishlist } from '@/data/wishlist';
+import {useRemoveFromWishlist, useWishlist} from '@/data/wishlist';
 import usePrice from '@/lib/hooks/use-price';
-import { isFree } from '@/lib/is-free';
+import {isFree} from '@/lib/is-free';
 import AddToCart from '@/components/cart/add-to-cart';
-import FreeDownloadButton from '@/components/product/free-download-button';
+import FreeDownloadButton from '@/components/video/free-download-button';
 import classNames from 'classnames';
-import { HeartFillIcon } from '@/components/icons/heart-fill';
+import {HeartFillIcon} from '@/components/icons/heart-fill';
 import Link from '@/components/ui/link';
 
 function WishlistItem({ product }: { product: Product }) {

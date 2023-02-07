@@ -1,31 +1,26 @@
-import type {
-  CategoryQueryOptions,
-  NextPageWithLayout,
-  ProductQueryOptions,
-  TypeQueryOptions,
-} from '@/types';
-import type { GetStaticProps } from 'next';
+import type {CategoryQueryOptions, NextPageWithLayout, ProductQueryOptions, TypeQueryOptions,} from '@/types';
+import type {GetStaticProps} from 'next';
 import Layout from '@/layouts/_layout';
-import { useProducts } from '@/data/product';
-import Grid from '@/components/product/grid';
-import { useRouter } from 'next/router';
+import {useProducts} from '@/data/product';
+import Grid from '@/components/video/grid';
+import {useRouter} from 'next/router';
 import Seo from '@/layouts/_seo';
 import routes from '@/config/routes';
 import client from '@/data/client';
-import { dehydrate, QueryClient } from 'react-query';
-import { API_ENDPOINTS } from '@/data/client/endpoints';
-import CategoryFilter from '@/components/product/category-filter';
-import PromoCarousel from '@/components/product/promo-carousel';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTypes } from '@/data/type';
+import {dehydrate, QueryClient} from 'react-query';
+import {API_ENDPOINTS} from '@/data/client/endpoints';
+import CategoryFilter from '@/components/video/category-filter';
+import PromoCarousel from '@/components/video/promo-carousel';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {useTypes} from '@/data/type';
 import isEmpty from 'lodash/isEmpty';
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const queryClient = new QueryClient();
-  try {
-    await Promise.all([
-      queryClient.prefetchInfiniteQuery(
-        [API_ENDPOINTS.PRODUCTS, { language: locale }],
+export const getStaticProps: GetStaticProps = async ({locale}) => {
+    const queryClient = new QueryClient();
+    try {
+        await Promise.all([
+            queryClient.prefetchInfiniteQuery(
+                [API_ENDPOINTS.PRODUCTS, {language: locale}],
         ({ queryKey }) =>
           client.products.all(queryKey[1] as ProductQueryOptions)
       ),

@@ -1,34 +1,34 @@
-import { useState } from 'react';
-import { useCopyToClipboard } from 'react-use';
+import {useState} from 'react';
+import {useCopyToClipboard} from 'react-use';
 import routes from '@/config/routes';
 import {
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  FacebookIcon,
-  LinkedinIcon,
-  TwitterIcon,
+    FacebookIcon,
+    FacebookShareButton,
+    LinkedinIcon,
+    LinkedinShareButton,
+    TwitterIcon,
+    TwitterShareButton,
 } from 'react-share';
-import { LinkIcon } from '@/components/icons/link-icon';
+import {LinkIcon} from '@/components/icons/link-icon';
 import classNames from 'classnames';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 
 interface Props {
   productSlug: string;
   className?: string;
 }
 
-export default function ProductSocialShare({ productSlug, className }: Props) {
-  const { t } = useTranslation('common');
-  const productUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${routes.productUrl(
-    productSlug
-  )}`;
-  let [copyButtonStatus, setCopyButtonStatus] = useState(t('text-copy-link'));
-  let [_, copyToClipboard] = useCopyToClipboard();
-  const handleCopyToClipboard = () => {
-    copyToClipboard(productUrl);
-    setCopyButtonStatus(t('text-copied'));
-    setTimeout(() => {
+export default function VideoSocialShare({productSlug, className}: Props) {
+    const {t} = useTranslation('common');
+    const productUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${routes.productUrl(
+        productSlug
+    )}`;
+    let [copyButtonStatus, setCopyButtonStatus] = useState(t('text-copy-link'));
+    let [_, copyToClipboard] = useCopyToClipboard();
+    const handleCopyToClipboard = () => {
+        copyToClipboard(productUrl);
+        setCopyButtonStatus(t('text-copied'));
+        setTimeout(() => {
       setCopyButtonStatus(copyButtonStatus);
     }, 1000);
   };

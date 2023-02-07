@@ -1,11 +1,11 @@
-import { useMutation, useQueryClient } from 'react-query';
+import {useMutation, useQueryClient} from 'react-query';
 import cn from 'classnames';
 import client from '@/data/client';
 import Button from '@/components/ui/button';
-import { useState } from 'react';
-import { API_ENDPOINTS } from '@/data/client/endpoints';
-import { useTranslation } from 'next-i18next';
-import { useCart } from '@/components/cart/lib/cart.context';
+import {useState} from 'react';
+import {API_ENDPOINTS} from '@/data/client/endpoints';
+import {useTranslation} from 'next-i18next';
+import {useCart} from '@/components/cart/lib/cart.context';
 
 interface Props {
   productId: string;

@@ -1,19 +1,15 @@
-import { useEffect, Fragment } from 'react';
-import { useRouter } from 'next/router';
+import {Fragment, useEffect} from 'react';
+import {useRouter} from 'next/router';
 import dynamic from 'next/dynamic';
-import {
-  MODAL_VIEWS,
-  useModalAction,
-  useModalState,
-} from '@/components/modal-views/context';
-import { Dialog } from '@/components/ui/dialog';
-import { Transition } from '@/components/ui/transition';
-import { CloseIcon } from '@/components/icons/close-icon';
-import { getDirection } from '@/lib/constants';
+import {MODAL_VIEWS, useModalAction, useModalState,} from '@/components/modal-views/context';
+import {Dialog} from '@/components/ui/dialog';
+import {Transition} from '@/components/ui/transition';
+import {CloseIcon} from '@/components/icons/close-icon';
+import {getDirection} from '@/lib/constants';
 
 const LoginUserForm = dynamic(() => import('@/components/auth/login-form'));
 const ProductPopupDetails = dynamic(
-  () => import('@/components/product/product-popup')
+  () => import('@/components/video/video-popup')
 );
 const RegisterUserForm = dynamic(
   () => import('@/components/auth/register-form')

@@ -13,7 +13,7 @@ import {UserIcon} from '@/components/icons/user-icon';
 import SearchButton from '@/components/search/search-button';
 import CartButton from '@/components/cart/cart-button';
 import Hamburger from '@/components/ui/hamburger';
-import GridSwitcher from '@/components/product/grid-switcher';
+import GridSwitcher from '@/components/video/grid-switcher';
 import {useIsMounted} from '@/lib/hooks/use-is-mounted';
 import {useSwapBodyClassOnScrollDirection} from '@/lib/hooks/use-swap-body-class';
 import {useModalAction} from '@/components/modal-views/context';

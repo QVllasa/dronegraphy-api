@@ -1,5 +1,5 @@
-import { useProducts } from '@/data/product';
-import Grid from '@/components/product/grid';
+import {useProducts} from '@/data/product';
+import Grid from '@/components/video/grid';
 
 export default function SearchResults({ searchText }: { searchText: string }) {
   const { products, loadMore, hasNextPage, isLoadingMore, isLoading } =

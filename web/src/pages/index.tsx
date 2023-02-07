@@ -2,14 +2,14 @@ import type {CategoryQueryOptions, NextPageWithLayout, ProductQueryOptions, Sett
 import type {GetStaticProps} from 'next';
 import Layout from '@/layouts/_layout';
 import {useProducts} from '@/data/product';
-import Grid from '@/components/product/grid';
+import Grid from '@/components/video/grid';
 import {useRouter} from 'next/router';
 import Seo from '@/layouts/_seo';
 import routes from '@/config/routes';
 import client from '@/data/client';
 import {dehydrate, QueryClient} from 'react-query';
 import {API_ENDPOINTS} from '@/data/client/endpoints';
-import CategoryFilter from '@/components/product/category-filter';
+import CategoryFilter from '@/components/video/category-filter';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 
 export const getStaticProps: GetStaticProps = async ({locale}) => {

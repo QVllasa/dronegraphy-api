@@ -1,34 +1,34 @@
-import type { Product } from '@/types';
+import type {Product} from '@/types';
 import cn from 'classnames';
 import routes from '@/config/routes';
 import AnchorLink from '@/components/ui/links/anchor-link';
-import { ShoppingCartIcon } from '@/components/icons/shopping-cart-icon';
+import {ShoppingCartIcon} from '@/components/icons/shopping-cart-icon';
 import Image from '@/components/ui/image';
 import AddToCart from '@/components/cart/add-to-cart';
 import placeholder from '@/assets/images/placeholders/product.svg';
-import { isFree } from '@/lib/is-free';
-import { DownloadIcon } from '@/components/icons/download-icon';
+import {isFree} from '@/lib/is-free';
+import {DownloadIcon} from '@/components/icons/download-icon';
 import pluralize from 'pluralize';
 import FreeDownloadButton from './free-download-button';
 import FavoriteButton from '@/components/favorite/favorite-button';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 
 interface Props {
   product: Product;
   className?: string;
 }
 
-export default function ProductDetailsPaper({ product, className }: Props) {
-  const {
-    id,
-    name,
-    slug,
-    shop,
-    orders_count,
-    total_downloads,
-    preview_url,
-    price,
-    sale_price,
+export default function VideoDetailsPaper({product, className}: Props) {
+    const {
+        id,
+        name,
+        slug,
+        shop,
+        orders_count,
+        total_downloads,
+        preview_url,
+        price,
+        sale_price,
   } = product;
   const isFreeItem = isFree(sale_price ?? price);
   const { t } = useTranslation('common');

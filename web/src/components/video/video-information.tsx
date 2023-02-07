@@ -1,14 +1,13 @@
 import dayjs from 'dayjs';
-import { UpdateIcon } from '@/components/icons/update-icon';
-import { CalenderIcon } from '@/components/icons/calendar-icon';
-import { LayoutIcon } from '@/components/icons/layout-icon';
-import { LabelIcon } from '@/components/icons/label-icon';
+import {UpdateIcon} from '@/components/icons/update-icon';
+import {CalenderIcon} from '@/components/icons/calendar-icon';
+import {LabelIcon} from '@/components/icons/label-icon';
 import AnchorLink from '@/components/ui/links/anchor-link';
 import classNames from 'classnames';
-import { Tag } from '@/types';
+import {Tag} from '@/types';
 import routes from '@/config/routes';
-import { useTranslation } from 'next-i18next';
-import { getIcon } from '@/lib/get-icon';
+import {useTranslation} from 'next-i18next';
+import {getIcon} from '@/lib/get-icon';
 import * as TypeIcons from '@/components/icons/type/index';
 
 interface Props {
@@ -20,17 +19,17 @@ interface Props {
   icon?: any;
 }
 
-export default function ProductInformation({
-  className,
-  updated_at,
-  created_at,
-  tags,
-  layoutType,
-  icon,
-}: Props) {
-  const { t } = useTranslation('common');
-  return (
-    <div className={classNames('space-y-4 text-13px', className)}>
+export default function VideoInformation({
+                                             className,
+                                             updated_at,
+                                             created_at,
+                                             tags,
+                                             layoutType,
+                                             icon,
+                                         }: Props) {
+    const {t} = useTranslation('common');
+    return (
+        <div className={classNames('space-y-4 text-13px', className)}>
       <div className="flex items-start text-dark dark:text-light">
         <strong className="flex w-36 flex-shrink-0 items-center font-normal text-dark-600 dark:text-light-600">
           <span className="w-8 flex-shrink-0 text-dark-900 dark:text-light-900">

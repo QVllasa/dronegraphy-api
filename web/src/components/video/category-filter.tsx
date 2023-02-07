@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import cn from 'classnames';
-import { ChevronLeft } from '@/components/icons/chevron-left';
-import { ChevronRight } from '@/components/icons/chevron-right';
-import { useScrollableSlider } from '@/lib/hooks/use-scrollable-slider';
-import { useCategories } from '@/data/category';
-import { useTranslation } from 'next-i18next';
+import {ChevronLeft} from '@/components/icons/chevron-left';
+import {ChevronRight} from '@/components/icons/chevron-right';
+import {useScrollableSlider} from '@/lib/hooks/use-scrollable-slider';
+import {useCategories} from '@/data/category';
+import {useTranslation} from 'next-i18next';
 
 function CategoryItem({
   categoryName,

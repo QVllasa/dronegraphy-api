@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
-import { useIsDarkMode } from '@/lib/hooks/use-is-dark-mode';
-import { useIsMounted } from '@/lib/hooks/use-is-mounted';
+import {useIsDarkMode} from '@/lib/hooks/use-is-dark-mode';
+import {useIsMounted} from '@/lib/hooks/use-is-mounted';
 
 export default function ProductCardLoader(props: any) {
   const isMounted = useIsMounted();

@@ -1,7 +1,7 @@
-import { atom, useAtom } from 'jotai';
+import {atom, useAtom} from 'jotai';
 import Button from '@/components/ui/button';
-import { CompactGridIcon } from '@/components/icons/compact-grid-icon';
-import { NormalGridIcon } from '@/components/icons/normal-grid-icon';
+import {CompactGridIcon} from '@/components/icons/compact-grid-icon';
+import {NormalGridIcon} from '@/components/icons/normal-grid-icon';
 
 const gridCompactViewAtom = atom(true);
 export function useGridSwitcher() {

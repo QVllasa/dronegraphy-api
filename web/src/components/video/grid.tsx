@@ -1,20 +1,20 @@
-import type { Product } from '@/types';
-import { motion } from 'framer-motion';
+import type {Product} from '@/types';
+import {motion} from 'framer-motion';
 import cn from 'classnames';
 import Button from '@/components/ui/button';
-import Card from '@/components/product/card';
-import ProductCardLoader from '@/components/product/product-loader';
-import { useGridSwitcher } from '@/components/product/grid-switcher';
+import Card from '@/components/video/video-card';
+import ProductCardLoader from '@/components/video/video-loader';
+import {useGridSwitcher} from '@/components/video/grid-switcher';
 import ItemNotFound from '@/components/ui/item-not-found';
 import rangeMap from '@/lib/range-map';
-import { staggerTransition } from '@/lib/framer-motion/stagger-transition';
-import { useTranslation } from 'next-i18next';
+import {staggerTransition} from '@/lib/framer-motion/stagger-transition';
+import {useTranslation} from 'next-i18next';
 
 interface GridProps {
-  products: Product[];
-  onLoadMore?: () => void;
-  hasNextPage?: boolean;
-  isLoadingMore?: boolean;
+    products: Product[];
+    onLoadMore?: () => void;
+    hasNextPage?: boolean;
+    isLoadingMore?: boolean;
   isLoading?: boolean;
   limit?: number;
 }

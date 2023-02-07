@@ -69,7 +69,7 @@ export default function AddToCart({
           )}
           disabled={inCart}
       >
-        {t('text-add-to-cart')} {withPrice && price}
+        {inCart ? 'Already in your Cart' : t('text-add-to-cart') + withPrice && price}
         <svg
             viewBox="0 0 37 37"
             xmlns="http://www.w3.org/2000/svg"

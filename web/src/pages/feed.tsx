@@ -1,18 +1,14 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import type { GetStaticProps } from 'next';
-import type {
-  FollowedShopsQueryOptions,
-  NextPageWithLayout,
-  SettingsQueryOptions,
-} from '@/types';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import type {GetStaticProps} from 'next';
+import type {FollowedShopsQueryOptions, NextPageWithLayout, SettingsQueryOptions,} from '@/types';
 import Layout from '@/layouts/_layout';
-import { useFollowedShopsProducts } from '@/data/shop';
-import Grid from '@/components/product/grid';
+import {useFollowedShopsProducts} from '@/data/shop';
+import Grid from '@/components/video/grid';
 import Seo from '@/layouts/_seo';
 import routes from '@/config/routes';
-import { useTranslation } from 'next-i18next';
-import { dehydrate, QueryClient } from 'react-query';
-import { API_ENDPOINTS } from '@/data/client/endpoints';
+import {useTranslation} from 'next-i18next';
+import {dehydrate, QueryClient} from 'react-query';
+import {API_ENDPOINTS} from '@/data/client/endpoints';
 import client from '@/data/client';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {

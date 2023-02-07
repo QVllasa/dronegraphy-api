@@ -1,34 +1,25 @@
-import type {
-  NextPageWithLayout,
-  ProductQueryOptions,
-  SettingsQueryOptions,
-  Shop,
-} from '@/types';
-import type {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-} from 'next';
-import { dehydrate, QueryClient } from 'react-query';
-import { motion } from 'framer-motion';
+import type {NextPageWithLayout, ProductQueryOptions, SettingsQueryOptions, Shop,} from '@/types';
+import type {GetStaticPaths, GetStaticProps, InferGetStaticPropsType,} from 'next';
+import {dehydrate, QueryClient} from 'react-query';
+import {motion} from 'framer-motion';
 import cn from 'classnames';
 import client from '@/data/client';
 import Layout from '@/layouts/_layout';
 import Image from '@/components/ui/image';
-import { Tab } from '@/components/ui/tab';
-import Grid from '@/components/product/grid';
-import { MapPinIcon } from '@/components/icons/map-pin-icon';
-import { AtIcon } from '@/components/icons/at-icon';
-import { getIcon } from '@/lib/get-icon';
+import {Tab} from '@/components/ui/tab';
+import Grid from '@/components/video/grid';
+import {MapPinIcon} from '@/components/icons/map-pin-icon';
+import {AtIcon} from '@/components/icons/at-icon';
+import {getIcon} from '@/lib/get-icon';
 import * as socialIcons from '@/components/icons/social';
-import { fadeInBottom } from '@/lib/framer-motion/fade-in-bottom';
-import { useProducts } from '@/data/product';
-import { API_ENDPOINTS } from '@/data/client/endpoints';
+import {fadeInBottom} from '@/lib/framer-motion/fade-in-bottom';
+import {useProducts} from '@/data/product';
+import {API_ENDPOINTS} from '@/data/client/endpoints';
 import placeholder from '@/assets/images/placeholders/product.svg';
-import { formatAddress } from '@/lib/format-address';
+import {formatAddress} from '@/lib/format-address';
 import FollowButton from '@/components/follow/follow-button';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import invariant from 'tiny-invariant';
 
 // This function gets called at build time

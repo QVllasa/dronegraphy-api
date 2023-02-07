@@ -1,14 +1,14 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import type { GetStaticProps } from 'next';
-import type { NextPageWithLayout } from '@/types';
-import { useState } from 'react';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import type {GetStaticProps} from 'next';
+import type {NextPageWithLayout} from '@/types';
+import {useState} from 'react';
 import Layout from '@/layouts/_layout';
-import { usePopularProducts } from '@/data/product';
-import Grid from '@/components/product/grid';
+import {usePopularProducts} from '@/data/product';
+import Grid from '@/components/video/grid';
 import Seo from '@/layouts/_seo';
 import routes from '@/config/routes';
 import ButtonGroup from '@/components/ui/button-group';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 
 const MAP_RANGE_FILTER = [
   {

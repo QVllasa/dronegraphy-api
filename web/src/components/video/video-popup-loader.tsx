@@ -1,14 +1,15 @@
-export default function ProductPopupLoader() {
-  return (
-    <div className="max-w-full bg-light text-left dark:bg-dark-250 xs:w-[430px] sm:w-[550px] md:w-[600px] lg:w-[960px] xl:w-[1200px] 3xl:w-[1460px]">
-      <div className="h-16 w-full bg-light-400 dark:bg-dark-100 lg:h-[70px] xl:h-20" />
-      <div className="grid p-4 md:p-6 lg:grid-cols-9 lg:gap-7 xl:gap-8 xl:p-8 3xl:grid-cols-7 3xl:gap-10">
-        <div className="lg:col-span-5 3xl:col-span-4">
-          <div className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60" />
-          <div className="grid grid-cols-4 gap-4 pt-4 sm:gap-5 sm:pt-5">
-            <span className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60" />
-            <span className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60" />
-            <span className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60" />
+export default function VideoPopupLoader() {
+    return (
+        <div
+            className="max-w-full bg-light text-left dark:bg-dark-250 xs:w-[430px] sm:w-[550px] md:w-[600px] lg:w-[960px] xl:w-[1200px] 3xl:w-[1460px]">
+            <div className="h-16 w-full bg-light-400 dark:bg-dark-100 lg:h-[70px] xl:h-20"/>
+            <div className="grid p-4 md:p-6 lg:grid-cols-9 lg:gap-7 xl:gap-8 xl:p-8 3xl:grid-cols-7 3xl:gap-10">
+                <div className="lg:col-span-5 3xl:col-span-4">
+                    <div className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60"/>
+                    <div className="grid grid-cols-4 gap-4 pt-4 sm:gap-5 sm:pt-5">
+                        <span className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60"/>
+                        <span className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60"/>
+                        <span className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60"/>
             <span className="aspect-[3/2] w-full animate-pulse bg-light-400 dark:bg-dark-100/60" />
           </div>
         </div>

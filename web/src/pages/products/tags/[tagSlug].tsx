@@ -1,17 +1,13 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import type { NextPageWithLayout, ProductQueryOptions, Tag } from '@/types';
-import type {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-} from 'next';
-import Grid from '@/components/product/grid';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import type {NextPageWithLayout, ProductQueryOptions, Tag} from '@/types';
+import type {GetStaticPaths, GetStaticProps, InferGetStaticPropsType,} from 'next';
+import Grid from '@/components/video/grid';
 import client from '@/data/client';
-import { API_ENDPOINTS } from '@/data/client/endpoints';
-import { useProducts } from '@/data/product';
+import {API_ENDPOINTS} from '@/data/client/endpoints';
+import {useProducts} from '@/data/product';
 import Layout from '@/layouts/_layout';
-import { dehydrate, QueryClient } from 'react-query';
+import {dehydrate, QueryClient} from 'react-query';
 import invariant from 'tiny-invariant';
 
 // This function gets called at build time

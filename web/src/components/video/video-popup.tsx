@@ -1,22 +1,22 @@
 import Image from '@/components/ui/image';
 import routes from '@/config/routes';
-import { useModalState } from '@/components/modal-views/context';
+import {useModalState} from '@/components/modal-views/context';
 import AnchorLink from '@/components/ui/links/anchor-link';
-import ProductSocialShare from '@/components/product/product-social-share';
-import ProductInformation from '@/components/product/product-information';
-import { ShoppingCartIcon } from '@/components/icons/shopping-cart-icon';
-import ProductThumbnailGallery from '@/components/product/product-thumbnail-gallery';
+import VideoSocialShare from '@/components/video/video-social-share';
+import VideoInformation from '@/components/video/video-information';
+import {ShoppingCartIcon} from '@/components/icons/shopping-cart-icon';
+import VideoThumbnailGallery from '@/components/video/video-thumbnail-gallery';
 import AddToCart from '@/components/cart/add-to-cart';
 import placeholder from '@/assets/images/placeholders/product.svg';
-import { isFree } from '@/lib/is-free';
-import FreeDownloadButton from '@/components/product/free-download-button';
-import { DownloadIcon } from '@/components/icons/download-icon';
+import {isFree} from '@/lib/is-free';
+import FreeDownloadButton from '@/components/video/free-download-button';
+import {DownloadIcon} from '@/components/icons/download-icon';
 import pluralize from 'pluralize';
-import { useProduct } from '@/data/product';
-import ProductPopupLoader from '@/components/product/product-popup-loader';
+import {useProduct} from '@/data/product';
+import VideoPopupLoader from '@/components/video/video-popup-loader';
 import isEmpty from 'lodash/isEmpty';
 import FavoriteButton from '@/components/favorite/favorite-button';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 
 function getPreviews(gallery: any[], image: any) {
   if (!isEmpty(gallery) && Array.isArray(gallery)) return gallery;
@@ -28,8 +28,8 @@ export default function ProductPopupDetails() {
   const { data } = useModalState();
   const { t } = useTranslation('common');
   const { product, isLoading } = useProduct(data.slug);
-  if (!product && isLoading) return <ProductPopupLoader />;
-  if (!product) return <div>{t('text-not-found')}</div>;
+    if (!product && isLoading) return <VideoPopupLoader/>;
+    if (!product) return <div>{t('text-not-found')}</div>;
   const {
     id,
     name,
@@ -92,7 +92,7 @@ export default function ProductPopupDetails() {
       </div>
       <div className="flex flex-col p-4 rtl:space-x-reverse md:p-6 lg:flex-row lg:space-x-7 xl:space-x-8 xl:p-8 3xl:space-x-10">
         <div className="mb-4 w-full shrink-0 items-center justify-center overflow-hidden md:mb-6 lg:mb-auto lg:max-w-[480px] xl:flex xl:max-w-[570px] 2xl:max-w-[650px] 3xl:max-w-[795px]">
-          <ProductThumbnailGallery gallery={previews} />
+            <VideoThumbnailGallery gallery={previews}/>
         </div>
         <div className="flex shrink-0 flex-col justify-between text-13px lg:w-[400px] xl:w-[520px] 3xl:w-[555px]">
           <div className="pb-7 xs:pb-8 lg:pb-10">
@@ -101,27 +101,29 @@ export default function ProductPopupDetails() {
             </div>
             <div className="flex space-x-6 border-t border-light-500 py-3 rtl:space-x-reverse dark:border-dark-500 md:py-4 3xl:py-5">
               {!isFreeItem && (
-                <div className="flex items-center tracking-[.1px] text-dark dark:text-light">
-                  <ShoppingCartIcon className="h-[18px] w-[18px] text-dark-900 ltr:mr-2.5 rtl:ml-2.5 dark:text-light-800" />
-                  {pluralize(t('text-sale'), orders_count, true)}
-                </div>
+                  <div className="flex items-center tracking-[.1px] text-dark dark:text-light">
+                      <ShoppingCartIcon
+                          className="h-[18px] w-[18px] text-dark-900 ltr:mr-2.5 rtl:ml-2.5 dark:text-light-800"/>
+                      {pluralize(t('text-sale'), orders_count, true)}
+                  </div>
               )}
-              <div className="flex items-center tracking-[.1px] text-dark dark:text-light">
-                <DownloadIcon className="h-[18px] w-[18px] text-dark-900 ltr:mr-2.5 rtl:ml-2.5 dark:text-light-800" />
-                {pluralize(t('text-download'), total_downloads, true)}
-              </div>
+                <div className="flex items-center tracking-[.1px] text-dark dark:text-light">
+                    <DownloadIcon
+                        className="h-[18px] w-[18px] text-dark-900 ltr:mr-2.5 rtl:ml-2.5 dark:text-light-800"/>
+                    {pluralize(t('text-download'), total_downloads, true)}
+                </div>
             </div>
-            <ProductInformation
-              tags={tags}
-              created_at={created_at}
-              updated_at={updated_at}
-              layoutType={type.name}
-              //@ts-ignore
-              icon={type?.icon}
-              className="border-t border-light-500 py-5 dark:border-dark-500 lg:py-6 3xl:py-10"
-            />
-            <div className="border-t border-light-500 pt-5 dark:border-dark-500">
-              <ProductSocialShare productSlug={slug} />
+              <VideoInformation
+                  tags={tags}
+                  created_at={created_at}
+                  updated_at={updated_at}
+                  layoutType={type.name}
+                  //@ts-ignore
+                  icon={type?.icon}
+                  className="border-t border-light-500 py-5 dark:border-dark-500 lg:py-6 3xl:py-10"
+              />
+              <div className="border-t border-light-500 pt-5 dark:border-dark-500">
+                  <VideoSocialShare productSlug={slug}/>
             </div>
           </div>
           <div className="flex flex-col-reverse items-center xs:flex-row xs:gap-2.5 xs:pb-4 md:flex-nowrap md:gap-3.5 lg:gap-4 3xl:pb-14">

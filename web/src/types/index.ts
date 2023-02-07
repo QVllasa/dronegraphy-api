@@ -330,29 +330,51 @@ export interface CheckoutVerificationInput {
 
 export interface VerifiedCheckoutResponse {
   total_tax: number;
-  shipping_charge: number;
-  unavailable_products: string[];
-  wallet_currency: number;
-  wallet_amount: number;
+    shipping_charge: number;
+    unavailable_products: string[];
+    wallet_currency: number;
+    wallet_amount: number;
 }
 
 export interface RatingCount {
-  rating: number;
-  total: number;
+    rating: number;
+    total: number;
+}
+
+
+interface FileInfo {
+    size: number;
+    contentType: string;
+    name: string;
 }
 
 export interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  price: number;
-  sale_price: number;
-  orders_count: number;
-  total_downloads: number;
-  image: Attachment;
-  gallery: Attachment[];
-  shop: Shop;
+    id: string;
+    key: number;
+    title: string;
+    location: string;
+    formats: string[];
+    fps: number;
+    camera: string;
+    downloads: number;
+    converted: boolean;
+    views: number;
+    storageRef: string;
+    storageContent: FileInfo[];
+    creator?: User;
+    thumbnail?: string;
+    sell?: boolean;
+    hls?: string;
+    name: string;
+    slug: string;
+    description: string;
+    price: number;
+    sale_price: number;
+    orders_count: number;
+    total_downloads: number;
+    image: Attachment;
+    gallery: Attachment[];
+    shop: Shop;
   created_at: string;
   updated_at: string;
   preview_url: string;

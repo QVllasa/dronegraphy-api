@@ -1,9 +1,8 @@
-import { Swiper, SwiperSlide, Navigation } from '@/components/ui/slider';
+import {Navigation, Swiper, SwiperSlide} from '@/components/ui/slider';
 import Image from '@/components/ui/image';
-import { ChevronLeft } from '@/components/icons/chevron-left';
-import { ChevronRight } from '@/components/icons/chevron-right';
-import placeholder from '@/assets/images/placeholders/product.svg';
-import { Type } from '@/types';
+import {ChevronLeft} from '@/components/icons/chevron-left';
+import {ChevronRight} from '@/components/icons/chevron-right';
+import {Type} from '@/types';
 
 const carouselBreakpoints = {
   1024: {

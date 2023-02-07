@@ -1,14 +1,8 @@
-import {
-  Swiper,
-  SwiperSlide,
-  SwiperOptions,
-  Navigation,
-  Thumbs,
-} from '@/components/ui/slider';
+import {Navigation, Swiper, SwiperOptions, SwiperSlide, Thumbs,} from '@/components/ui/slider';
 import Image from '@/components/ui/image';
-import { useRef, useState } from 'react';
-import { ChevronLeft } from '@/components/icons/chevron-left';
-import { ChevronRight } from '@/components/icons/chevron-right';
+import {useRef, useState} from 'react';
+import {ChevronLeft} from '@/components/icons/chevron-left';
+import {ChevronRight} from '@/components/icons/chevron-right';
 import placeholder from '@/assets/images/placeholders/product.svg';
 
 interface Props {
@@ -21,17 +15,17 @@ const swiperParams: SwiperOptions = {
   spaceBetween: 0,
 };
 
-export default function ProductThumbnailGallery({
-  gallery,
-  className = 'w-full',
-}: Props) {
-  let [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
-  const prevRef = useRef<HTMLDivElement>(null);
-  const nextRef = useRef<HTMLDivElement>(null);
-  return (
-    <div className={className}>
-      <div className="relative mb-3 w-full overflow-hidden xl:mb-5">
-        <Swiper
+export default function VideoThumbnailGallery({
+                                                  gallery,
+                                                  className = 'w-full',
+                                              }: Props) {
+    let [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+    const prevRef = useRef<HTMLDivElement>(null);
+    const nextRef = useRef<HTMLDivElement>(null);
+    return (
+        <div className={className}>
+            <div className="relative mb-3 w-full overflow-hidden xl:mb-5">
+                <Swiper
           id="productGallery"
           speed={400}
           allowTouchMove={false}
