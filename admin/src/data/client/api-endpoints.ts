@@ -21,7 +21,7 @@ export const API_ENDPOINTS = {
   PROFILE_UPDATE: 'profile-update',
   LOGOUT: 'logout',
   ME: 'me',
-  TOKEN: 'token',
+  LOGIN: 'login',
   BLOCK_USER: 'users/block-user',
   UNBLOCK_USER: 'users/unblock-user',
   CHANGE_PASSWORD: 'change-password',
