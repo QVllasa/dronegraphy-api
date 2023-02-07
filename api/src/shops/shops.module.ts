@@ -8,8 +8,12 @@ import {
     StaffsController,
     TopShopsController,
 } from './shops.controller';
+import {JwtModule} from "@nestjs/jwt";
+import {jwtConfig} from "../config/jwt.config";
+import {JwtStrategy} from "../auth/jwt.strategy";
 
 @Module({
+    imports: [JwtModule.registerAsync(jwtConfig),],
     controllers: [
         ShopsController,
         StaffsController,
@@ -17,8 +21,9 @@ import {
         DisapproveShop,
         FollowShopController,
         FollowedShops,
+
     ],
-    providers: [ShopsService],
+    providers: [ShopsService, JwtStrategy],
 })
 export class ShopsModule {
 }

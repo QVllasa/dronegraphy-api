@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post, Put, Query,} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query, Req, UseGuards,} from '@nestjs/common';
 import {ShopsService} from './shops.service';
 import {CreateShopDto} from './dto/create-shop.dto';
 import {UpdateShopDto} from './dto/update-shop.dto';
@@ -6,14 +6,17 @@ import {GetShopsDto, ShopPaginator} from './dto/get-shops.dto';
 import {GetStaffsDto} from './dto/get-staffs.dto';
 import {UserPaginator} from 'src/users/dto/get-users.dto';
 import {GetTopShopsDto} from './dto/get-top-shops.dto';
+import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 
 @Controller('shops')
 export class ShopsController {
   constructor(private readonly shopsService: ShopsService) {
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createShopDto: CreateShopDto) {
+  create(@Body() createShopDto: CreateShopDto, @Req() req) {
+    console.log("token post create shop: ", req?.headers?.authorization)
     return this.shopsService.create(createShopDto);
   }
 

@@ -11,7 +11,7 @@
       "original": "https://pixarlaravel.s3.ap-southeast-1.amazonaws.com/466/logo.jpg",
       "thumbnail": "https://pixarlaravel.s3.ap-southeast-1.amazonaws.com/466/conversions/logo-thumbnail.jpg"
     },
-    "is_active": 0,
+    "is_active": 1,
     "address": {
       "zip": "1204",
       "city": "Dhaka",

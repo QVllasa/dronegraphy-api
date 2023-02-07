@@ -1,14 +1,7 @@
-import {
-  QueryOptions,
-  Shop,
-  ShopInput,
-  ShopPaginator,
-  ShopQueryOptions,
-} from '@/types';
-import { ApproveShopInput } from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { HttpClient } from './http-client';
-import { crudFactory } from './curd-factory';
+import {ApproveShopInput, QueryOptions, Shop, ShopInput, ShopPaginator, ShopQueryOptions,} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {HttpClient} from './http-client';
+import {crudFactory} from './crud-factory';
 
 export const shopClient = {
   ...crudFactory<Shop, QueryOptions, ShopInput>(API_ENDPOINTS.SHOPS),

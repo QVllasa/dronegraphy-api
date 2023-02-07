@@ -1,13 +1,13 @@
-import { useTranslation } from 'next-i18next';
-import { Routes } from '@/config/routes';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { API_ENDPOINTS } from '@/data/client/api-endpoints';
-import { toast } from 'react-toastify';
-import { shopClient } from './client/shop';
-import { mapPaginatorData } from '@/utils/data-mappers';
-import { useRouter } from 'next/router';
-import { adminOnly, getAuthCredentials, hasAccess } from '@/utils/auth-utils';
-import { Shop, ShopPaginator, ShopQueryOptions } from '@/types';
+import {useTranslation} from 'next-i18next';
+import {Routes} from '@/config/routes';
+import {useMutation, useQuery, useQueryClient} from 'react-query';
+import {API_ENDPOINTS} from '@/data/client/api-endpoints';
+import {toast} from 'react-toastify';
+import {shopClient} from './client/shop';
+import {mapPaginatorData} from '@/utils/data-mappers';
+import {useRouter} from 'next/router';
+import {adminOnly, getAuthCredentials, hasAccess} from '@/utils/auth-utils';
+import {Shop, ShopPaginator, ShopQueryOptions} from '@/types';
 
 export const useApproveShopMutation = () => {
   const { t } = useTranslation();
@@ -42,12 +42,15 @@ export const useCreateShopMutation = () => {
   const router = useRouter();
 
   return useMutation(shopClient.create, {
-    onSuccess: () => {
-      const { permissions } = getAuthCredentials();
+    onSuccess: (data: Shop) => {
+      console.log("shop created: ", data);
+      //superadmin gets back to my shops and owner gets back to his dashboard
+      const {permissions} = getAuthCredentials();
       if (hasAccess(adminOnly, permissions)) {
         return router.push(Routes.adminMyShops);
       }
       router.push(Routes.dashboard);
+
     },
     // Always refetch after error or success:
     onSettled: () => {

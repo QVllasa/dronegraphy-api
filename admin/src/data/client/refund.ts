@@ -1,13 +1,7 @@
-import type {
-  QueryOptions,
-  Order,
-  CreateOrderInput,
-  OrderQueryOptions,
-  OrderPaginator,
-} from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from './http-client';
+import type {CreateOrderInput, Order, OrderPaginator, OrderQueryOptions, QueryOptions,} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from './http-client';
 
 export const refundClient = {
   ...crudFactory<Order, QueryOptions, CreateOrderInput>(API_ENDPOINTS.REFUNDS),

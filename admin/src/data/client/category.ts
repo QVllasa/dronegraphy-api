@@ -1,13 +1,7 @@
-import {
-  Category,
-  CategoryPaginator,
-  CategoryQueryOptions,
-  CreateCategoryInput,
-  QueryOptions,
-} from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from './http-client';
+import {Category, CategoryPaginator, CategoryQueryOptions, CreateCategoryInput, QueryOptions,} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from './http-client';
 
 export const categoryClient = {
   ...crudFactory<Category, QueryOptions, CreateCategoryInput>(

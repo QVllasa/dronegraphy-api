@@ -1,14 +1,7 @@
-import {
-  Product,
-  CreateProduct,
-  ProductPaginator,
-  QueryOptions,
-  GetParams,
-  ProductQueryOptions,
-} from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from './http-client';
+import {CreateProduct, GetParams, Product, ProductPaginator, ProductQueryOptions, QueryOptions,} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from './http-client';
 
 export const productClient = {
   ...crudFactory<Product, QueryOptions, CreateProduct>(API_ENDPOINTS.PRODUCTS),

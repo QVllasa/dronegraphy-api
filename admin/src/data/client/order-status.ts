@@ -1,13 +1,13 @@
-import { crudFactory } from '@/data/client/curd-factory';
+import {crudFactory} from '@/data/client/crud-factory';
 import {
-  CreateOrderStatusInput,
-  OrderStatus,
-  OrderStatusPaginator,
-  OrderStatusQueryOptions,
-  QueryOptions,
+    CreateOrderStatusInput,
+    OrderStatus,
+    OrderStatusPaginator,
+    OrderStatusQueryOptions,
+    QueryOptions,
 } from '@/types';
-import { API_ENDPOINTS } from '@/data/client/api-endpoints';
-import { HttpClient } from '@/data/client/http-client';
+import {API_ENDPOINTS} from '@/data/client/api-endpoints';
+import {HttpClient} from '@/data/client/http-client';
 
 export const orderStatusClient = {
   ...crudFactory<OrderStatus, QueryOptions, CreateOrderStatusInput>(

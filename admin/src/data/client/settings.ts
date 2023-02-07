@@ -1,7 +1,7 @@
-import { Settings, SettingsInput, SettingsOptionsInput } from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from '@/data/client/http-client';
+import {Settings, SettingsInput, SettingsOptionsInput} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from '@/data/client/http-client';
 
 export const settingsClient = {
   ...crudFactory<Settings, any, SettingsOptionsInput>(API_ENDPOINTS.SETTINGS),

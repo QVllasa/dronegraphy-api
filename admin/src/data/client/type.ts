@@ -1,7 +1,7 @@
-import { crudFactory } from '@/data/client/curd-factory';
-import { CreateTypeInput, QueryOptions, Type, TypeQueryOptions } from '@/types';
-import { API_ENDPOINTS } from '@/data/client/api-endpoints';
-import { HttpClient } from '@/data/client/http-client';
+import {crudFactory} from '@/data/client/crud-factory';
+import {CreateTypeInput, QueryOptions, Type, TypeQueryOptions} from '@/types';
+import {API_ENDPOINTS} from '@/data/client/api-endpoints';
+import {HttpClient} from '@/data/client/http-client';
 
 export const typeClient = {
   ...crudFactory<Type, QueryOptions, CreateTypeInput>(API_ENDPOINTS.TYPES),

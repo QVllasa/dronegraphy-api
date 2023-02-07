@@ -1,13 +1,7 @@
-import {
-  Tax,
-  QueryOptions,
-  TaxInput,
-  TaxQueryOptions,
-  TaxPaginator,
-} from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from '@/data/client/http-client';
+import {QueryOptions, Tax, TaxInput, TaxPaginator, TaxQueryOptions,} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from '@/data/client/http-client';
 
 export const taxClient = {
   ...crudFactory<Tax, QueryOptions, TaxInput>(API_ENDPOINTS.TAXES),

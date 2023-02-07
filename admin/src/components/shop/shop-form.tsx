@@ -121,8 +121,8 @@ const ShopForm = ({ initialValues }: { initialValues?: any }) => {
           address: restAddress,
           settings,
           balance: {
-              id: initialValues.balance?._id,
-              ...values.balance,
+            _id: initialValues.balance?._id,
+            ...values.balance,
           },
       });
     } else {
@@ -313,7 +313,7 @@ const ShopForm = ({ initialValues }: { initialValues?: any }) => {
                 (item: ShopSocialInput & { id: string }, index: number) => (
                   <div
                       className="border-b border-dashed border-border-200 py-5 first:mt-5 first:border-t last:border-b-0 md:py-8 md:first:mt-10"
-                      key={item._id}
+                      key={item.id}
                   >
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-5">
                       <div className="sm:col-span-2">

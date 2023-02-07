@@ -1,4 +1,4 @@
-import { crudFactory } from '@/data/client/curd-factory';
+import {crudFactory} from '@/data/client/crud-factory';
 import {
   CreateManufacturerInput,
   Manufacturer,
@@ -6,8 +6,8 @@ import {
   ManufacturerQueryOptions,
   QueryOptions,
 } from '@/types';
-import { API_ENDPOINTS } from '@/data/client/api-endpoints';
-import { HttpClient } from '@/data/client/http-client';
+import {API_ENDPOINTS} from '@/data/client/api-endpoints';
+import {HttpClient} from '@/data/client/http-client';
 
 export const manufacturerClient = {
   ...crudFactory<Manufacturer, QueryOptions, CreateManufacturerInput>(

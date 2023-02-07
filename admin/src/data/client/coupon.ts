@@ -1,13 +1,7 @@
-import {
-  Coupon,
-  CouponInput,
-  CouponPaginator,
-  CouponQueryOptions,
-} from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from './http-client';
-import { VerifyCouponInputType } from '@/types';
+import {Coupon, CouponInput, CouponPaginator, CouponQueryOptions, VerifyCouponInputType,} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from './http-client';
 
 export const couponClient = {
   ...crudFactory<Coupon, any, CouponInput>(API_ENDPOINTS.COUPONS),

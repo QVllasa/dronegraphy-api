@@ -1,13 +1,7 @@
-import {
-  Author,
-  CreateAuthorInput,
-  AuthorQueryOptions,
-  AuthorPaginator,
-  QueryOptions,
-} from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from './http-client';
+import {Author, AuthorPaginator, AuthorQueryOptions, CreateAuthorInput, QueryOptions,} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from './http-client';
 
 export const AuthorClient = {
   ...crudFactory<Author, QueryOptions, CreateAuthorInput>(

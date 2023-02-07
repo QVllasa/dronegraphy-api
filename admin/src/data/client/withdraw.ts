@@ -1,14 +1,14 @@
 import {
+  ApproveWithdrawInput,
+  CreateWithdrawInput,
+  QueryOptions,
   Withdraw,
   WithdrawPaginator,
   WithdrawQueryOptions,
-  CreateWithdrawInput,
-  QueryOptions,
-  ApproveWithdrawInput,
 } from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from './http-client';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from './http-client';
 
 export const withdrawClient = {
   ...crudFactory<Withdraw, QueryOptions, CreateWithdrawInput>(

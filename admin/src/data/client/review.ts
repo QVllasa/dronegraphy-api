@@ -1,13 +1,8 @@
-import type {
-  QueryOptions,
-  Review,
-  CreateAbuseReportInput,
-  ReviewPaginator,
-} from '@/types';
-import { API_ENDPOINTS } from './api-endpoints';
-import { crudFactory } from './curd-factory';
-import { HttpClient } from './http-client';
-import { ReviewQueryOptions } from '@/types';
+import type {CreateAbuseReportInput, QueryOptions, Review, ReviewPaginator,} from '@/types';
+import {ReviewQueryOptions} from '@/types';
+import {API_ENDPOINTS} from './api-endpoints';
+import {crudFactory} from './crud-factory';
+import {HttpClient} from './http-client';
 
 interface InputType {
   model_id: number;

@@ -27,6 +27,7 @@ export class ShopsService {
   private users: User[] = users;
 
   create(createShopDto: CreateShopDto) {
+    console.log("shop to create: ", createShopDto)
     return this.shops[0];
   }
 

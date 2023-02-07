@@ -1,13 +1,7 @@
-import { crudFactory } from '@/data/client/curd-factory';
-import {
-  Attribute,
-  AttributePaginator,
-  AttributeQueryOptions,
-  CreateAttributeInput,
-  QueryOptions,
-} from '@/types';
-import { API_ENDPOINTS } from '@/data/client/api-endpoints';
-import { HttpClient } from '@/data/client/http-client';
+import {crudFactory} from '@/data/client/crud-factory';
+import {Attribute, AttributePaginator, AttributeQueryOptions, CreateAttributeInput, QueryOptions,} from '@/types';
+import {API_ENDPOINTS} from '@/data/client/api-endpoints';
+import {HttpClient} from '@/data/client/http-client';
 
 export const attributeClient = {
   ...crudFactory<Attribute, QueryOptions, CreateAttributeInput>(
