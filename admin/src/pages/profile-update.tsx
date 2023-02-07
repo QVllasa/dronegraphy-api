@@ -23,18 +23,19 @@ export default function ProfilePage() {
         </h1>
       </div>
 
-      <ProfileUpdateFrom me={data} />
-      <ChangePasswordForm />
+        <ProfileUpdateFrom me={data}/>
+        <ChangePasswordForm/>
     </>
-  );
+    );
 }
-ProfilePage.Layout = Layout;
 ProfilePage.authenticate = {
     permissions: adminAndOwnerOnly,
 };
 
-export const getStaticProps = async ({ locale }: any) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['form', 'common'])),
-  },
+ProfilePage.Layout = Layout;
+
+export const getStaticProps = async ({locale}: any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['form', 'common'])),
+    },
 });

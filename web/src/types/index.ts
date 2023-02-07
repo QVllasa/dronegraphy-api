@@ -152,8 +152,8 @@ export interface Attachment {
   path: string,
   thumbnail: string;
   __typename?: string;
-  created_at: string,
-  updated_at: string
+  created_at?: string,
+  updated_at?: string
 }
 
 export interface Shop {
