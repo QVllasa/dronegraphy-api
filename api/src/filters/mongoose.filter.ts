@@ -1,4 +1,4 @@
-import {ArgumentsHost, Catch, ExceptionFilter} from '@nestjs/common';
+import {ArgumentsHost, BadRequestException, Catch, ExceptionFilter} from '@nestjs/common';
 import {MongoError} from 'mongodb';
 
 @Catch(MongoError)
@@ -8,7 +8,8 @@ export class MongoExceptionFilter implements ExceptionFilter {
         const response = ctx.getResponse();
         switch (exception.code) {
             case 11000:
-                return response.status(400).json({statusCode: 400, message: "This email already exists."})
+                // return response.status(409).json({statusCode: 409, message: "This email already exists."})
+                throw new BadRequestException()
         }
     }
 }

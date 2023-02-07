@@ -14,4 +14,5 @@ export const UserSchema = new mongoose.Schema({
     is_active: Boolean,
     address: [AddressSchema],
     orders: [String],
+    permission: String,
 });

@@ -1,12 +1,8 @@
-import { atom, useAtom } from 'jotai';
-import {
-  checkHasAuthToken,
-  getAuthToken,
-  removeAuthToken,
-  setAuthToken,
-} from '@/data/client/token.utils';
+import {atom, useAtom} from 'jotai';
+import {checkHasAuthToken, getAuthToken, removeAuthToken, setAuthToken,} from '@/data/client/token.utils';
 
 const authorizationAtom = atom(checkHasAuthToken());
+
 export default function useAuth() {
   const [isAuthorized, setAuthorized] = useAtom(authorizationAtom);
   return {

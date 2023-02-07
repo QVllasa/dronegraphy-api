@@ -45,7 +45,7 @@ const VideoPlayer = React.forwardRef(({video}: { video: Product }, ref) => {
                          className={'absolute top-0 left-0 '}
                          width={'100%'}
                          height={'100%'}
-                         url={video.preview_url ?? defaultUrl}
+                         url={defaultUrl}
                          controls={false} muted/>
         </div>
     )

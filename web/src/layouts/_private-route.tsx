@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router';
-import { useMe } from '@/data/user';
+import {useRouter} from 'next/router';
+import {useMe} from '@/data/user';
 import routes from '@/config/routes';
 import Button from '@/components/ui/button';
-import { SpinnerIcon } from '@/components/icons/spinner-icon';
-import { LongArrowIcon } from '@/components/icons/long-arrow-icon';
+import {SpinnerIcon} from '@/components/icons/spinner-icon';
+import {LongArrowIcon} from '@/components/icons/long-arrow-icon';
 import LoginUserForm from '@/components/auth/login-form';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 
 function UnAuthorizedView() {
   const router = useRouter();
@@ -26,19 +26,17 @@ function UnAuthorizedView() {
   );
 }
 
-export default function PrivateRoute({
-  children,
-}: React.PropsWithChildren<{}>) {
-  const { t } = useTranslation('common');
-  const { me, isAuthorized } = useMe();
-  const isUser = !!me;
-  if (!isUser && !isAuthorized) {
-    return <UnAuthorizedView />;
-  }
-  if (isUser && isAuthorized) {
-    return <>{children}</>;
-  }
-  return (
+export default function PrivateRoute({children,}: React.PropsWithChildren<{}>) {
+    const {t} = useTranslation('common');
+    const {me, isAuthorized} = useMe();
+    const isUser = !!me;
+    if (!isUser && !isAuthorized) {
+        return <UnAuthorizedView/>;
+    }
+    if (isUser && isAuthorized) {
+        return <>{children}</>;
+    }
+    return (
     <div className="grid min-h-full w-full place-content-center">
       <div className="flex items-center gap-3 text-lg">
         <SpinnerIcon className="h-auto w-6 animate-spin" />{' '}

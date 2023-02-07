@@ -1,5 +1,3 @@
-import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
-import type {GetStaticProps} from 'next';
 import {useTranslation} from 'next-i18next';
 import type {NextPageWithLayout, UpdateProfileInput} from '@/types';
 import type {SubmitHandler} from 'react-hook-form';
@@ -38,6 +36,8 @@ const profileValidationSchema = yup.object().shape({
     }).optional().nullable(),
   }),
 });
+
+
 const ProfilePage: NextPageWithLayout = () => {
   const { t } = useTranslation('common');
   const queryClient = useQueryClient();
@@ -167,8 +167,8 @@ const ProfilePage: NextPageWithLayout = () => {
             </div>
           </>
         )}
-      </Form>
-    </motion.div>
+        </Form>
+      </motion.div>
   );
 };
 
@@ -177,13 +177,13 @@ ProfilePage.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale!, ['common'])),
-    },
-    revalidate: 60, // In seconds
-  };
-};
+// export const getStaticProps: GetStaticProps = async ({ locale }) => {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale!, ['common'])),
+//     },
+//     revalidate: 60, // In seconds
+//   };
+// };
 
 export default ProfilePage;

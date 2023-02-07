@@ -29,11 +29,7 @@ export class UsersService {
     }
 
     async create(createUserDto: CreateUserDto | RegisterDto | User): Promise<User> {
-        return await this.userModel.create({
-            name: createUserDto.name,
-            email: createUserDto.email,
-            password: createUserDto.password,
-        });
+        return await this.userModel.create(createUserDto);
     }
 
     async getUsers({text, limit, page, search,}: GetUsersDto): Promise<UserPaginator> {

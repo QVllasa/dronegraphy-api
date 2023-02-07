@@ -15,6 +15,7 @@ export class User extends CoreEntity {
     is_active?: boolean = true;
     address?: Address[];
     orders?: Order[];
+    permission: string
 }
 
 

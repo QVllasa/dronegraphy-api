@@ -1,22 +1,22 @@
-import type { AppProps } from 'next/app';
-import type { NextPageWithLayout } from '@/types';
-import { useEffect, useState } from 'react';
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
-import { AnimatePresence } from 'framer-motion';
-import { Toaster } from 'react-hot-toast';
-import { ThemeProvider } from 'next-themes';
-import { appWithTranslation } from 'next-i18next';
-import { validateEnvironmentVariables } from '@/config/validate-environment-variables';
-import { CartProvider } from '@/components/cart/lib/cart.context';
-import { ModalProvider } from '@/components/modal-views/context';
+import type {AppProps} from 'next/app';
+import type {NextPageWithLayout} from '@/types';
+import {useState} from 'react';
+import {Hydrate, QueryClient, QueryClientProvider} from 'react-query';
+import {ReactQueryDevtools} from 'react-query/devtools';
+import {AnimatePresence} from 'framer-motion';
+import {Toaster} from 'react-hot-toast';
+import {ThemeProvider} from 'next-themes';
+import {appWithTranslation} from 'next-i18next';
+import {validateEnvironmentVariables} from '@/config/validate-environment-variables';
+import {CartProvider} from '@/components/cart/lib/cart.context';
+import {ModalProvider} from '@/components/modal-views/context';
 import ModalsContainer from '@/components/modal-views/container';
 import DrawersContainer from '@/components/drawer-views/container';
 import SearchView from '@/components/search/search-view';
 import DefaultSeo from '@/layouts/_default-seo';
-import { SearchProvider } from '@/components/search/search.context';
+import {SearchProvider} from '@/components/search/search.context';
 //@ts-ignore
-import { Portal } from 'react-portal';
+import {Portal} from 'react-portal';
 
 // base css file
 import '@/assets/css/scrollbar.css';
@@ -25,8 +25,6 @@ import '@/assets/css/pagination.css';
 import '@/assets/css/globals.css';
 
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { getDirection } from '@/lib/constants';
 
 const PrivateRoute = dynamic(() => import('@/layouts/_private-route'), {
   ssr: false,
@@ -39,14 +37,8 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
-  const { locale } = useRouter();
   const [queryClient] = useState(() => new QueryClient());
-
   const getLayout = Component.getLayout ?? ((page) => page);
-  const dir = getDirection(locale);
-  useEffect(() => {
-    document.documentElement.dir = dir;
-  }, [dir]);
   const authenticationRequired = Component.authorization ?? false;
   return (
     <QueryClientProvider client={queryClient}>

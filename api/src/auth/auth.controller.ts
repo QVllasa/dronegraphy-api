@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Req, UseFilters, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Post, Req, UseGuards} from '@nestjs/common';
 import {AuthService} from './auth.service';
 import {
   ChangePasswordDto,
@@ -6,13 +6,13 @@ import {
   LoginDto,
   OtpDto,
   OtpLoginDto,
+  Permission,
   RegisterDto,
   ResetPasswordDto,
   SocialLoginDto,
   VerifyForgetPasswordDto,
   VerifyOtpDto,
 } from './dto/create-auth.dto';
-import {MongoExceptionFilter} from "../filters/mongoose.filter";
 import {LocalAuthGuard} from "./guards/local-auth.guard";
 import {JwtAuthGuard} from "./guards/jwt-auth.guard";
 
@@ -22,8 +22,8 @@ export class AuthController {
   }
 
   @Post('register')
-  @UseFilters(MongoExceptionFilter)
-  createAccount(@Body() registerDto: RegisterDto) {
+  async createAccount(@Body() registerDto: RegisterDto) {
+    if (!registerDto.permission) registerDto.permission = Permission.CUSTOMER;
     return this.authService.register(registerDto);
   }
 

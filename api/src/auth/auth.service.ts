@@ -1,4 +1,4 @@
-import {Injectable, NotAcceptableException, UnauthorizedException,} from '@nestjs/common';
+import {HttpException, HttpStatus, Injectable, NotAcceptableException, UnauthorizedException,} from '@nestjs/common';
 import {
     AuthResponse,
     ChangePasswordDto,
@@ -23,7 +23,7 @@ import * as bcrypt from 'bcrypt';
 interface JwTPayload {
     email: string,
     sub: string,
-    permission: string[],
+    permission: string,
     iat?: number,
     exp?: number,
 }
@@ -44,23 +44,31 @@ export class AuthService {
 
         const saltOrRounds = 10;
         user.password = await bcrypt.hash(user.password, saltOrRounds);
-        const result = await this.usersService.create(user);
-        user._id = result._id;
-        if (!result) return
-        const payload: JwTPayload = {email: user.email, sub: user._id, permission: ['customer']};
+        try {
+            const result = await this.usersService.create(user);
+            user._id = result._id;
+            if (!result) return
+            const payload: JwTPayload = {email: user.email, sub: user._id, permission: user.permission};
 
-        return {
-            token: this.jwtService.sign(payload),
-            permissions: ['customer'],
-        };
+            return {
+                token: this.jwtService.sign(payload),
+                permissions: [user.permission],
+            };
+        } catch (e) {
+            switch (e.code) {
+                case 11000:
+                    // throw new BadRequestException(e, 'Email exists already.')
+                    throw new HttpException('Email exists already.', HttpStatus.CONFLICT)
+            }
+        }
     }
 
     async login(loginInput: LoginDto): Promise<AuthResponse> {
         const user = await this.usersService.findOneByEmail(loginInput.email);
-        const payload: JwTPayload = {email: user.email, sub: user._id, permission: ['customer']};
+        const payload: JwTPayload = {email: user.email, sub: user._id, permission: user.permission};
         return {
             token: this.jwtService.sign(payload),
-            permissions: ['customer'],
+            permissions: [user.permission],
         };
     }
 
