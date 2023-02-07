@@ -106,7 +106,7 @@ export interface AuthResponse {
 }
 
 export interface Type {
-    id: string;
+    _id: string;
     name: string;
     icon: string;
     slug: string;
@@ -128,7 +128,7 @@ export interface CreateTypeInput {
 }
 
 export interface Category {
-    id: string;
+    _id: string;
     name: string;
     slug: string;
     translated_languages: string[];
@@ -144,7 +144,7 @@ export interface Category {
 }
 
 export interface Attribute {
-    id: string;
+    _id: string;
     name: string;
     slug: string;
     values: AttributeValue[];
@@ -154,7 +154,7 @@ export interface Attribute {
 }
 
 export interface AttributeValueInput {
-    id?: number;
+    _id?: number;
     value: string;
     meta?: string;
 }
@@ -177,7 +177,7 @@ export interface VariationProductPivot {
 }
 
 export interface AttributeValue {
-    id: string;
+    _id: string;
     value?: string;
     attribute?: Attribute;
     products: Product[];
@@ -186,7 +186,7 @@ export interface AttributeValue {
 }
 
 export interface Variation {
-    id?: string;
+    _id?: string;
     title?: string;
     image?: Attachment;
     digital_file?: DigitalFile;
@@ -200,7 +200,7 @@ export interface Variation {
 
 export interface DigitalFile {
     created_at?: string;
-    id: string;
+    _id: string;
     attachment_id: string;
     updated_at?: string;
     url: string;
@@ -217,7 +217,7 @@ export interface VariationOptionInput {
 }
 
 export interface Attachment {
-    id: string;
+    _id: string;
     original: string;
     filename: string,
     path: string,
@@ -243,7 +243,7 @@ export interface ConnectTypeBelongsTo {
 }
 
 export interface Shop {
-    id?: string;
+    _id?: string;
     owner_id?: number;
     owner?: User;
     staffs?: User[];
@@ -263,7 +263,7 @@ export interface Shop {
 }
 
 export interface Balance {
-    id?: string;
+    _id?: string;
     admin_commission_rate?: number;
     shop?: Shop;
     total_earnings?: number;
@@ -287,7 +287,7 @@ export interface PaymentInfoInput {
 }
 
 export interface BalanceInput {
-    id?: string;
+    _id?: string;
     payment_info?: PaymentInfoInput;
 }
 
@@ -326,7 +326,7 @@ export interface MakeAdminInput {
 }
 
 export interface User {
-    id: string;
+    _id: string;
     name: string;
     shops: Shop[];
     managed_shop: Shop;
@@ -346,7 +346,7 @@ export interface UpdateUser {
 }
 
 export interface Profile {
-    id: string;
+    _id: string;
     avatar?: Attachment;
     bio?: string;
     contact?: string;
@@ -360,7 +360,7 @@ export interface Social {
 }
 
 export interface Address {
-    id: string;
+    _id: string;
     title?: string;
     default?: boolean;
     address?: UserAddress;
@@ -369,7 +369,7 @@ export interface Address {
 }
 
 export interface Coupon {
-    id: string;
+    _id: string;
     code: string;
     description: string;
     translated_languages: string[];
@@ -395,7 +395,7 @@ export interface CouponInput {
 }
 
 export interface Order {
-    id: string;
+    _id: string;
     tracking_number: string;
     customer_contact: string;
     customer_id: number;
@@ -421,7 +421,7 @@ export interface Order {
 }
 
 export interface OrderStatus {
-    id: string;
+    _id: string;
     name: string;
     translated_languages: string[];
     color: string;
@@ -450,7 +450,7 @@ export type VerifyCouponInputType = {
 };
 
 export interface Product {
-    id: string;
+    _id: string;
     translated_languages: string[];
     shop_id: string;
     name: string;
@@ -523,13 +523,13 @@ export interface CreateProduct {
 }
 
 export interface AttributeProductPivot {
-    id: string;
+    _id: string;
     price?: number;
 }
 
 export interface DigitalFileInput {
     attachment_id: string;
-    id?: string;
+    _id?: string;
     url: string;
 }
 
@@ -540,7 +540,7 @@ export interface UpsertVariationsHasMany {
 
 export interface VariationInput {
     digital_file?: DigitalFileInput;
-    id?: string;
+    _id?: string;
     image?: AttachmentInput;
     is_digital?: boolean;
     is_disable?: boolean;
@@ -553,7 +553,7 @@ export interface VariationInput {
 }
 
 export interface Tag {
-    id: string;
+    _id: string;
     name: string;
     slug: string;
     details?: string;
@@ -580,7 +580,7 @@ export interface Author {
     translated_languages: string[];
     cover_image?: Attachment;
     death?: string;
-    id: string;
+    _id: string;
     image?: Attachment;
     is_approved?: boolean;
     language?: string;
@@ -624,7 +624,7 @@ export interface CreateWithdrawInput {
 }
 
 export interface ApproveWithdrawInput {
-    id: string;
+    _id: string;
     status: WithdrawStatus;
 }
 
@@ -650,7 +650,7 @@ export interface Manufacturer {
     created_at?: string;
     description?: string;
     translated_languages: string[];
-    id: string;
+    _id: string;
     image?: Attachment;
     is_approved?: boolean;
     name: string;
@@ -663,7 +663,7 @@ export interface Manufacturer {
 }
 
 export interface OrderStatus {
-    id: string;
+    _id: string;
     name: string;
     color: string;
     serial: number;
@@ -702,7 +702,7 @@ export interface CreateOrderStatusInput {
 }
 
 export interface OrderStatus {
-    id: string;
+    _id: string;
     name: string;
     color: string;
     serial: number;
@@ -744,7 +744,7 @@ export interface CreateManufacturerInput {
 }
 
 export interface Withdraw {
-    id?: string;
+    _id?: string;
     amount?: number;
     status?: WithdrawStatus;
     shop_id?: number;
@@ -757,7 +757,7 @@ export interface Withdraw {
 }
 
 export interface Review {
-    id: string;
+    _id: string;
     user_id: number;
     product_id: number;
     rating: number;
@@ -773,7 +773,7 @@ export interface Review {
 }
 
 export interface AbusiveReport {
-    id?: number;
+    _id?: number;
     user_id?: number;
     user: User[];
     model_id: number;
@@ -790,7 +790,7 @@ export interface CreateAbuseReportInput {
 }
 
 export interface Tax {
-    id?: string;
+    _id?: string;
     name?: string;
     rate?: number;
 }
@@ -865,7 +865,7 @@ export type SeoSettings = {
 };
 
 export interface Settings {
-    id: string;
+    _id: string;
     language: string;
     options: SettingsOptions;
 }
@@ -876,7 +876,7 @@ export interface SettingsInput {
 }
 
 export interface Tax {
-    id?: string;
+    _id?: string;
     name?: string;
     rate?: number;
     is_global?: boolean;
@@ -901,7 +901,7 @@ export interface TaxInput {
 }
 
 export interface Shipping {
-    id?: string;
+    _id?: string;
     name?: string;
     amount?: number;
     is_global?: boolean;
@@ -1009,7 +1009,7 @@ export declare interface MakeAdminInput {
 }
 
 export interface BlockUserInput {
-    id: string;
+    _id: string;
 }
 
 export interface WalletPointsInput {
@@ -1025,7 +1025,7 @@ export declare type AddStaffInput = {
 };
 
 export declare type ApproveShopInput = {
-    id: string;
+    _id: string;
     admin_commission_rate: number;
 };
 
@@ -1058,7 +1058,7 @@ export interface ShopInput {
 }
 
 export declare type Question = {
-    id: string;
+    _id: string;
     user_id: number;
     product_id: number;
     shop_id: number;
