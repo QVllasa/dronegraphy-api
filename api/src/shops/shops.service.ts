@@ -11,6 +11,9 @@ import {paginate} from 'src/common/pagination/paginate';
 import {GetStaffsDto} from './dto/get-staffs.dto';
 import {GetTopShopsDto} from './dto/get-top-shops.dto';
 import {User} from 'src/users/entities/user.entity';
+import {InjectModel} from "@nestjs/mongoose";
+import {Model} from "mongoose";
+import {AuthService} from "../auth/auth.service";
 
 const shops = plainToClass(Shop, shopsJson);
 const users = plainToClass(User, userJson);
@@ -26,9 +29,22 @@ export class ShopsService {
   private shops: Shop[] = shops;
   private users: User[] = users;
 
-  create(createShopDto: CreateShopDto) {
-    console.log("shop to create: ", createShopDto)
-    return this.shops[0];
+  constructor(@InjectModel('Shop')
+              private shopModel: Model<Shop>, private authService: AuthService) {
+  }
+
+  async create(createShopDto: CreateShopDto, token: string) {
+    const shop: Shop = {
+      address: '',
+      cover_image: undefined,
+      is_active: true,
+      orders_count: 0,
+      owner: this.authService.getTokenPayload(token).sub,
+      products_count: 0,
+      slug: "",
+      ...createShopDto
+    }
+    return await this.shopModel.create(createShopDto)
   }
 
   getShops({search, limit, page}: GetShopsDto) {

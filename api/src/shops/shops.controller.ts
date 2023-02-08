@@ -16,8 +16,9 @@ export class ShopsController {
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createShopDto: CreateShopDto, @Req() req) {
-    console.log("token post create shop: ", req?.headers?.authorization)
-    return this.shopsService.create(createShopDto);
+    const token = req?.headers?.authorization;
+    console.log("token post create shop: ",)
+    return this.shopsService.create(createShopDto, token);
   }
 
   @Get()
@@ -73,9 +74,12 @@ export class StaffsController {
   constructor(private readonly shopsService: ShopsService) {
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createShopDto: CreateShopDto) {
-    return this.shopsService.create(createShopDto);
+  create(@Body() createShopDto: CreateShopDto, @Req() req) {
+    const token = req?.headers?.authorization;
+    console.log("token post create shop: ",)
+    return this.shopsService.create(createShopDto, token);
   }
 
   @Get()

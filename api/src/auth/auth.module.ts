@@ -21,6 +21,7 @@ import {jwtConfig} from "../config/jwt.config";
         PassportModule,
         JwtModule.registerAsync(jwtConfig),
     ],
+    exports: [AuthService],
     controllers: [AuthController],
     providers: [AuthService, LocalStrategy, JwtStrategy],
 })

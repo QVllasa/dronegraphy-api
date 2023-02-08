@@ -244,7 +244,6 @@ export interface ConnectTypeBelongsTo {
 
 export interface Shop {
     _id?: string;
-    owner_id?: number;
     owner?: User;
     staffs?: User[];
     is_active?: boolean;

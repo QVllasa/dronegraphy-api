@@ -157,6 +157,14 @@ export class AuthService {
         };
     }
 
+    getTokenPayload(token: string): JwTPayload {
+        const extractToken = token.replace('Bearer ', '');
+        if (!extractToken) {
+            throw new UnauthorizedException();
+        }
+        return this.jwtService.decode(extractToken) as JwTPayload;
+    }
+
     // async getUsers({ text, first, page }: GetUsersArgs): Promise<UserPaginator> {
     //   const startIndex = (page - 1) * first;
     //   const endIndex = page * first;
@@ -177,11 +185,7 @@ export class AuthService {
 
 
         // Extract bearer
-        const extractToken = token.replace('Bearer ', '');
-        if (!extractToken) {
-            throw new UnauthorizedException();
-        }
-        const decoded: JwTPayload = this.jwtService.decode(extractToken) as JwTPayload;
+        const decoded = this.getTokenPayload(token);
         return this.usersService.findOne(decoded.sub);
     }
 

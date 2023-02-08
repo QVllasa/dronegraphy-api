@@ -29,8 +29,7 @@ export const ShopSettingsSchema = new mongoose.Schema({
 
 
 export const ShopSchema = new mongoose.Schema({
-    owner_id: Number,
-    owner: Number,
+    owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     staffs: [String],
     is_active: Boolean,
     orders_count: Number,

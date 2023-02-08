@@ -11,9 +11,16 @@ import {
 import {JwtModule} from "@nestjs/jwt";
 import {jwtConfig} from "../config/jwt.config";
 import {JwtStrategy} from "../auth/jwt.strategy";
+import {MongooseModule} from "@nestjs/mongoose";
+import {ShopSchema} from "./schemas/shop.schema";
+import {AuthModule} from "../auth/auth.module";
 
 @Module({
-    imports: [JwtModule.registerAsync(jwtConfig),],
+    imports: [
+        JwtModule.registerAsync(jwtConfig),
+        MongooseModule.forFeature([{name: "Shop", schema: ShopSchema},]),
+        AuthModule
+    ],
     controllers: [
         ShopsController,
         StaffsController,
