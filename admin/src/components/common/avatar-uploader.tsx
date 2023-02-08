@@ -66,7 +66,7 @@ export default function AvatarUploader({onChange, value, name, onBlur}: any) {
                             <div className="relative h-20 w-20 overflow-hidden rounded-full">
                                 <Image
                                     alt="Avatar"
-                                    src={process.env.STATIC_FILES_DOMAIN + '/files/avatar/' + attachment?.filename}
+                                    src={attachment?.path}
                                     layout="fill"
                                     objectFit="scale-down"
                                 />
