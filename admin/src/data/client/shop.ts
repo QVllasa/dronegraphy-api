@@ -35,4 +35,15 @@ export const shopClient = {
       },
     });
   },
+  cover: (input: File) => {
+    let formData = new FormData();
+    console.log("input: ", input)
+    formData.append('attachment', input);
+    console.log("formdata: ", formData)
+    return HttpClient.post<Attachment>(API_ENDPOINTS.SHOP_LOGO, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  },
 };

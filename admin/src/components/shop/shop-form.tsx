@@ -5,7 +5,6 @@ import {useTranslation} from 'next-i18next';
 import {yupResolver} from '@hookform/resolvers/yup';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
-import FileInput from '@/components/ui/file-input';
 import TextArea from '@/components/ui/text-area';
 import {shopValidationSchema} from './shop-validation-schema';
 import {getFormattedImage} from '@/utils/get-formatted-image';
@@ -18,6 +17,7 @@ import SelectInput from '@/components/ui/select-input';
 import * as socialIcons from '@/components/icons/social';
 import omit from 'lodash/omit';
 import LogoUploader from "@/components/common/logo-uploader";
+import CoverUploader from "@/components/common/cover-uploader";
 
 const socialIcon = [
   {
@@ -57,7 +57,7 @@ export const updatedIcons = socialIcon.map((item: any) => {
 type FormValues = {
   name: string;
   description: string;
-  cover_image: any;
+  cover_image: AttachmentInput;
   logo: AttachmentInput;
   balance: BalanceInput;
   address: UserAddressInput;
@@ -186,7 +186,22 @@ const ShopForm = ({ initialValues }: { initialValues?: any }) => {
           />
 
           <Card className="w-full sm:w-8/12 md:w-2/3">
-            <FileInput name="cover_image" control={control} multiple={false} />
+            {/*<FileInput name="cover_image" control={control} multiple={false} />*/}
+            <Controller
+                name="cover_image"
+                control={control}
+                render={({field: {ref, ...rest}}) => (
+                    <div className="sm:col-span-2">
+                      <span
+                          className="block cursor-pointer pb-2.5 font-normal text-dark/70 dark:text-light/70">
+                        {t('text-profile-avatar')}
+                      </span>
+                      <div className="text-xs">
+                        <CoverUploader {...rest} />
+                      </div>
+                    </div>
+                )}
+            />
           </Card>
         </div>
         <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
