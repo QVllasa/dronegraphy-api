@@ -1,18 +1,19 @@
 import {
-  AuthResponse,
-  BlockUserInput,
-  ChangePasswordInput,
-  ForgetPasswordInput,
-  LoginInput,
-  MakeAdminInput,
-  RegisterInput,
-  ResetPasswordInput,
-  UpdateUser,
-  User,
-  UserPaginator,
-  UserQueryOptions,
-  VerifyForgetPasswordTokenInput,
-  WalletPointsInput,
+    Attachment,
+    AuthResponse,
+    BlockUserInput,
+    ChangePasswordInput,
+    ForgetPasswordInput,
+    LoginInput,
+    MakeAdminInput,
+    RegisterInput,
+    ResetPasswordInput,
+    UpdateUser,
+    User,
+    UserPaginator,
+    UserQueryOptions,
+    VerifyForgetPasswordTokenInput,
+    WalletPointsInput,
 } from '@/types';
 import {API_ENDPOINTS} from './api-endpoints';
 import {HttpClient} from './http-client';
@@ -61,14 +62,25 @@ export const userClient = {
     return HttpClient.post<any>(API_ENDPOINTS.ADD_WALLET_POINTS, variables);
   },
   fetchUsers: ({ name, ...params }: Partial<UserQueryOptions>) => {
-    return HttpClient.get<UserPaginator>(API_ENDPOINTS.USERS, {
-      searchJoin: 'and',
-      with: 'wallet',
-      ...params,
-      search: HttpClient.formatSearchParams({ name }),
-    });
+      return HttpClient.get<UserPaginator>(API_ENDPOINTS.USERS, {
+          searchJoin: 'and',
+          with: 'wallet',
+          ...params,
+          search: HttpClient.formatSearchParams({name}),
+      });
   },
-  fetchUser: ({ id }: { id: string }) => {
-    return HttpClient.get<User>(`${API_ENDPOINTS.USERS}/${id}`);
-  },
+    fetchUser: ({id}: { id: string }) => {
+        return HttpClient.get<User>(`${API_ENDPOINTS.USERS}/${id}`);
+    },
+    avatar: (input: File) => {
+        let formData = new FormData();
+        console.log("input: ", input)
+        formData.append('attachment', input);
+        console.log("formdata: ", formData)
+        return HttpClient.post<Attachment>(API_ENDPOINTS.AVATAR, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+    },
 };

@@ -1,14 +1,14 @@
 import Input from '@/components/ui/input';
-import {useForm} from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
 import {useUpdateUserMutation} from '@/data/user';
 import TextArea from '@/components/ui/text-area';
 import {useTranslation} from 'next-i18next';
-import FileInput from '@/components/ui/file-input';
 import pick from 'lodash/pick';
 import {UpdateUser} from "@/types";
+import AvatarUploader from "@/components/common/avatar-uploader";
 
 
 export default function ProfileUpdate({me}: any) {
@@ -59,7 +59,21 @@ export default function ProfileUpdate({me}: any) {
                 />
 
                 <Card className="w-full sm:w-8/12 md:w-2/3">
-                    <FileInput name="profile.avatar" control={control} multiple={false}/>
+                    <Controller
+                        name="profile.avatar"
+                        control={control}
+                        render={({field: {ref, ...rest}}) => (
+                            <div className="sm:col-span-2">
+                                <span
+                                    className="block cursor-pointer pb-2.5 font-normal text-dark/70 dark:text-light/70">
+                                    {t('text-profile-avatar')}
+                                </span>
+                                <div className="text-xs">
+                                    <AvatarUploader {...rest} />
+                                </div>
+                            </div>
+                        )}
+                    />
                 </Card>
             </div>
 
