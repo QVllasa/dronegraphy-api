@@ -1,27 +1,20 @@
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import PasswordInput from '@/components/ui/password-input';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 import * as yup from 'yup';
 import Link from '@/components/ui/link';
 import Form from '@/components/ui/forms/form';
-import { Routes } from '@/config/routes';
-import { useLogin } from '@/data/user';
-import type { LoginInput } from '@/types';
-import { useState } from 'react';
+import {Routes} from '@/config/routes';
+import {useLogin} from '@/data/user';
+import type {LoginInput} from '@/types';
+import {useState} from 'react';
 import Alert from '@/components/ui/alert';
 import Router from 'next/router';
-import {
-  allowedRoles,
-  hasAccess,
-  setAuthCredentials,
-} from '@/utils/auth-utils';
+import {allowedRoles, hasAccess, setAuthCredentials,} from '@/utils/auth-utils';
 
 const loginFormSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('form:error-email-format')
-    .required('form:error-email-required'),
+  email: yup.string().email('form:error-email-format').required('form:error-email-required'),
   password: yup.string().required('form:error-password-required'),
 });
 
@@ -60,21 +53,21 @@ const LoginForm = () => {
         {({ register, formState: { errors } }) => (
           <>
             <Input
-              label={t('form:input-label-email')}
-              {...register('email')}
-              type="email"
-              variant="outline"
-              className="mb-4"
-              error={t(errors?.email?.message!)}
+                label={t('form:input-label-email')}
+                {...register('email', {value: 'user@user.com'})}
+                type="email"
+                variant="outline"
+                className="mb-4"
+                error={t(errors?.email?.message!)}
             />
             <PasswordInput
-              label={t('form:input-label-password')}
-              forgotPassHelpText={t('form:input-forgot-password-label')}
-              {...register('password')}
-              error={t(errors?.password?.message!)}
-              variant="outline"
-              className="mb-4"
-              forgotPageLink={Routes.forgotPassword}
+                label={t('form:input-label-password')}
+                forgotPassHelpText={t('form:input-forgot-password-label')}
+                {...register('password', {value: 'user123'})}
+                error={t(errors?.password?.message!)}
+                variant="outline"
+                className="mb-4"
+                forgotPageLink={Routes.forgotPassword}
             />
             <Button className="w-full" loading={isLoading} disabled={isLoading}>
               {t('form:button-label-login')}

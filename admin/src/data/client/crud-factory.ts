@@ -1,12 +1,12 @@
-import type { GetParams, PaginatorInfo } from '@/types';
-import { HttpClient } from './http-client';
+import type {GetParams, PaginatorInfo} from '@/types';
+import {HttpClient} from './http-client';
 
 interface LanguageParam {
   language: string;
 }
 
 export function crudFactory<Type, QueryParams extends LanguageParam, InputType>(
-  endpoint: string
+    endpoint: string
 ) {
   return {
     all(params: QueryParams) {
