@@ -1,4 +1,4 @@
-import {ApproveShopInput, QueryOptions, Shop, ShopInput, ShopPaginator, ShopQueryOptions,} from '@/types';
+import {ApproveShopInput, Attachment, QueryOptions, Shop, ShopInput, ShopPaginator, ShopQueryOptions,} from '@/types';
 import {API_ENDPOINTS} from './api-endpoints';
 import {HttpClient} from './http-client';
 import {crudFactory} from './crud-factory';
@@ -20,8 +20,19 @@ export const shopClient = {
   },
   disapprove: (variables: { id: string }) => {
     return HttpClient.post<{ id: string }>(
-      API_ENDPOINTS.DISAPPROVE_SHOP,
-      variables
+        API_ENDPOINTS.DISAPPROVE_SHOP,
+        variables
     );
+  },
+  logo: (input: File) => {
+    let formData = new FormData();
+    console.log("input: ", input)
+    formData.append('attachment', input);
+    console.log("formdata: ", formData)
+    return HttpClient.post<Attachment>(API_ENDPOINTS.SHOP_LOGO, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   },
 };

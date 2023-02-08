@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import path, {extname} from "path";
+import path from "path";
 import {Attachment} from "../common/entities/attachment.entity";
 import sharp from 'sharp';
 
@@ -17,11 +17,6 @@ export class UploadsService {
         return `This action removes a #${id} upload`;
     }
 
-    uniqueFilename(file: Express.Multer.File) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-        const ext = extname(file.originalname);
-        return `${uniqueSuffix}${ext}`;
-    }
 
     async createAttachment(attachment: Express.Multer.File) {
         const thumbnail = path.join('./public/files/thumbnails', 'thumbnail-' + attachment.filename)

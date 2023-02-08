@@ -10,13 +10,14 @@ import TextArea from '@/components/ui/text-area';
 import {shopValidationSchema} from './shop-validation-schema';
 import {getFormattedImage} from '@/utils/get-formatted-image';
 import {useCreateShopMutation, useUpdateShopMutation} from '@/data/shop';
-import {BalanceInput, ShopSettings, ShopSocialInput, UserAddressInput,} from '@/types';
+import {AttachmentInput, BalanceInput, ShopSettings, ShopSocialInput, UserAddressInput,} from '@/types';
 import GooglePlacesAutocomplete from '@/components/form/google-places-autocomplete';
 import Label from '@/components/ui/label';
 import {getIcon} from '@/utils/get-icon';
 import SelectInput from '@/components/ui/select-input';
 import * as socialIcons from '@/components/icons/social';
 import omit from 'lodash/omit';
+import LogoUploader from "@/components/common/logo-uploader";
 
 const socialIcon = [
   {
@@ -57,7 +58,7 @@ type FormValues = {
   name: string;
   description: string;
   cover_image: any;
-  logo: any;
+  logo: AttachmentInput;
   balance: BalanceInput;
   address: UserAddressInput;
   settings: ShopSettings;
@@ -159,7 +160,21 @@ const ShopForm = ({ initialValues }: { initialValues?: any }) => {
           />
 
           <Card className="w-full sm:w-8/12 md:w-2/3">
-            <FileInput name="logo" control={control} multiple={false} />
+            <Controller
+                name="logo"
+                control={control}
+                render={({field: {ref, ...rest}}) => (
+                    <div className="sm:col-span-2">
+                      <span
+                          className="block cursor-pointer pb-2.5 font-normal text-dark/70 dark:text-light/70">
+                        {t('text-profile-avatar')}
+                      </span>
+                      <div className="text-xs">
+                        <LogoUploader {...rest} />
+                      </div>
+                    </div>
+                )}
+            />
           </Card>
         </div>
 

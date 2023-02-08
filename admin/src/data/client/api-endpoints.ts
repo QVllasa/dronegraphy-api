@@ -1,6 +1,7 @@
 export const API_ENDPOINTS = {
     ATTACHMENTS: 'attachments',
     AVATAR: '/attachments/avatar',
+    SHOP_LOGO: '/attachments/logo',
     ANALYTICS: 'analytics',
     ATTRIBUTES: 'attributes',
     ATTRIBUTE_VALUES: 'attribute-values',

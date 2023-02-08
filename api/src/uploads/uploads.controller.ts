@@ -3,6 +3,7 @@ import {FileInterceptor, FilesInterceptor} from '@nestjs/platform-express';
 import {UploadsService} from './uploads.service';
 import {diskStorage} from "multer";
 import e from "express";
+import {extname} from "path";
 
 
 const config = (path: string) => {
@@ -10,7 +11,9 @@ const config = (path: string) => {
         storage: diskStorage({
             destination: path,
             filename(req: e.Request, file: Express.Multer.File, callback: (error: (Error | null), filename: string) => void) {
-                const fileName = this.uploadsService.uniqueFilename(file);
+                const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+                const ext = extname(file.originalname);
+                const fileName = `${uniqueSuffix}${ext}`;
                 callback(null, fileName);
             }
         })
