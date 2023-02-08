@@ -28,18 +28,17 @@ export default function ProfileUpdate({me}: any) {
 
     async function onSubmit(values: UpdateUser) {
         const {name, profile} = values;
+        console.log("on submit: ", name, profile)
         updateUser({
             id: me?._id,
             input: {
                 name: name,
                 profile: {
-                    _id: me?.profile?._id,
                     bio: profile?.bio,
                     contact: profile?.contact,
                     avatar: {
                         thumbnail: profile?.avatar?.thumbnail ?? '',
                         original: profile?.avatar?.original ?? '',
-                        _id: profile?.avatar?._id ?? '',
                         filename: profile?.avatar?.filename ?? '',
                         path: profile?.avatar?.path ?? '',
                         __typename: profile?.avatar?.__typename,

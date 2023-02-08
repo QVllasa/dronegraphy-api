@@ -228,7 +228,7 @@ export interface Attachment {
 }
 
 export interface AttachmentInput {
-    _id: string;
+    _id?: string;
     original: string;
     filename: string,
     path: string,
@@ -1102,7 +1102,7 @@ export interface SocialInput {
 }
 
 export interface UserProfileInput {
-    _id: string;
+    _id?: string;
     avatar?: AttachmentInput;
     bio?: string;
     socials?: SocialInput[];
