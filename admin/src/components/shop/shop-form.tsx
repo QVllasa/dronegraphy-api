@@ -105,27 +105,31 @@ const ShopForm = ({ initialValues }: { initialValues?: any }) => {
   function onSubmit(values: FormValues) {
     const settings = {
       ...values?.settings,
-      location: { ...omit(values?.settings?.location, '__typename') },
+      location: {...omit(values?.settings?.location, '__typename')},
       socials: values?.settings?.socials
-        ? values?.settings?.socials?.map((social: any) => ({
+          ? values?.settings?.socials?.map((social: any) => ({
             icon: social?.icon?.value,
             url: social?.url,
           }))
-        : [],
+          : [],
     };
+
+    //edit
     if (initialValues) {
-      const { ...restAddress } = values.address;
+      const {...restAddress} = values.address;
       updateShop({
-          id: initialValues._id,
-          ...values,
-          address: restAddress,
-          settings,
-          balance: {
-            _id: initialValues.balance?._id,
-            ...values.balance,
+        id: initialValues._id,
+        ...values,
+        address: restAddress,
+        settings,
+        balance: {
+          _id: initialValues.balance?._id,
+          ...values.balance,
           },
       });
     } else {
+
+      //create
       createShop({
         ...values,
         settings,
