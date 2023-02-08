@@ -229,10 +229,10 @@ export interface Attachment {
 
 export interface AttachmentInput {
     _id?: string;
-    original: string;
-    filename: string,
-    path: string,
-    thumbnail: string;
+    original?: string;
+    filename?: string,
+    path?: string,
+    thumbnail?: string;
     __typename?: string;
     created_at?: string,
     updated_at?: string

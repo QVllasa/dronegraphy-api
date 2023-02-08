@@ -1,27 +1,24 @@
 import Input from '@/components/ui/input';
-import { Controller, useForm, useFieldArray } from 'react-hook-form';
+import {Controller, useFieldArray, useForm} from 'react-hook-form';
 import Button from '@/components/ui/button';
 import TextArea from '@/components/ui/text-area';
 import Label from '@/components/ui/label';
-import { DatePicker } from '@/components/ui/date-picker';
-import { getErrorMessage } from '@/utils/form-error';
+import {DatePicker} from '@/components/ui/date-picker';
+import {getErrorMessage} from '@/utils/form-error';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import {useRouter} from 'next/router';
+import {useTranslation} from 'next-i18next';
 import FileInput from '@/components/ui/file-input';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { authorValidationSchema } from './author-validation-schema';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {authorValidationSchema} from './author-validation-schema';
 import ValidationError from '@/components/ui/form-validation-error';
-import { getIcon } from '@/utils/get-icon';
+import {getIcon} from '@/utils/get-icon';
 import SelectInput from '@/components/ui/select-input';
 import * as socialIcons from '@/components/icons/social';
-import { AttachmentInput, Author, ShopSocialInput } from '@/types';
-import { useShopQuery } from '@/data/shop';
-import {
-  useCreateAuthorMutation,
-  useUpdateAuthorMutation,
-} from '@/data/author';
+import {AttachmentInput, Author, ShopSocialInput} from '@/types';
+import {useShopQuery} from '@/data/shop';
+import {useCreateAuthorMutation, useUpdateAuthorMutation,} from '@/data/author';
 
 const socialIcon = [
   {
@@ -83,19 +80,19 @@ export default function CreateOrUpdateAuthorForm({ initialValues }: IProps) {
   const {
     query: { shop },
   } = router;
-  const { data: shopData } = useShopQuery(
-    {
-      slug: shop as string,
-    },
-    { enabled: !!router.query.shop }
+  const {data: shopData} = useShopQuery(
+      {
+        slug: shop as string,
+      },
+      {enabled: !!router.query.shop}
   );
-  const shopId = shopData?.id!;
+  const shopId = shopData?._id!;
   const {
     register,
     handleSubmit,
     control,
     setError,
-    formState: { errors },
+    formState: {errors},
   } = useForm<FormValues>({
     shouldUnregister: true,
     resolver: yupResolver(authorValidationSchema),
@@ -137,12 +134,12 @@ export default function CreateOrUpdateAuthorForm({ initialValues }: IProps) {
       image: {
         thumbnail: values?.image?.thumbnail,
         original: values?.image?.original,
-        id: values?.image?.id,
+        id: values?.image?._id,
       },
       cover_image: {
         thumbnail: values?.image?.thumbnail,
         original: values?.image?.original,
-        id: values?.image?.id,
+        id: values?.image?._id,
       },
     };
 
@@ -159,7 +156,7 @@ export default function CreateOrUpdateAuthorForm({ initialValues }: IProps) {
       } else {
         updateAuthor({
           ...input,
-          id: initialValues.id!,
+          id: initialValues._id!,
           shop_id: shopId,
         });
       }

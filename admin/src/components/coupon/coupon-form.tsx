@@ -1,25 +1,22 @@
 import Input from '@/components/ui/input';
-import { Controller, useForm } from 'react-hook-form';
-import { DatePicker } from '@/components/ui/date-picker';
+import {Controller, useForm} from 'react-hook-form';
+import {DatePicker} from '@/components/ui/date-picker';
 import Button from '@/components/ui/button';
 import TextArea from '@/components/ui/text-area';
 import Description from '@/components/ui/description';
 import Card from '@/components/common/card';
 import Label from '@/components/ui/label';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import ValidationError from '@/components/ui/form-validation-error';
-import { useSettings } from '@/contexts/settings.context';
-import { useTranslation } from 'next-i18next';
+import {useSettings} from '@/contexts/settings.context';
+import {useTranslation} from 'next-i18next';
 import FileInput from '@/components/ui/file-input';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { couponValidationSchema } from './coupon-validation-schema';
-import { AttachmentInput, Coupon, CouponType } from '@/types';
-import {
-  useCreateCouponMutation,
-  useUpdateCouponMutation,
-} from '@/data/coupon';
-import { getErrorMessage } from '@/utils/form-error';
-import { Config } from '@/config';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {couponValidationSchema} from './coupon-validation-schema';
+import {AttachmentInput, Coupon, CouponType} from '@/types';
+import {useCreateCouponMutation, useUpdateCouponMutation,} from '@/data/coupon';
+import {getErrorMessage} from '@/utils/form-error';
+import {Config} from '@/config';
 
 type FormValues = {
   code: string;
@@ -86,7 +83,7 @@ export default function CreateOrUpdateCouponForm({ initialValues }: IProps) {
       image: {
         thumbnail: values?.image?.thumbnail,
         original: values?.image?.original,
-        id: values?.image?.id,
+        id: values?.image?._id,
       },
     };
 
@@ -103,8 +100,8 @@ export default function CreateOrUpdateCouponForm({ initialValues }: IProps) {
       } else {
         updateCoupon({
           ...input,
-          ...(initialValues.code !== values.code && { code: values.code }),
-          id: initialValues.id!,
+          ...(initialValues.code !== values.code && {code: values.code}),
+          id: initialValues._id!,
         });
       }
     } catch (error) {
