@@ -17,7 +17,6 @@ export class ShopsController {
   @Post()
   create(@Body() createShopDto: CreateShopDto, @Req() req) {
     const token = req?.headers?.authorization;
-    console.log("token post create shop: ",)
     return this.shopsService.create(createShopDto, token);
   }
 
@@ -76,10 +75,14 @@ export class StaffsController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createShopDto: CreateShopDto, @Req() req) {
+  async create(@Body() createShopDto: CreateShopDto, @Req() req) {
     const token = req?.headers?.authorization;
-    console.log("token post create shop: ",)
-    return this.shopsService.create(createShopDto, token);
+    try {
+      return this.shopsService.create(createShopDto, token);
+    } catch (e) {
+      console.log("error: ", e)
+    }
+
   }
 
   @Get()

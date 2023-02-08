@@ -1,5 +1,5 @@
-import { adminAndOwnerOnly, adminOwnerAndStaffOnly } from '@/utils/auth-utils';
-import { Routes } from '@/config/routes';
+import {adminAndOwnerOnly, adminOwnerAndStaffOnly} from '@/utils/auth-utils';
+import {Routes} from '@/config/routes';
 
 export const siteSettings = {
   name: 'Pixer',

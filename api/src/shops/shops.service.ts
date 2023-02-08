@@ -35,7 +35,7 @@ export class ShopsService {
 
   async create(createShopDto: CreateShopDto, token: string) {
     const shop: Shop = {
-      address: '',
+      address: undefined,
       cover_image: undefined,
       is_active: true,
       orders_count: 0,
@@ -44,7 +44,7 @@ export class ShopsService {
       slug: "",
       ...createShopDto
     }
-    return await this.shopModel.create(createShopDto)
+    return await this.shopModel.create(shop)
   }
 
   getShops({search, limit, page}: GetShopsDto) {
