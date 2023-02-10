@@ -5,17 +5,16 @@ import {Profile} from './profile.entity';
 import {Order} from "../../orders/entities/order.entity";
 
 export class User extends CoreEntity {
-    name: string;
-    email: string;
+    name?: string;
+    email?: string;
     password?: string;
     shop_id?: number;
     profile?: Profile;
-    shops?: Shop[];
-    managed_shop?: Shop;
+    shop?: Shop | string;
     is_active?: boolean = true;
     address?: Address[];
     orders?: Order[];
-    permission: string
+    permission?: string
 }
 
 

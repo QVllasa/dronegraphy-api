@@ -14,12 +14,14 @@ import {JwtStrategy} from "../auth/jwt.strategy";
 import {MongooseModule} from "@nestjs/mongoose";
 import {ShopSchema} from "./schemas/shop.schema";
 import {AuthModule} from "../auth/auth.module";
+import {UsersModule} from "../users/users.module";
 
 @Module({
     imports: [
         JwtModule.registerAsync(jwtConfig),
         MongooseModule.forFeature([{name: "Shop", schema: ShopSchema},]),
-        AuthModule
+        AuthModule,
+        UsersModule
     ],
     controllers: [
         ShopsController,

@@ -80,13 +80,10 @@ export class UsersService {
         return this.userModel.findOne({email: String(email)});
     }
 
-    async update(id: string, updateUserDto: UpdateUserDto) {
-        console.log("updateDTO: ", updateUserDto, id)
-        const res = await this.userModel.findByIdAndUpdate<User>(id, {...updateUserDto}, {
+    async update(id: string, data: User | UpdateUserDto) {
+        return this.userModel.findByIdAndUpdate<User>(id, {...data}, {
             new: true
-        })
-        console.log("res: ", res);
-        return res;
+        });
     }
 
     remove(id: string) {

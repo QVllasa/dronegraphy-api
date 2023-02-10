@@ -4,10 +4,10 @@ import {User} from '../entities/user.entity';
 import {CreateProfileDto} from './create-profile.dto';
 
 enum Permission {
-  SUPER_ADMIN = 'Super admin',
-  STORE_OWNER = 'Store owner',
-  STAFF = 'Staff',
-  CUSTOMER = 'Customer',
+  SUPER_ADMIN = 'super_admin',
+  STORE_OWNER = 'store_owner',
+  STAFF = 'staff',
+  CUSTOMER = 'customer',
 }
 
 export class CreateUserDto extends PickType(User, [
@@ -17,5 +17,5 @@ export class CreateUserDto extends PickType(User, [
 ]) {
   address: CreateAddressDto[];
   profile: CreateProfileDto;
-  permission: Permission = Permission.CUSTOMER;
+  permission: Permission;
 }

@@ -9,7 +9,7 @@ export const UserSchema = new mongoose.Schema({
     password: String,
     shop_id: Number,
     profile: ProfileSchema,
-    shops: [String],
+    shop: {type: mongoose.Schema.Types.ObjectId, ref: 'Shop'},
     managed_shop: Number,
     is_active: Boolean,
     address: [AddressSchema],
