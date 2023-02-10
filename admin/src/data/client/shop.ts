@@ -4,19 +4,20 @@ import {HttpClient} from './http-client';
 import {crudFactory} from './crud-factory';
 
 export const shopClient = {
-  ...crudFactory<Shop, QueryOptions, ShopInput>(API_ENDPOINTS.SHOPS),
-  get({ slug }: { slug: String }) {
-    return HttpClient.get<Shop>(`${API_ENDPOINTS.SHOPS}/${slug}`);
-  },
-  paginated: ({ name, ...params }: Partial<ShopQueryOptions>) => {
-    return HttpClient.get<ShopPaginator>(API_ENDPOINTS.SHOPS, {
-      searchJoin: 'and',
-      ...params,
-      search: HttpClient.formatSearchParams({ name }),
-    });
-  },
-  approve: (variables: ApproveShopInput) => {
-    return HttpClient.post<any>(API_ENDPOINTS.APPROVE_SHOP, variables);
+    ...crudFactory<Shop, QueryOptions, ShopInput>(API_ENDPOINTS.SHOPS),
+    get({id}: { id?: string | undefined }) {
+        if (!id) return;
+        return HttpClient.get<Shop>(`${API_ENDPOINTS.SHOPS}/${id}`);
+    },
+    paginated: ({name, ...params}: Partial<ShopQueryOptions>) => {
+        return HttpClient.get<ShopPaginator>(API_ENDPOINTS.SHOPS, {
+            searchJoin: 'and',
+            ...params,
+            search: HttpClient.formatSearchParams({name}),
+        });
+    },
+    approve: (variables: ApproveShopInput) => {
+        return HttpClient.post<any>(API_ENDPOINTS.APPROVE_SHOP, variables);
   },
   disapprove: (variables: { id: string }) => {
     return HttpClient.post<{ id: string }>(

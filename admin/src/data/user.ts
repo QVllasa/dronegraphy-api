@@ -1,17 +1,18 @@
-import { AUTH_CRED } from '@/utils/constants';
-import { Routes } from '@/config/routes';
+import {AUTH_CRED} from '@/utils/constants';
+import {Routes} from '@/config/routes';
 import Cookies from 'js-cookie';
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { toast } from 'react-toastify';
-import { API_ENDPOINTS } from './client/api-endpoints';
-import { userClient } from './client/user';
-import { User, QueryOptionsType, UserPaginator } from '@/types';
-import { mapPaginatorData } from '@/utils/data-mappers';
+import {useTranslation} from 'next-i18next';
+import {useRouter} from 'next/router';
+import {useMutation, useQuery, useQueryClient} from 'react-query';
+import {toast} from 'react-toastify';
+import {API_ENDPOINTS} from './client/api-endpoints';
+import {userClient} from './client/user';
+import {QueryOptionsType, User, UserPaginator} from '@/types';
+import {mapPaginatorData} from '@/utils/data-mappers';
 
 export const useMeQuery = () => {
-  return useQuery<User, Error>([API_ENDPOINTS.ME], userClient.me);
+
+    return useQuery<User, Error>([API_ENDPOINTS.ME], userClient.me);
 };
 
 export function useLogin() {

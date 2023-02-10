@@ -11,7 +11,7 @@ import type {LoginInput} from '@/types';
 import {useState} from 'react';
 import Alert from '@/components/ui/alert';
 import Router from 'next/router';
-import {allowedRoles, hasAccess, setAuthCredentials,} from '@/utils/auth-utils';
+import {adminOnly, allowedRoles, hasAccess, ownerOnly, setAuthCredentials,} from '@/utils/auth-utils';
 
 const loginFormSchema = yup.object().shape({
   email: yup.string().email('form:error-email-format').required('form:error-email-required'),
@@ -34,7 +34,10 @@ const LoginForm = () => {
           if (data?.token) {
             if (hasAccess(allowedRoles, data?.permissions)) {
               setAuthCredentials(data?.token, data?.permissions);
-              Router.push(Routes.dashboard);
+              if (hasAccess(adminOnly, data?.permissions)) Router.push(Routes.dashboard);
+              if (hasAccess(ownerOnly, data?.permissions)) Router.push({
+                pathname: `${Routes.dashboard}1000`
+              });
               return;
             }
             setErrorMessage('form:error-enough-permission');

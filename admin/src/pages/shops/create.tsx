@@ -1,9 +1,9 @@
-import OwnerLayout from '@/components/layouts/owner';
 import ShopForm from '@/components/shop/shop-form';
-import { adminAndOwnerOnly } from '@/utils/auth-utils';
-import { GetStaticProps } from 'next';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {adminAndOwnerOnly} from '@/utils/auth-utils';
+import {GetStaticProps} from 'next';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import ShopLayout from "@/components/layouts/shop";
 
 export default function CreateShopPage() {
   const { t } = useTranslation();
@@ -19,9 +19,9 @@ export default function CreateShopPage() {
   );
 }
 CreateShopPage.authenticate = {
-  permissions: adminAndOwnerOnly,
+    permissions: adminAndOwnerOnly,
 };
-CreateShopPage.Layout = OwnerLayout;
+CreateShopPage.Layout = ShopLayout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {

@@ -73,13 +73,6 @@ export const useUpdateShopMutation = () => {
   });
 };
 
-export const useShopQuery = ({ slug }: { slug: string }, options?: any) => {
-  return useQuery<Shop, Error>(
-    [API_ENDPOINTS.SHOPS, { slug }],
-    () => shopClient.get({ slug }),
-    options
-  );
-};
 
 export const useShopsQuery = (options: Partial<ShopQueryOptions>) => {
   const { data, error, isLoading } = useQuery<ShopPaginator, Error>(

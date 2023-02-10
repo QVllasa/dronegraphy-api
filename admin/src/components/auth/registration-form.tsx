@@ -2,21 +2,17 @@ import Alert from '@/components/ui/alert';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import PasswordInput from '@/components/ui/password-input';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Routes } from '@/config/routes';
-import { useTranslation } from 'next-i18next';
-import { yupResolver } from '@hookform/resolvers/yup';
+import {useRouter} from 'next/router';
+import {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {Routes} from '@/config/routes';
+import {useTranslation} from 'next-i18next';
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Link from '@/components/ui/link';
-import {
-  allowedRoles,
-  hasAccess,
-  setAuthCredentials,
-} from '@/utils/auth-utils';
-import { Permission } from '@/types';
-import { useRegisterMutation } from '@/data/user';
+import {allowedRoles, hasAccess, setAuthCredentials,} from '@/utils/auth-utils';
+import {Permission} from '@/types';
+import {useRegisterMutation} from '@/data/user';
 
 type FormValues = {
   name: string;
@@ -65,7 +61,7 @@ const RegistrationForm = () => {
           if (data?.token) {
             if (hasAccess(allowedRoles, data?.permissions)) {
               setAuthCredentials(data?.token, data?.permissions);
-              router.push(Routes.dashboard);
+              router.push(Routes.shop.create);
               return;
             }
             setErrorMessage('form:error-enough-permission');

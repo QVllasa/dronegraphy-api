@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import ShopLayout from "@/components/layouts/shop";
 
 const AdminLayout = dynamic(() => import('@/components/layouts/admin'));
-const OwnerLayout = dynamic(() => import('@/components/layouts/owner'));
 
 export default function AppLayout({
   userPermissions,

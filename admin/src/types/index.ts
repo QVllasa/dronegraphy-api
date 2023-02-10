@@ -326,15 +326,15 @@ export interface MakeAdminInput {
 
 export interface User {
     _id: string;
-    name: string;
-    shops: Shop[];
-    managed_shop: Shop;
-    is_active: boolean;
-    email: string;
-    created_at: string;
-    updated_at: string;
+    name?: string;
+    shop?: Shop;
+    managed_shop?: Shop;
+    is_active?: boolean;
+    email?: string;
+    created_at?: string;
+    updated_at?: string;
     profile?: Profile;
-    address: Address[];
+    address?: Address[];
     orders?: OrderPaginator;
 }
 

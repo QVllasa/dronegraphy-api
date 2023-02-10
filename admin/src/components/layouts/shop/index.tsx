@@ -13,6 +13,7 @@ const ShopLayout: React.FC = ({ children }) => {
 
   const { permissions: currentUserPermissions } = getAuthCredentials();
 
+
   const SidebarItemMap = () => (
     <Fragment>
       {siteSettings.sidebarLinks.shop.map(
