@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
+
 export interface State {
 	settings: any;
 }
@@ -8,9 +9,9 @@ const initialState = {
   siteSubtitle: '',
   currency: 'USD',
   logo: {
-    id: 1,
-    thumbnail: '/logo.svg',
-    original: '/logo.svg',
+	  id: 1,
+	  thumbnail: '/dronegraphy_Logo_V2.5.svg',
+	  original: '/dronegraphy_Logo_V2.5.svg',
   },
 };
 

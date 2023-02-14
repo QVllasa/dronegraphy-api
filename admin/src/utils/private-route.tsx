@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-import { getAuthCredentials, hasAccess } from './auth-utils';
+import {useRouter} from 'next/router';
+import {getAuthCredentials, hasAccess} from './auth-utils';
 import Loader from '@/components/ui/loader/loader';
 import AccessDeniedPage from '@/components/common/access-denied';
-import { Routes } from '@/config/routes';
+import {Routes} from '@/config/routes';
 
 const PrivateRoute: React.FC<{ authProps: any }> = ({
   children,
@@ -11,7 +11,9 @@ const PrivateRoute: React.FC<{ authProps: any }> = ({
 }) => {
   const router = useRouter();
   const { token, permissions } = getAuthCredentials();
-  const isUser = !!token;
+
+
+    const isUser = !!token;
   const hasPermission =
     Array.isArray(permissions) &&
     !!permissions.length &&
@@ -23,10 +25,14 @@ const PrivateRoute: React.FC<{ authProps: any }> = ({
   if (isUser && hasPermission) {
     return <>{children}</>;
   }
-  if (isUser && !hasPermission) {
+
+
+    if (isUser && !hasPermission) {
     return <AccessDeniedPage />;
   }
-  // Session is being fetched, or no user.
+
+
+    // Session is being fetched, or no user.
   // If no user, useEffect() will redirect.
   return <Loader showText={false} />;
 };

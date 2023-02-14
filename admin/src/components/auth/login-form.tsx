@@ -36,7 +36,7 @@ const LoginForm = () => {
               setAuthCredentials(data?.token, data?.permissions);
               if (hasAccess(adminOnly, data?.permissions)) Router.push(Routes.dashboard);
               if (hasAccess(ownerOnly, data?.permissions)) Router.push({
-                pathname: `${Routes.dashboard}1000`
+                pathname: `${Routes.dashboard}`
               });
               return;
             }

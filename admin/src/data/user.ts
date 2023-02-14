@@ -11,7 +11,6 @@ import {QueryOptionsType, User, UserPaginator} from '@/types';
 import {mapPaginatorData} from '@/utils/data-mappers';
 
 export const useMeQuery = () => {
-
     return useQuery<User, Error>([API_ENDPOINTS.ME], userClient.me);
 };
 
