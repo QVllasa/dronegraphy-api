@@ -186,7 +186,7 @@ export class AuthService {
 
         // Extract bearer
         const decoded = this.getTokenPayload(token);
-        return this.usersService.findOne(decoded.sub);
+        return this.usersService.findOne(decoded.sub).populate('shop');
     }
 
     // updateUser(id: string, updateUserInput: UpdateUserInput) {
