@@ -1,35 +1,36 @@
 import ShopLayout from '@/components/layouts/shop';
-import Loader from '@/components/ui/loader/loader';
 import {adminOwnerAndStaffOnly, getAuthCredentials,} from '@/utils/auth-utils';
 import {useTranslation} from 'next-i18next';
-import {useMeQuery} from "@/data/user";
-import {useMutation} from "react-query";
+import {useQuery} from "react-query";
 import {shopClient} from "@/data/client/shop";
 import {useState} from "react";
 import {Shop} from "@/types";
+import {useRouter} from "next/router";
 
 export default function ShopPage() {
     const {t} = useTranslation();
     const {permissions} = getAuthCredentials();
     const [shop, setShop] = useState<Shop>()
-    const {data, isLoading: isLoadingUser, error: errorUser} = useMeQuery()
+    const {query: {shopId}} = useRouter();
+    // const {data, isLoading: isLoadingUser, error: errorUser} = useMeQuery()
 
-    const {mutate: loadShop, isLoading: loading, error,} = useMutation(shopClient.get, {
+    const {data, isLoading: loading, error,} = useQuery(['shop', shopId], async () => shopClient.get, {
         onSuccess: (shop) => {
+            console.log("shop on success: ", shop)
             setShop(shop)
         },
-        onError: () => {
-        }
+        onError: (err) => {
+            console.log("err", err)
+        },
     });
 
-    if (data && !isLoadingUser && !shop) {
-        console.log("me: ", data);
-        // loadShop({id: me?.shop?._id})
+    if (shopId) {
+        console.log("me: ", shopId, data);
     } else {
 
     }
 
-    if (loading) return <Loader text={t('common:text-loading')}/>;
+    // if (loading) return <Loader text={t('common:text-loading')}/>;
 
 
     return (

@@ -9,16 +9,16 @@ import MobileNavigation from '@/components/layouts/navigation/mobile-navigation'
 
 const ShopLayout = ({children}: any): JSX.Element => {
     const {t} = useTranslation();
-    const {query: {shop}} = useRouter();
+    const {query: {shopId}} = useRouter();
 
 
     const {permissions: currentUserPermissions} = getAuthCredentials();
 
-    console.log("query: ", shop)
+    console.log("query: ", shopId)
 
 
     const SidebarItemMap = () => {
-        if (!shop) return null;
+        if (!shopId) return null;
         return (
             <Fragment>
                 {siteSettings.sidebarLinks.shop.map(
@@ -27,7 +27,7 @@ const ShopLayout = ({children}: any): JSX.Element => {
                         return (
                             <SidebarItem
                                 key={label}
-                                href={href(shop?.toString()!)}
+                                href={href(shopId?.toString()!)}
                                 label={t(label)}
                                 icon={icon}
                             />

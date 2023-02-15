@@ -1,12 +1,12 @@
 import ShopLayout from '@/components/layouts/shop';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
 import RefundDetailsView from '@/components/refund/refund-details-view';
-import { useRefundQuery } from '@/data/refund';
+import {useRefundQuery} from '@/data/refund';
 
 export default function RefundDetailsPage() {
   const { t } = useTranslation();

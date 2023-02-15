@@ -1,20 +1,20 @@
 import Card from '@/components/common/card';
 import ShopLayout from '@/components/layouts/shop';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
 import Search from '@/components/common/search';
 import LinkButton from '@/components/ui/link-button';
-import { useState } from 'react';
-import { LIMIT } from '@/utils/constants';
+import {useState} from 'react';
+import {LIMIT} from '@/utils/constants';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Routes } from '@/config/routes';
+import {useTranslation} from 'next-i18next';
+import {useRouter} from 'next/router';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {Routes} from '@/config/routes';
 import AuthorList from '@/components/author/author-list';
-import { useAuthorsQuery } from '@/data/author';
-import { SortOrder } from '@/types';
-import { Config } from '@/config';
+import {useAuthorsQuery} from '@/data/author';
+import {SortOrder} from '@/types';
+import {Config} from '@/config';
 
 export default function Authors() {
   const { t } = useTranslation();

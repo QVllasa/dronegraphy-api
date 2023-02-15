@@ -1,8 +1,8 @@
 import ShopLayout from '@/components/layouts/shop';
 import CreateOrUpdateProductForm from '@/components/product/product-form';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
 
 export default function CreateProductPage() {
   const { t } = useTranslation();

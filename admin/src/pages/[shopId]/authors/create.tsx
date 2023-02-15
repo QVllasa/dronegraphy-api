@@ -1,8 +1,8 @@
 import AuthorCreateOrUpdateForm from '@/components/author/author-form';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import ShopLayout from '@/components/layouts/shop';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
 
 export default function CreateAuthorPage() {
   const { t } = useTranslation();

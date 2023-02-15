@@ -1,8 +1,8 @@
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import CreateOrUpdateWithdrawForm from '@/components/withdraw/withdraw-form';
 import ShopLayout from '@/components/layouts/shop';
-import { adminAndOwnerOnly } from '@/utils/auth-utils';
+import {adminAndOwnerOnly} from '@/utils/auth-utils';
 
 export default function CreateWithdrawPage() {
   const { t } = useTranslation();

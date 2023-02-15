@@ -2,20 +2,20 @@ import Card from '@/components/common/card';
 import Search from '@/components/common/search';
 import ManufacturerList from '@/components/manufacturer/manufacturer-list';
 import LinkButton from '@/components/ui/link-button';
-import { useState } from 'react';
+import {useState} from 'react';
 
-import { LIMIT } from '@/utils/constants';
+import {LIMIT} from '@/utils/constants';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Routes } from '@/config/routes';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {Routes} from '@/config/routes';
 import ShopLayout from '@/components/layouts/shop';
-import { adminOwnerAndStaffOnly } from '@/utils/auth-utils';
-import { useRouter } from 'next/router';
-import { SortOrder } from '@/types';
-import { useManufacturersQuery } from '@/data/manufacturer';
-import { Config } from '@/config';
+import {adminOwnerAndStaffOnly} from '@/utils/auth-utils';
+import {useRouter} from 'next/router';
+import {SortOrder} from '@/types';
+import {useManufacturersQuery} from '@/data/manufacturer';
+import {Config} from '@/config';
 
 export default function Manufacturers() {
   const { t } = useTranslation();

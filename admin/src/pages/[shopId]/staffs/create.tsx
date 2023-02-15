@@ -1,8 +1,8 @@
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import ShopLayout from '@/components/layouts/shop';
 import AddStaffForm from '@/components/shop/staff-form';
-import { adminAndOwnerOnly } from '@/utils/auth-utils';
+import {adminAndOwnerOnly} from '@/utils/auth-utils';
 
 export default function AddStaffPage() {
   const { t } = useTranslation();

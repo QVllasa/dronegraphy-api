@@ -5,8 +5,8 @@ import {crudFactory} from './crud-factory';
 
 export const shopClient = {
     ...crudFactory<Shop, QueryOptions, ShopInput>(API_ENDPOINTS.SHOPS),
-    get({id}: { id?: string | undefined }) {
-        if (!id) return;
+    get({id}: { id?: string }) {
+        console.log("get shop: ", id)
         return HttpClient.get<Shop>(`${API_ENDPOINTS.SHOPS}/${id}`);
     },
     paginated: ({name, ...params}: Partial<ShopQueryOptions>) => {
